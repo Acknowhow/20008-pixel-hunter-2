@@ -1,7 +1,7 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
 * Студент: [Вадим Корабельник](https://up.htmlacademy.ru/ecmascript/4/user/20008).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Малинов](https://htmlacademy.ru/profile/id40204).
 
 ---
 
