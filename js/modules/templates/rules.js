@@ -46,7 +46,7 @@ export const makeRulesTemplate = () => {
   };
 
   const check = () => {
-    rulesInput.value === `` ? rulesButton.setAttribute(`disabled`, ``) : ``;
+    return rulesInput.value === `` ? rulesButton.setAttribute(`disabled`, ``) : ``;
   };
 
   const next = () => {
