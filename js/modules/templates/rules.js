@@ -1,5 +1,5 @@
 import {makeIntroTemplate} from './intro';
-import {makeGame1Template} from './game-1.js';
+import {makeGame1Template} from './game-1';
 import {insertIntoContainer, makeTemplate} from '../module-constructor';
 
 const moduleRules = `<header class="header">
@@ -45,6 +45,10 @@ export const makeRulesTemplate = () => {
     rulesInput.addEventListener(`input`, enable);
   };
 
+  const check = () => {
+    rulesInput.value === `` ? rulesButton.setAttribute(`disabled`, ``) : ``;
+  };
+
   const next = () => {
     rulesInput.removeEventListener(`input`, enable);
     rulesInput.removeEventListener(`keydown`, empty);
@@ -53,6 +57,8 @@ export const makeRulesTemplate = () => {
     const game1Template = makeGame1Template();
     insertIntoContainer(game1Template);
   };
+
+  rulesInput.addEventListener(`focusout`, check);
   rulesInput.addEventListener(`keydown`, empty);
   rulesButton.addEventListener(`click`, next);
 

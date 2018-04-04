@@ -1,5 +1,5 @@
 import {makeIntroTemplate} from './intro';
-import {makeGame3Template} from './game-3.js';
+import {makeGame3Template} from './game-3';
 import {insertIntoContainer, makeTemplate} from '../module-constructor';
 
 const moduleGame2 = `<header class="header">
