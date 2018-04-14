@@ -1,9 +1,19 @@
 import {assert} from 'chai';
+import {expect} from 'chai';
+
+const answersArray = [];
+for (let i = 10; i > 0; i--) {
+  answersArray.push(i);
+}
 
 const calculate = (answers, lives) => {
 
   if (!Array.isArray(answers)) {
     throw new Error(`Answers should be of array type`);
+  }
+
+  if (answers.length !== 10) {
+    return -1;
   }
 
   if (typeof lives !== `number`) {
@@ -22,8 +32,8 @@ describe(`Test data types for a take off`, () => {
   it(`Should accept answers of array type
 and lives of number type`, () => {
 
-        assert(calculate([1, 2, 4], 3), true);
-        assert(calculate([], 3), true);
+        assert.strictEqual(calculate(answersArray, 3), true);
+        assert.strictEqual(calculate(answersArray, 101), true);
       });
 
   it(`Should not accept any other data types 
@@ -35,18 +45,22 @@ other than array as first argument`, () => {
             /Answers should be of array type/);
       });
 
+  it(`Should fail if answers.length < 10`, () => {
+    expect(calculate(answersArray.slice(4), 1)).to.equal(-1);
+  });
+
   it(`Should not accept any other data types 
 other than number as second argument`, () => {
 
-        assert.throws(() => calculate([], []),
+        assert.throws(() => calculate(answersArray, []),
             /Lives should be of number type/);
-        assert.throws(() => calculate([], `2`),
+        assert.throws(() => calculate(answersArray, `2`),
             /Lives should be of number type/);
       });
 
   it(`Should not accept negative lives`, () => {
 
-    assert.throws(() => calculate([], -1),
+    assert.throws(() => calculate(answersArray, -1),
         /Lives should not be negative/);
   });
 });
