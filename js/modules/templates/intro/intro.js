@@ -1,5 +1,5 @@
-import {makeGreetingTemplate} from './greeting';
-import {insertIntoContainer, makeTemplate} from '../module-constructor';
+import {makeGreetingTemplate} from './../greeting/greeting';
+import {insertIntoContainer, makeTemplate} from './../../module-constructor';
 
 const contentIntro = `<div id="main" class="central__content">
     <div class="intro">

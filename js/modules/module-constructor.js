@@ -1,4 +1,4 @@
-import {templateFooterDefault} from './templates/footer';
+import {templateFooterDefault} from './templates/footer/footer';
 
 const centralContainer = document.querySelector(`.central`);
 

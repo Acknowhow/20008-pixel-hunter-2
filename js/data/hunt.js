@@ -1,3 +1,11 @@
+export const initialState = {
+  type: 1,
+  screen: 0,
+  level: 0,
+  lives: 3,
+  time: 0
+};
+
 export const answers = [
   {correct: true, time: 9},
   {correct: false, time: 22},

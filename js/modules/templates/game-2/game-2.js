@@ -1,6 +1,6 @@
-import {makeIntroTemplate} from './intro';
-import {makeGame3Template} from './game-3';
-import {insertIntoContainer, makeTemplate} from '../module-constructor';
+import {makeIntroTemplate} from './../intro/intro';
+import {makeGame3Template} from './../game-3/game-3';
+import {insertIntoContainer, makeTemplate} from './../../module-constructor';
 
 const moduleGame2 = `<header class="header">
     <div class="header__back">
