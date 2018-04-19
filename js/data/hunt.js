@@ -25,7 +25,10 @@ const PAINT = `paint`;
 const PHOTO_1 = `photo_1`;
 const PAINT_1 = `paint_1`;
 
-export const question = {
+const PHOTO_2 = `photo_2`;
+const PAINT_2 = `paint_2`;
+
+export const HUNT = {
   'type_0': {
     'screen_0': {
       [PAINT]: {
