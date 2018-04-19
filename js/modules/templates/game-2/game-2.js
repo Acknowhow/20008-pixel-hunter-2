@@ -2,6 +2,8 @@ import {makeIntroTemplate} from './../intro/intro';
 import {makeGame3Template} from './../game-3/game-3';
 import {insertIntoContainer, makeTemplate} from './../../module-constructor';
 
+import {switchBack} from "../../helper/switch-back";
+
 const moduleGame2 = `<header class="header">
     <div class="header__back">
       <span class="back">
@@ -50,6 +52,7 @@ export const makeGame2Template = () => {
   const el = makeTemplate(moduleGame2);
   const form = el.querySelector(`.game__content`);
 
+  const linkBack = el.querySelector(`.header__back`);
   const formOption = form.children[0];
 
   const answer1 = formOption.querySelector(
@@ -59,14 +62,8 @@ export const makeGame2Template = () => {
       `.game__answer--paint`).children[0];
 
   const answersArr = [answer1, answer2];
-  const linkBack = el.querySelector(`.header__back`);
-
-  const switchBack = () => {
-    linkBack.removeEventListener(`click`, switchBack);
-
-    const introTemplate = makeIntroTemplate();
-    insertIntoContainer(introTemplate);
-  };
+  switchBack(linkBack, insertIntoContainer(
+      makeIntroTemplate()));
 
   const checkArr = (input) => {
     return input.checked === true;
@@ -77,8 +74,7 @@ export const makeGame2Template = () => {
       formOption.removeEventListener(`click`, check);
 
       setTimeout(() => {
-        const game3Template = makeGame3Template();
-        insertIntoContainer(game3Template);
+        insertIntoContainer(makeGame3Template());
       }, 0);
     }
   };

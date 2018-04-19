@@ -56,13 +56,12 @@ export const makeGame3Template = () => {
 
   const options = Array.from(
       form.querySelectorAll(`.game__option`));
+
   const linkBack = el.querySelector(`.header__back`);
-
   const switchBack = () => {
-    linkBack.removeEventListener(`click`, switchBack);
 
-    const introTemplate = makeIntroTemplate();
-    insertIntoContainer(introTemplate);
+    linkBack.removeEventListener(`click`, switchBack);
+    insertIntoContainer(makeIntroTemplate());
   };
 
   const check = () => {
@@ -71,17 +70,13 @@ export const makeGame3Template = () => {
     });
 
     setTimeout(() => {
-      const statsTemplate = makeStatsTemplate();
-
-      insertIntoContainer(statsTemplate);
+      insertIntoContainer(makeStatsTemplate());
     }, 0);
   };
-
 
   options.forEach((option) => {
     option.addEventListener(`click`, check);
   });
-
 
   linkBack.addEventListener(`click`, switchBack);
   return el;
