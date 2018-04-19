@@ -52,8 +52,11 @@ export const makeGame2Template = () => {
 
   const formOption = form.children[0];
 
-  const answer1 = formOption.querySelector(`.game__answer--photo`).children[0];
-  const answer2 = formOption.querySelector(`.game__answer--paint`).children[0];
+  const answer1 = formOption.querySelector(
+      `.game__answer--photo`).children[0];
+
+  const answer2 = formOption.querySelector(
+      `.game__answer--paint`).children[0];
 
   const answersArr = [answer1, answer2];
   const linkBack = el.querySelector(`.header__back`);
@@ -73,8 +76,10 @@ export const makeGame2Template = () => {
     if (answersArr.some(checkArr)) {
       formOption.removeEventListener(`click`, check);
 
-      const game3Template = makeGame3Template();
-      insertIntoContainer(game3Template);
+      setTimeout(() => {
+        const game3Template = makeGame3Template();
+        insertIntoContainer(game3Template);
+      }, 0);
     }
   };
 

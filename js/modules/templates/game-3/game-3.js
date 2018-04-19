@@ -1,5 +1,5 @@
 import {makeIntroTemplate} from './../intro/intro';
-// import {makeStatsTemplate} from './../stats/stats';
+import {makeStatsTemplate} from './../stats/stats';
 import {insertIntoContainer, makeTemplate} from './../../module-constructor';
 
 const templateGame3 = `<header class="header">
@@ -19,6 +19,11 @@ const templateGame3 = `<header class="header">
   <div class="game">
     <p class="game__task">Найдите рисунок среди изображений</p>
     <form class="game__content  game__content--triple">
+      <style>
+        .game__content--triple .game__option:active::after {
+          pointer-events: none;
+        }
+      </style>
       <div class="game__option">
         <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
       </div>
@@ -46,14 +51,13 @@ const templateGame3 = `<header class="header">
   </div>`;
 
 export const makeGame3Template = () => {
-
   const el = makeTemplate(templateGame3);
-  // const form = el.querySelector(`.game__content`);
+  const form = el.querySelector(`.game__content`);
 
-  const options = Array.from(document.querySelectorAll(`img`));
-  console.log(options);
-
+  const options = Array.from(
+      form.querySelectorAll(`.game__option`));
   const linkBack = el.querySelector(`.header__back`);
+
   const switchBack = () => {
     linkBack.removeEventListener(`click`, switchBack);
 
@@ -61,20 +65,23 @@ export const makeGame3Template = () => {
     insertIntoContainer(introTemplate);
   };
 
-  const check = (ev) => {
+  const check = () => {
+    options.forEach((option) => {
+      option.removeEventListener(`click`, check);
+    });
 
-    alert(ev);
+    setTimeout(() => {
+      const statsTemplate = makeStatsTemplate();
 
-    // if (ev.target) {
-    //   const statsTemplate = makeStatsTemplate();
-    //
-    //   insertIntoContainer(statsTemplate);
-    // }
-
-    // return false;
+      insertIntoContainer(statsTemplate);
+    }, 0);
   };
 
-  options.forEach((option) => option.addEventListener(`click`, check));
+
+  options.forEach((option) => {
+    option.addEventListener(`click`, check);
+  });
+
 
   linkBack.addEventListener(`click`, switchBack);
   return el;

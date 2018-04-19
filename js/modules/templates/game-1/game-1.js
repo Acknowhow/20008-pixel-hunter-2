@@ -94,8 +94,10 @@ export const makeGame1Template = () => {
       formOptions1.removeEventListener(`click`, checkOpt1);
       formOptions2.removeEventListener(`click`, checkOpt2);
 
-      const game2Template = makeGame2Template();
-      insertIntoContainer(game2Template);
+      setTimeout(() => {
+        const game2Template = makeGame2Template();
+        insertIntoContainer(game2Template);
+      }, 0);
     }
   };
   formOptions1.addEventListener(`click`, checkOpt1);
