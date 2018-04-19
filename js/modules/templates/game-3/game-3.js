@@ -1,5 +1,5 @@
 import {makeIntroTemplate} from './../intro/intro';
-import {makeStatsTemplate} from './../stats/stats';
+// import {makeStatsTemplate} from './../stats/stats';
 import {insertIntoContainer, makeTemplate} from './../../module-constructor';
 
 const templateGame3 = `<header class="header">
@@ -46,8 +46,12 @@ const templateGame3 = `<header class="header">
   </div>`;
 
 export const makeGame3Template = () => {
+
   const el = makeTemplate(templateGame3);
-  const form = el.querySelector(`.game__content`);
+  // const form = el.querySelector(`.game__content`);
+
+  const options = Array.from(document.querySelectorAll(`img`));
+  console.log(options);
 
   const linkBack = el.querySelector(`.header__back`);
   const switchBack = () => {
@@ -58,15 +62,20 @@ export const makeGame3Template = () => {
   };
 
   const check = (ev) => {
-    if (ev.target.classList.contains(`game__option`)) {
-      const statsTemplate = makeStatsTemplate();
 
-      insertIntoContainer(statsTemplate);
-    }
-    return false;
+    alert(ev);
+
+    // if (ev.target) {
+    //   const statsTemplate = makeStatsTemplate();
+    //
+    //   insertIntoContainer(statsTemplate);
+    // }
+
+    // return false;
   };
 
-  form.addEventListener(`click`, check);
+  options.forEach((option) => option.addEventListener(`click`, check));
+
   linkBack.addEventListener(`click`, switchBack);
   return el;
 };

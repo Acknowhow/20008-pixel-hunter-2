@@ -51,6 +51,7 @@ export const makeGame2Template = () => {
   const form = el.querySelector(`.game__content`);
 
   const formOption = form.children[0];
+
   const answer1 = formOption.querySelector(`.game__answer--photo`).children[0];
   const answer2 = formOption.querySelector(`.game__answer--paint`).children[0];
 
@@ -68,10 +69,7 @@ export const makeGame2Template = () => {
     return input.checked === true;
   };
 
-  const check = (ev) => {
-    if (ev.currentTarget !== formOption) {
-      return;
-    }
+  const check = () => {
     if (answersArr.some(checkArr)) {
       formOption.removeEventListener(`click`, check);
 
