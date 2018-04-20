@@ -22,80 +22,253 @@ export const answers = [
 const PHOTO = `photo`;
 const PAINT = `paint`;
 
-const PHOTO_1 = `photo_1`;
-const PAINT_1 = `paint_1`;
-
-const PHOTO_2 = `photo_2`;
-const PAINT_2 = `paint_2`;
 
 export const HUNT = {
-  'type_0': {
-    'screen_0': {
-      [PAINT]: {
+  'type-0': {
+    'screen-0': {
+      Option1: {
         src: `http://i.imgur.com/5kcp9i0.jpg`,
-        name: `Man bearded`
+        name: `Man bearded`,
+
+        [PHOTO]() {
+          return 0;
+        },
+
+        [PAINT]() {
+          return 1;
+        }
       },
-      [PHOTO]: {
+      Option2: {
         src: `http://i.imgur.com/8aNXpLk.jpg`,
-        name: `Morgan Freeman`
+        name: `Morgan Freeman`,
+
+        [PHOTO]() {
+          return 1;
+        },
+
+        [PAINT]() {
+          return 0;
+        }
       }
     },
-    'screen_1': {
-      [PHOTO]: {
+    'screen-1': {
+      Option1: {
         src: `http://i.imgur.com/PKtMBLt.jpg`,
-        name: `Grandma Indian`
+        name: `Grandma Indian`,
+
+        [PHOTO]() {
+          return 1;
+        },
+
+        [PAINT]() {
+          return 0;
+        }
       },
-      [PAINT]: {
+      Option2: {
         src: `http://i.imgur.com/aA3KkAW.jpg`,
-        name: `Woman thoughtful`
+        name: `Woman thoughtful`,
+
+        [PHOTO]() {
+          return 0;
+        },
+
+        [PAINT]() {
+          return 1;
+        }
       }
     }
   },
 
-  'type_1': {
-    'screen_0': {
-      [PHOTO]: {
+  'type-1': {
+    'screen-0': {
+      Option1: {
         src: `http://i.imgur.com/jX3HIry.jpg`,
-        name: `Ethiopian girl`
+        name: `Ethiopian girl`,
+        [PHOTO]() {
+          return 1;
+        },
+
+        [PAINT]() {
+          return 0;
+        }
       }
     },
-    'screen_1': {
-      [PAINT]: {
+    'screen-1': {
+      Option2: {
         src: `http://i.imgur.com/27nbLSA.jpg`,
-        name: `Girls sitting`
+        name: `Girls sitting`,
+        [PHOTO]() {
+          return 0;
+        },
+
+        [PAINT]() {
+          return 1;
+        }
       }
     }
   },
 
-  'type_2': {
-    'screen_0': {
-      [PHOTO_1]: {
-        src: `http://i.imgur.com/LWFCQSK.jpg`,
-        name: `Cheetah`
-      },
-      [PAINT]: {
-        src: `http://i.imgur.com/FA4D3kO.jpg`,
-        name: `Lizard`
-      },
-      [PHOTO_2]: {
-        src: `http://i.imgur.com/y9cN0UD.jpg`,
-        name: `Figs`
-      }
+  'type-2': {
+    'screen-0': {
+      Option1: [
+        {
+          src: `http://i.imgur.com/LWFCQSK.jpg`,
+          name: `Cheetah`,
+
+          [PHOTO]() {
+            return 1;
+          },
+
+          [PAINT]() {
+            return 0;
+          }
+        },
+        {
+          src: `http://i.imgur.com/FA4D3kO.jpg`,
+          name: `Lizard`,
+
+          [PHOTO]() {
+            return 0;
+          },
+
+          [PAINT]() {
+            return 1;
+          }
+        },
+        {
+          src: `http://i.imgur.com/y9cN0UD.jpg`,
+          name: `Figs`,
+
+          [PHOTO]() {
+            return 1;
+          },
+
+          [PAINT]() {
+            return 0;
+          }
+        }
+      ],
+
+      Option2: [
+        {
+          src: `http://i.imgur.com/OI49pzH.jpg`,
+          name: `Bumble bee`,
+
+          [PHOTO]() {
+            return 1;
+          },
+
+          [PAINT]() {
+            return 0;
+          }
+        },
+        {
+          src: `http://i.imgur.com/Sjjnuyi.jpg`,
+          name: `Metal spheres`,
+
+          [PHOTO]() {
+            return 0;
+          },
+
+          [PAINT]() {
+            return 1;
+          }
+        },
+        {
+          src: `http://i.imgur.com/rvDgwaA.jpg`,
+          name: `Watermelon`,
+
+          [PHOTO]() {
+            return 0;
+          },
+
+          [PAINT]() {
+            return 1;
+          }
+        }
+      ]
     },
-    'screen_1': {
-      [PHOTO]: {
-        src: `http://i.imgur.com/OI49pzH.jpg`,
-        name: `Bumble bee`
-      },
-      [PAINT_1]: {
-        src: `http://i.imgur.com/Sjjnuyi.jpg`,
-        name: `Metal spheres`
-      },
-      [PAINT_2]: {
-        src: `http://i.imgur.com/rvDgwaA.jpg`,
-        name: `Watermelon`
-      },
-    }
+
+    'screen-1': {
+      Option1: [
+        {
+          src: `http://i.imgur.com/Eb5bc8u.jpg`,
+          name: `Books abstract`,
+
+          [PHOTO]() {
+            return 1;
+          },
+
+          [PAINT]() {
+            return 0;
+          }
+        },
+        {
+          src: `http://i.imgur.com/Sjjnuyi.jpg`,
+          name: `Metal spheres`,
+
+          [PHOTO]() {
+            return 0;
+          },
+
+          [PAINT]() {
+            return 1;
+          }
+        },
+        {
+          src: `http://i.imgur.com/Spk7kTG.jpg`,
+          name: `Mug`,
+
+          [PHOTO]() {
+            return 1;
+          },
+
+          [PAINT]() {
+            return 0;
+          }
+        }
+      ],
+
+      Option2: [
+        {
+          src: `http://i.imgur.com/OI49pzH.jpg`,
+          name: `Bumble bee`,
+
+          [PHOTO]() {
+            return 1;
+          },
+
+          [PAINT]() {
+            return 0;
+          }
+        },
+        {
+          src: `http://i.imgur.com/l8J6vbh.jpg`,
+          name: `Woman showered`,
+
+          [PHOTO]() {
+            return 0;
+          },
+
+          [PAINT]() {
+            return 1;
+          }
+        },
+        {
+          src: `http://i.imgur.com/mgbDqkB.jpg`,
+          name: `Pomegranate`,
+
+          [PHOTO]() {
+            return 0;
+          },
+
+          [PAINT]() {
+            return 1;
+          }
+        }
+      ]
+    },
   }
 };
+
 
