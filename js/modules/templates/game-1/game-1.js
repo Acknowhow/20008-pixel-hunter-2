@@ -2,6 +2,7 @@ import {makeIntroTemplate} from './../intro/intro';
 import {makeGame2Template} from './../game-2/game-2';
 import {insertIntoContainer, makeTemplate} from './../../module-constructor';
 
+import {switchBack} from '../../helper/switch-back';
 import text from './game-1-data';
 
 const moduleGame1 = `<header class="header">
@@ -62,18 +63,31 @@ const moduleGame1 = `<header class="header">
 export const makeGame1Template = () => {
   const el = makeTemplate(moduleGame1);
   const form = el.querySelector(`.game__content`);
+
   // First and Second options screen
   const formOptions1 = form.children[0];
   const formOptions2 = form.children[1];
 
-  const formAnswers1 = Array.from(formOptions1.querySelectorAll(`input`));
-  const formAnswers2 = Array.from(formOptions2.querySelectorAll(`input`));
+  const formAnswers1 = Array.from(
+      formOptions1.querySelectorAll(`input`));
+
+  const formAnswers2 = Array.from(
+      formOptions2.querySelectorAll(`input`));
 
   const linkBack = el.querySelector(`.header__back`);
-  const switchBack = () => {
-    linkBack.removeEventListener(`click`, switchBack);
-    const introTemplate = makeIntroTemplate();
-    insertIntoContainer(introTemplate);
+  const intro = () => insertIntoContainer(makeIntroTemplate());
+
+  const resetGame = () => switchBack(
+      linkBack, intro);
+
+  const proceed = () => {
+    formOptions1.removeEventListener(`click`, checkOpt1);
+    formOptions2.removeEventListener(`click`, checkOpt2);
+
+    setTimeout(() => {
+
+      insertIntoContainer(makeGame2Template());
+    }, 0);
   };
 
   const checkArr = (a) => {
@@ -82,28 +96,18 @@ export const makeGame1Template = () => {
 
   const checkOpt1 = () => {
     if (formAnswers2.some(checkArr) === true) {
-      formOptions1.removeEventListener(`click`, checkOpt1);
-      formOptions2.removeEventListener(`click`, checkOpt2);
-
-      const game2Template = makeGame2Template();
-      insertIntoContainer(game2Template);
+      proceed();
     }
   };
   const checkOpt2 = () => {
     if (formAnswers1.some(checkArr) === true) {
-      formOptions1.removeEventListener(`click`, checkOpt1);
-      formOptions2.removeEventListener(`click`, checkOpt2);
-
-      setTimeout(() => {
-        const game2Template = makeGame2Template();
-        insertIntoContainer(game2Template);
-      }, 0);
+      proceed();
     }
   };
   formOptions1.addEventListener(`click`, checkOpt1);
   formOptions2.addEventListener(`click`, checkOpt2);
 
-  linkBack.addEventListener(`click`, switchBack);
+  linkBack.addEventListener(`click`, resetGame);
   return el;
 };
 

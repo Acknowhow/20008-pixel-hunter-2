@@ -1,5 +1,6 @@
 import {makeIntroTemplate} from './../intro/intro';
 import {insertIntoContainer, makeTemplate} from './../../module-constructor';
+import {switchBack} from '../../helper/switch-back';
 
 const moduleStats = `<header class="header">
     <div class="header__back">
@@ -114,12 +115,12 @@ export const makeStatsTemplate = () => {
   const el = makeTemplate(moduleStats);
   const linkBack = el.querySelector(`.header__back`);
 
-  const switchBack = () => {
-    linkBack.removeEventListener(`click`, switchBack);
-    const introTemplate = makeIntroTemplate();
-    insertIntoContainer(introTemplate);
-  };
+  const intro = () => insertIntoContainer(
+      makeIntroTemplate());
 
-  linkBack.addEventListener(`click`, switchBack);
+  const resetGame = () => switchBack(
+      linkBack, intro);
+
+  linkBack.addEventListener(`click`, resetGame);
   return el;
 };

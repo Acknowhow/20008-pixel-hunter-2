@@ -18,8 +18,7 @@ export const makeGreetingTemplate = () => {
   const linkNext = el.querySelector(`img[alt='Next']`);
 
   const next = () => {
-    const rulesTemplate = makeRulesTemplate();
-    insertIntoContainer(rulesTemplate);
+    insertIntoContainer(makeRulesTemplate());
 
     linkNext.removeEventListener(`click`, next);
   };

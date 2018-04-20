@@ -2,6 +2,8 @@ import {makeIntroTemplate} from './../intro/intro';
 import {makeGame1Template} from './../game-1/game-1';
 import {insertIntoContainer, makeTemplate} from './../../module-constructor';
 
+import {switchBack} from '../../helper/switch-back';
+
 const moduleRules = `<header class="header">
   <div class="header__back">
     <span class="back">
@@ -26,16 +28,16 @@ const moduleRules = `<header class="header">
 
 export const makeRulesTemplate = () => {
   const el = makeTemplate(moduleRules);
+
   const rulesInput = el.querySelector(`.rules__input`);
-
   const rulesButton = el.querySelector(`.rules__button`);
-  const linkBack = el.querySelector(`img[alt='Back']`);
 
-  const switchBack = () => {
-    linkBack.removeEventListener(`click`, switchBack);
-    const introTemplate = makeIntroTemplate();
-    insertIntoContainer(introTemplate);
-  };
+  const linkBack = el.querySelector(`img[alt='Back']`);
+  const intro = () => insertIntoContainer(
+      makeIntroTemplate());
+
+  const resetGame = () => switchBack(
+      linkBack, intro);
 
   const enable = () => {
     rulesButton.removeAttribute(`disabled`);
@@ -46,7 +48,8 @@ export const makeRulesTemplate = () => {
   };
 
   const check = () => {
-    return rulesInput.value === `` ? rulesButton.setAttribute(`disabled`, ``) : ``;
+    return rulesInput.value === `` ? rulesButton.setAttribute(
+        `disabled`, ``) : ``;
   };
 
   const next = () => {
@@ -54,14 +57,13 @@ export const makeRulesTemplate = () => {
     rulesInput.removeEventListener(`keydown`, empty);
     rulesButton.removeEventListener(`click`, next);
 
-    const game1Template = makeGame1Template();
-    insertIntoContainer(game1Template);
+    insertIntoContainer(makeGame1Template());
   };
 
   rulesInput.addEventListener(`focusout`, check);
   rulesInput.addEventListener(`keydown`, empty);
   rulesButton.addEventListener(`click`, next);
 
-  linkBack.addEventListener(`click`, switchBack);
+  linkBack.addEventListener(`click`, resetGame);
   return el;
 };

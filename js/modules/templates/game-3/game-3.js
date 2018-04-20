@@ -2,6 +2,8 @@ import {makeIntroTemplate} from './../intro/intro';
 import {makeStatsTemplate} from './../stats/stats';
 import {insertIntoContainer, makeTemplate} from './../../module-constructor';
 
+import {switchBack} from '../../helper/switch-back';
+
 const templateGame3 = `<header class="header">
     <div class="header__back">
       <span class="back">
@@ -56,13 +58,13 @@ export const makeGame3Template = () => {
 
   const options = Array.from(
       form.querySelectorAll(`.game__option`));
-
   const linkBack = el.querySelector(`.header__back`);
-  const switchBack = () => {
 
-    linkBack.removeEventListener(`click`, switchBack);
-    insertIntoContainer(makeIntroTemplate());
-  };
+  const intro = () => insertIntoContainer(
+      makeIntroTemplate());
+
+  const resetGame = () => switchBack(
+      linkBack, intro);
 
   const check = () => {
     options.forEach((option) => {
@@ -78,6 +80,6 @@ export const makeGame3Template = () => {
     option.addEventListener(`click`, check);
   });
 
-  linkBack.addEventListener(`click`, switchBack);
+  linkBack.addEventListener(`click`, resetGame);
   return el;
 };

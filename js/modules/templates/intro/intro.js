@@ -14,8 +14,7 @@ export const makeIntroTemplate = () => {
   const asterisk = el.querySelector(`.intro__asterisk`);
 
   const next = () => {
-    const greetingTemplate = makeGreetingTemplate();
-    insertIntoContainer(greetingTemplate);
+    insertIntoContainer(makeGreetingTemplate());
 
     asterisk.removeEventListener(`click`, next);
   };
