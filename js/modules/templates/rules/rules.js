@@ -1,14 +1,13 @@
 import introScreen from './../intro/intro';
-// import {makeGame1Template} from './../game-1/game-1';
 import rulesTemplate from './rules-view';
-import {insertIntoContainer, makeTemplate} from './../../module-constructor';
+import {insertIntoContainer} from './../../module-constructor';
 
 import {switchBack} from '../../helper/switch-back';
 import text from './rules-data';
 
 
-export const makeRulesTemplate = () => {
-  makeTemplate(rulesTemplate(text));
+export default () => {
+  insertIntoContainer(rulesTemplate(text));
 
   const rulesInput = document.querySelector(`.rules__input`);
   const rulesButton = document.querySelector(`.rules__button`);
@@ -45,5 +44,4 @@ export const makeRulesTemplate = () => {
   rulesButton.addEventListener(`click`, next);
 
   linkBack.addEventListener(`click`, resetGame);
-  return el;
 };

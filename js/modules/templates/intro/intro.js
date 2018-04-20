@@ -17,5 +17,4 @@ export default () => {
   };
 
   asterisk.addEventListener(`click`, next);
-
 };
