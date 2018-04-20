@@ -30,25 +30,15 @@ export const HUNT = {
         src: `http://i.imgur.com/5kcp9i0.jpg`,
         name: `Man bearded`,
 
-        [PHOTO]() {
-          return 0;
-        },
-
-        [PAINT]() {
-          return 1;
-        }
+        [PHOTO]: `false`,
+        [PAINT]: `true`
       },
       Option2: {
         src: `http://i.imgur.com/8aNXpLk.jpg`,
         name: `Morgan Freeman`,
 
-        [PHOTO]() {
-          return 1;
-        },
-
-        [PAINT]() {
-          return 0;
-        }
+        [PHOTO]: `true`,
+        [PAINT]: `false`
       }
     },
     'screen-1': {
@@ -56,25 +46,15 @@ export const HUNT = {
         src: `http://i.imgur.com/PKtMBLt.jpg`,
         name: `Grandma Indian`,
 
-        [PHOTO]() {
-          return 1;
-        },
-
-        [PAINT]() {
-          return 0;
-        }
+        [PHOTO]: `true`,
+        [PAINT]: `false`
       },
       Option2: {
         src: `http://i.imgur.com/aA3KkAW.jpg`,
         name: `Woman thoughtful`,
 
-        [PHOTO]() {
-          return 0;
-        },
-
-        [PAINT]() {
-          return 1;
-        }
+        [PHOTO]: `false`,
+        [PAINT]: `true`
       }
     }
   },
@@ -84,26 +64,18 @@ export const HUNT = {
       Option1: {
         src: `http://i.imgur.com/jX3HIry.jpg`,
         name: `Ethiopian girl`,
-        [PHOTO]() {
-          return 1;
-        },
 
-        [PAINT]() {
-          return 0;
-        }
+        [PHOTO]: `true`,
+        [PAINT]: `false`
       }
     },
     'screen-1': {
       Option2: {
         src: `http://i.imgur.com/27nbLSA.jpg`,
         name: `Girls sitting`,
-        [PHOTO]() {
-          return 0;
-        },
 
-        [PAINT]() {
-          return 1;
-        }
+        [PHOTO]: `false`,
+        [PAINT]: `true`
       }
     }
   },
@@ -115,37 +87,22 @@ export const HUNT = {
           src: `http://i.imgur.com/LWFCQSK.jpg`,
           name: `Cheetah`,
 
-          [PHOTO]() {
-            return 1;
-          },
-
-          [PAINT]() {
-            return 0;
-          }
+          [PHOTO]: `true`,
+          [PAINT]: `false`
         },
         {
           src: `http://i.imgur.com/FA4D3kO.jpg`,
           name: `Lizard`,
 
-          [PHOTO]() {
-            return 0;
-          },
-
-          [PAINT]() {
-            return 1;
-          }
+          [PHOTO]: `false`,
+          [PAINT]: `true`
         },
         {
           src: `http://i.imgur.com/y9cN0UD.jpg`,
           name: `Figs`,
 
-          [PHOTO]() {
-            return 1;
-          },
-
-          [PAINT]() {
-            return 0;
-          }
+          [PHOTO]: `false`,
+          [PAINT]: `true`
         }
       ],
 
@@ -154,37 +111,22 @@ export const HUNT = {
           src: `http://i.imgur.com/OI49pzH.jpg`,
           name: `Bumble bee`,
 
-          [PHOTO]() {
-            return 1;
-          },
-
-          [PAINT]() {
-            return 0;
-          }
+          [PHOTO]: `true`,
+          [PAINT]: `false`
         },
         {
           src: `http://i.imgur.com/Sjjnuyi.jpg`,
           name: `Metal spheres`,
 
-          [PHOTO]() {
-            return 0;
-          },
-
-          [PAINT]() {
-            return 1;
-          }
+          [PHOTO]: `false`,
+          [PAINT]: `true`
         },
         {
           src: `http://i.imgur.com/rvDgwaA.jpg`,
           name: `Watermelon`,
 
-          [PHOTO]() {
-            return 0;
-          },
-
-          [PAINT]() {
-            return 1;
-          }
+          [PHOTO]: `false`,
+          [PAINT]: `true`
         }
       ]
     },
@@ -195,37 +137,22 @@ export const HUNT = {
           src: `http://i.imgur.com/Eb5bc8u.jpg`,
           name: `Books abstract`,
 
-          [PHOTO]() {
-            return 1;
-          },
-
-          [PAINT]() {
-            return 0;
-          }
+          [PHOTO]: `true`,
+          [PAINT]: `false`
         },
         {
           src: `http://i.imgur.com/Sjjnuyi.jpg`,
           name: `Metal spheres`,
 
-          [PHOTO]() {
-            return 0;
-          },
-
-          [PAINT]() {
-            return 1;
-          }
+          [PHOTO]: `false`,
+          [PAINT]: `true`
         },
         {
           src: `http://i.imgur.com/Spk7kTG.jpg`,
           name: `Mug`,
 
-          [PHOTO]() {
-            return 1;
-          },
-
-          [PAINT]() {
-            return 0;
-          }
+          [PHOTO]: `false`,
+          [PAINT]: `true`
         }
       ],
 
@@ -234,37 +161,22 @@ export const HUNT = {
           src: `http://i.imgur.com/OI49pzH.jpg`,
           name: `Bumble bee`,
 
-          [PHOTO]() {
-            return 1;
-          },
-
-          [PAINT]() {
-            return 0;
-          }
+          [PHOTO]: `true`,
+          [PAINT]: `false`
         },
         {
           src: `http://i.imgur.com/l8J6vbh.jpg`,
           name: `Woman showered`,
 
-          [PHOTO]() {
-            return 0;
-          },
-
-          [PAINT]() {
-            return 1;
-          }
+          [PHOTO]: `false`,
+          [PAINT]: `true`
         },
         {
           src: `http://i.imgur.com/mgbDqkB.jpg`,
           name: `Pomegranate`,
 
-          [PHOTO]() {
-            return 0;
-          },
-
-          [PAINT]() {
-            return 1;
-          }
+          [PHOTO]: `false`,
+          [PAINT]: `true`
         }
       ]
     },
