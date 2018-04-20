@@ -1,4 +1,3 @@
-// import {makeGreetingTemplate} from './../greeting/greeting';
 import {makeTemplate} from './../../module-constructor';
 
 export default (textData) => {
@@ -10,16 +9,4 @@ export default (textData) => {
 
   const article = `<div id="main" class="central__content">${content}</div>`;
   return makeTemplate(article);
-
-  // const el = makeTemplate(contentIntro);
-  // const asterisk = el.querySelector(`.intro__asterisk`);
-  //
-  // const next = () => {
-  //   insertIntoContainer(makeGreetingTemplate());
-  //
-  //   asterisk.removeEventListener(`click`, next);
-  // };
-  //
-  // asterisk.addEventListener(`click`, next);
-  // return el;
 };

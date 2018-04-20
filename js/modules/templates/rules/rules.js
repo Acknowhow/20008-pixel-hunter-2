@@ -1,30 +1,21 @@
-import {makeIntroTemplate} from './../intro/intro';
-import {makeGame1Template} from './../game-1/game-1';
+import introScreen from './../intro/intro';
+// import {makeGame1Template} from './../game-1/game-1';
+import rulesTemplate from './rules-view';
 import {insertIntoContainer, makeTemplate} from './../../module-constructor';
 
 import {switchBack} from '../../helper/switch-back';
 import text from './rules-data';
 
-const moduleRules = `<header class="header">${text.header}</header>
-<div class="rules">
-  <h1 class="rules__title">${text.title}</h1>
-  <p class="rules__description">${text.paragraph}</p>
-  <form class="rules__form">
-    <input class="rules__input" type="text" placeholder="Ваше Имя">
-    <button class="rules__button  continue" type="submit" disabled>${text.button}</button>
-  </form>
-</div>`;
 
 export const makeRulesTemplate = () => {
-  const el = makeTemplate(moduleRules);
+  makeTemplate(rulesTemplate(text));
 
-  const rulesInput = el.querySelector(`.rules__input`);
-  const rulesButton = el.querySelector(`.rules__button`);
+  const rulesInput = document.querySelector(`.rules__input`);
+  const rulesButton = document.querySelector(`.rules__button`);
 
-  const linkBack = el.querySelector(`img[alt='Back']`);
-  const intro = () => insertIntoContainer(
-      makeIntroTemplate());
+  const linkBack = document.querySelector(`img[alt='Back']`);
 
+  const intro = () => introScreen();
   const resetGame = () => switchBack(
       linkBack, intro);
 
@@ -46,7 +37,7 @@ export const makeRulesTemplate = () => {
     rulesInput.removeEventListener(`keydown`, empty);
     rulesButton.removeEventListener(`click`, next);
 
-    insertIntoContainer(makeGame1Template());
+    // insertIntoContainer(makeGame1Template());
   };
 
   rulesInput.addEventListener(`focusout`, check);
