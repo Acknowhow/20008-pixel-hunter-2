@@ -1,6 +1,7 @@
+import {initialState} from '../../../data/hunt';
 import introScreen from './../intro/intro';
-// import {initialState} from '../../../data/hunt';
-// import {makeGame3Template} from './../game-3/game-3';
+import game3Screen from './../game-3/game-3';
+
 import game2Template from './game-2-view';
 import {insertIntoContainer} from './../../module-constructor';
 
@@ -34,9 +35,7 @@ export default (currentState) => {
     if (answersArr.some(checkArr)) {
       formOption.removeEventListener(`click`, check);
 
-      // setTimeout(() => {
-      //   insertIntoContainer(makeGame3Template());
-      // }, 0);
+      game3Screen(initialState);
     }
   };
 

@@ -1,7 +1,7 @@
-import introScreen from './../intro/intro';
 // Later on will launch game with current state
 // from previous model
 import {initialState} from '../../../data/hunt';
+import introScreen from './../intro/intro';
 import game2Screen from './../game-2/game-2';
 import game1Template from './game-1-view';
 
