@@ -1,4 +1,5 @@
 import {initialState} from '../../../data/hunt';
+import {HUNT} from '../../../data/hunt';
 import introScreen from './../intro/intro';
 
 import {game1Screen} from './../game-1/game-1';
@@ -6,6 +7,12 @@ import rulesTemplate from './rules-view';
 import {insertIntoContainer} from './../../module-constructor';
 
 import text from './rules-data';
+
+const screen = HUNT[initialState.type][initialState.screen];
+const keys = Object.keys(screen);
+
+const question = keys.map((option) => (
+  {option, params: screen[option]}));
 
 export default () => {
   insertIntoContainer(rulesTemplate(text));
@@ -35,7 +42,7 @@ export default () => {
     rulesButton.removeEventListener(`click`, next);
 
 
-    game1Screen(initialState);
+    game1Screen(initialState, question);
   };
 
   const check = () => {

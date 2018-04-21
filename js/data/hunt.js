@@ -1,7 +1,6 @@
 export const initialState = {
-  type: 1,
-  screen: 0,
-  level: 0,
+  type: `type-0`,
+  screen: `screen-0`,
   lives: 3,
   time: 0
 };
@@ -27,15 +26,21 @@ export const HUNT = {
   'type-0': {
     'screen-0': {
       Option1: {
+        question: `question1`,
         src: `http://i.imgur.com/5kcp9i0.jpg`,
         name: `Man bearded`,
+        width: `468`,
+        height: `458`,
 
         [PHOTO]: `false`,
         [PAINT]: `true`
       },
       Option2: {
+        question: `question2`,
         src: `http://i.imgur.com/8aNXpLk.jpg`,
         name: `Morgan Freeman`,
+        width: `468`,
+        height: `458`,
 
         [PHOTO]: `true`,
         [PAINT]: `false`
