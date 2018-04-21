@@ -1,6 +1,8 @@
 // Later on will launch game with current state
 // from previous model
 import {initialState} from '../../../data/hunt';
+import {HUNT} from '../../../data/hunt';
+
 import introScreen from './../intro/intro';
 import game2Screen from './../game-2/game-2';
 import game1Template from './game-1-view';
@@ -8,52 +10,36 @@ import game1Template from './game-1-view';
 import {insertIntoContainer} from './../../module-constructor';
 import text from './game-1-data';
 
-export default (currentState) => {
-  insertIntoContainer(game1Template(currentState, text));
+export const game1Screen = (currentState) => {
 
+  insertIntoContainer(game1Template(currentState, text));
   const form = document.querySelector(`.game__content`);
 
-  const formOptions1 = form.children[0];
-  const formOptions2 = form.children[1];
+  const answers1 = Array.from(
+      form.querySelectorAll(`input[name='question1']`));
 
-  const formAnswers1 = Array.from(
-      formOptions1.querySelectorAll(`input`));
-
-  const formAnswers2 = Array.from(
-      formOptions2.querySelectorAll(`input`));
+  const answers2 = Array.from(
+      form.querySelectorAll(`input[name='question2']`));
 
   const linkBack = document.querySelector(`.header__back`);
 
-  const resetGame = () => {
-    linkBack.removeEventListener(`click`, linkBack);
-    introScreen();
-  };
+  linkBack.onclick = () => introScreen();
 
-  const proceed = () => {
-    formOptions1.removeEventListener(`click`, checkOpt1);
-    formOptions2.removeEventListener(`click`, checkOpt2);
+  form.onclick = () => {
+    const answers1Checked = answers1.filter((ans) => ans.checked);
+    const answers2Checked = answers2.filter((ans) => ans.checked);
 
-    game2Screen(initialState);
-  };
+    const answered = () => {
+      return answers1Checked.length && answers2Checked.length;
+    };
 
-  const checkArr = (a) => {
-    return a.checked === true;
-  };
+    if (answered()) {
 
-  const checkOpt1 = () => {
-    if (formAnswers2.some(checkArr) === true) {
-      proceed();
+      // IF both answered, get current screen
+      game2Screen(initialState);
     }
-  };
-  const checkOpt2 = () => {
-    if (formAnswers1.some(checkArr) === true) {
-      proceed();
-    }
-  };
-  formOptions1.addEventListener(`click`, checkOpt1);
-  formOptions2.addEventListener(`click`, checkOpt2);
 
-  linkBack.addEventListener(`click`, resetGame);
+  };
 };
 
 

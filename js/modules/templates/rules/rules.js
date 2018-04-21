@@ -1,7 +1,7 @@
 import {initialState} from '../../../data/hunt';
 import introScreen from './../intro/intro';
 
-import game1Screen from './../game-1/game-1';
+import {game1Screen} from './../game-1/game-1';
 import rulesTemplate from './rules-view';
 import {insertIntoContainer} from './../../module-constructor';
 
