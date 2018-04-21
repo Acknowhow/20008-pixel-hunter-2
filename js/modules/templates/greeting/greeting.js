@@ -10,9 +10,11 @@ export default () => {
   const linkNext = document.querySelector(`img[alt='Next']`);
 
   const next = () => {
-    rulesScreen();
-
     linkNext.removeEventListener(`click`, next);
+
+    setTimeout(() => {
+      rulesScreen();
+    }, 0);
   };
 
   linkNext.addEventListener(`click`, next);
