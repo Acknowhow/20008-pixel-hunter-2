@@ -1,8 +1,9 @@
 import {initialState} from '../../../data/hunt';
 import introScreen from './../intro/intro';
+import game2Screen from './../game-2/game-2';
 import game1Template from './game-1-view';
-import {insertIntoContainer} from './../../module-constructor';
 
+import {insertIntoContainer} from './../../module-constructor';
 import text from './game-1-data';
 
 export default () => {
@@ -29,10 +30,7 @@ export default () => {
     formOptions1.removeEventListener(`click`, checkOpt1);
     formOptions2.removeEventListener(`click`, checkOpt2);
 
-    // setTimeout(() => {
-    //
-    //   insertIntoContainer(makeGame2Template());
-    // }, 0);
+    game2Screen();
   };
 
   const checkArr = (a) => {

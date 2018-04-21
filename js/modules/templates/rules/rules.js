@@ -28,12 +28,10 @@ export default () => {
   };
 
   const next = () => {
-    setTimeout(() => {
-      rulesInput.removeEventListener(`input`, enable);
-      rulesInput.removeEventListener(`keydown`, empty);
-      rulesButton.removeEventListener(`click`, next);
+    rulesInput.removeEventListener(`input`, enable);
+    rulesInput.removeEventListener(`keydown`, empty);
+    rulesButton.removeEventListener(`click`, next);
 
-    }, 0);
 
     game1Screen();
   };
