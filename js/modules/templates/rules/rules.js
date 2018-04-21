@@ -1,4 +1,5 @@
 import introScreen from './../intro/intro';
+import {initialState} from '../../../data/hunt';
 import game1Screen from './../game-1/game-1';
 import rulesTemplate from './rules-view';
 import {insertIntoContainer} from './../../module-constructor';
@@ -33,7 +34,7 @@ export default () => {
     rulesButton.removeEventListener(`click`, next);
 
 
-    game1Screen();
+    game1Screen(initialState);
   };
 
   const check = () => {

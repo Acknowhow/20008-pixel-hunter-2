@@ -1,13 +1,16 @@
-import {initialState} from '../../../data/hunt';
 import introScreen from './../intro/intro';
+// Later on will launch game with current state
+// from previous model
+import {initialState} from '../../../data/hunt';
 import game2Screen from './../game-2/game-2';
 import game1Template from './game-1-view';
 
 import {insertIntoContainer} from './../../module-constructor';
 import text from './game-1-data';
 
-export default () => {
-  insertIntoContainer(game1Template(initialState, text));
+export default (currentState) => {
+  insertIntoContainer(game1Template(currentState, text));
+
   const form = document.querySelector(`.game__content`);
 
   const formOptions1 = form.children[0];
@@ -30,7 +33,7 @@ export default () => {
     formOptions1.removeEventListener(`click`, checkOpt1);
     formOptions2.removeEventListener(`click`, checkOpt2);
 
-    game2Screen();
+    game2Screen(initialState);
   };
 
   const checkArr = (a) => {

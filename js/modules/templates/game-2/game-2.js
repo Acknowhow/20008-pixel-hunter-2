@@ -1,13 +1,14 @@
 import introScreen from './../intro/intro';
-import {initialState} from '../../../data/hunt';
+// import {initialState} from '../../../data/hunt';
 // import {makeGame3Template} from './../game-3/game-3';
 import game2Template from './game-2-view';
 import {insertIntoContainer} from './../../module-constructor';
 
 import text from './game-2-data';
 
-export default () => {
-  insertIntoContainer(game2Template(initialState, text));
+export default (currentState) => {
+  insertIntoContainer(game2Template(currentState, text));
+
   const form = document.querySelector(`.game__content`);
   const linkBack = document.querySelector(`.header__back`);
 
