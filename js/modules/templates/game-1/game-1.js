@@ -51,8 +51,6 @@ export const game1Screen = (currentGame, currentQuestion) => {
       nextGame = getAnswer(currentGame, answers, onAnswer(
           answer1Checked().value, answer2Checked().value, answers, screen).pop());
 
-      console.log(nextGame);
-
       currentGame = switchScreen(nextGame, Hunt, nextGame.type, answers);
       screen = Hunt[currentGame.type][currentGame.screen];
       //
