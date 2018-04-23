@@ -1,3 +1,5 @@
+// Expects answer object
+// Deducts life if the answer was wrong
 const takeLife = (game, lives) => {
   lives--;
 
@@ -5,7 +7,7 @@ const takeLife = (game, lives) => {
   return game;
 };
 
-export const userAnswer = (game, answersArray, answerResult) => {
+export default (game, answersArray, answerResult) => {
 
   switch (answerResult.correct) {
     case `false`:

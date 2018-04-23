@@ -2,7 +2,7 @@ import {currentGame} from '../../../data/hunt';
 import {Hunt} from '../../../data/hunt';
 import introScreen from './../intro/intro';
 
-import getQuestion from '../../../handler/question';
+import getQuestion from '../../handlers/question';
 
 import {game1Screen} from './../game-1/game-1';
 import rulesTemplate from './rules-view';

@@ -1,4 +1,3 @@
-import {initialState} from '../../../data/hunt';
 import introScreen from './../intro/intro';
 import game3Screen from './../game-3/game-3';
 
@@ -7,8 +6,8 @@ import {insertIntoContainer} from './../../module-constructor';
 
 import text from './game-2-data';
 
-export default (currentState) => {
-  insertIntoContainer(game2Template(currentState, text));
+export default (currentGame) => {
+  insertIntoContainer(game2Template(currentGame, text));
 
   const form = document.querySelector(`.game__content`);
   const linkBack = document.querySelector(`.header__back`);
@@ -36,7 +35,7 @@ export default (currentState) => {
     if (answersArr.some(checkArr)) {
       formOption.removeEventListener(`click`, check);
 
-      game3Screen(initialState);
+      game3Screen(currentGame);
     }
   };
 

@@ -7,18 +7,7 @@ const INITIAL_GAME = {
 
 export const currentGame = Object.assign({}, INITIAL_GAME);
 
-export const answers = [
-  {correct: true, time: 10},
-  {correct: false, time: 10},
-  {correct: true, time: 10},
-  {correct: true, time: 10},
-  {correct: true, time: 10},
-  {correct: false, time: 10},
-  {correct: false, time: 10},
-  {correct: true, time: 10},
-  {correct: true, time: 10},
-  {correct: true, time: 10},
-];
+export const answers = [];
 
 const PHOTO = `photo`;
 const PAINT = `paint`;

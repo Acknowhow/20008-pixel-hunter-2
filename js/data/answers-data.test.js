@@ -2,7 +2,7 @@ import {assert} from 'chai';
 import {expect} from 'chai';
 
 import {answers} from './hunt';
-import {calculate} from '../util/answers';
+import {calculate} from '../util/score';
 
 describe(`Test data types for a take off`, () => {
 

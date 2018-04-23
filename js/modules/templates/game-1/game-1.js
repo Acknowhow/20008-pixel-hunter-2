@@ -1,19 +1,21 @@
-// Later on will launch game with current state
-// from previous model
-
 import introScreen from './../intro/intro';
 // import game2Screen from './../game-2/game-2';
+import {Hunt, answers} from '../../../data/hunt';
 import game1Template from './game-1-view';
 
-
 import {insertIntoContainer} from './../../module-constructor';
+
+import getAnswer from '../../handlers/answer';
 import text from './game-1-data';
-import {Hunt} from "../../../data/hunt";
+import onAnswer from './game-1-handler';
+
+let answer1Checked = ``;
+let answer2Checked = ``;
 
 export const game1Screen = (currentGame, currentQuestion) => {
-  // const screen = Hunt[currentGame.type][currentGame.screen];
-
   insertIntoContainer(game1Template(currentGame, text, currentQuestion));
+
+  const screen = Hunt[currentGame.type][currentGame.screen];
   const form = document.querySelector(`.game__content`);
 
   const answers1 = Array.from(
@@ -26,16 +28,21 @@ export const game1Screen = (currentGame, currentQuestion) => {
   linkBack.onclick = () => introScreen();
 
   form.onclick = () => {
-    const answers1Checked = answers1.find((it) => it.checked);
-    const answers2Checked = answers2.find((it) => it.checked);
+    answer1Checked = () => {
+      return answers1.find((it) => it.checked);
+    };
+    answer2Checked = () => {
+      return answers2.find((it) => it.checked);
+    };
 
     const answered = () => {
-      return answers1Checked.value && answers2Checked.value;
+      return answer1Checked() && answer2Checked();
     };
 
     if (answered()) {
 
-      // if no more screen, get next type
+      currentGame = getAnswer(currentGame, answers, onAnswer(
+          answer1Checked().value, answer2Checked().value).pop());
       // game2Screen(initialState);
     }
   };
