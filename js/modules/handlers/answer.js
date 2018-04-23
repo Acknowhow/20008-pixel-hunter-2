@@ -17,9 +17,10 @@ export default (game, answersArray, answerResult) => {
       if (game.lives) {
         answersArray.push(Object.assign(
             {}, answerResult, {result: NEXT}));
+      } else {
+        answersArray.push(Object.assign(
+            {}, answerResult, {result: END}));
       }
-      answersArray.push(Object.assign(
-          {}, answerResult, {result: END}));
 
       return game;
 

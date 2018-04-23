@@ -43,6 +43,8 @@ const getNextScreen = (gameObject, huntData,
 export const switchScreen = (game, data, type, answers) => {
   answer = answers.pop();
 
+  console.log(answer);
+
   answers.push(answer);
   switch (answer.result) {
 

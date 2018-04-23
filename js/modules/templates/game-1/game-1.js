@@ -32,7 +32,11 @@ export const game1Screen = (currentGame, currentQuestion) => {
       form.querySelectorAll(`input[name='question2']`));
 
   const linkBack = document.querySelector(`.header__back`);
-  linkBack.onclick = () => introScreen();
+  linkBack.onclick = () => {
+    answers.forEach(() => answers.pop());
+
+    introScreen();
+  };
 
   form.onclick = () => {
     answer1Checked = () => {
@@ -51,11 +55,14 @@ export const game1Screen = (currentGame, currentQuestion) => {
       nextGame = getAnswer(currentGame, answers, onAnswer(
           answer1Checked().value, answer2Checked().value, answers, screen).pop());
 
-      currentGame = switchScreen(nextGame, Hunt, nextGame.type, answers);
-      screen = Hunt[currentGame.type][currentGame.screen];
-      //
 
-      // console.log(screen);
+      console.log(nextGame);
+      currentGame = switchScreen(nextGame, Hunt, nextGame.type, answers);
+
+      console.log(currentGame);
+      screen = Hunt[currentGame.type][currentGame.screen];
+
+
       game1Screen(currentGame, getQuestion(screen));
     }
   };
