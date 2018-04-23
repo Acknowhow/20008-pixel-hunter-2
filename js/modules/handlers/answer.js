@@ -1,5 +1,6 @@
 // Expects answer object
 // Deducts life if the answer was wrong
+import {NEXT, END} from './../../data/hunt';
 const takeLife = (game, lives) => {
   lives--;
 
@@ -15,16 +16,16 @@ export default (game, answersArray, answerResult) => {
 
       if (game.lives) {
         answersArray.push(Object.assign(
-            {}, answerResult, {result: `next`}));
+            {}, answerResult, {result: NEXT}));
       }
       answersArray.push(Object.assign(
-          {}, answerResult, {result: `end`}));
+          {}, answerResult, {result: END}));
 
       return game;
 
     default:
       answersArray.push(Object.assign(
-          {}, answerResult, {result: `next`}));
+          {}, answerResult, {result: NEXT}));
 
       return game;
   }

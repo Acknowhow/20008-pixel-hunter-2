@@ -1,4 +1,4 @@
-const INITIAL_GAME = {
+export const INITIAL_GAME = {
   type: `type-0`,
   screen: `screen-0`,
   lives: 3,
@@ -8,6 +8,9 @@ const INITIAL_GAME = {
 export const currentGame = Object.assign({}, INITIAL_GAME);
 
 export const answers = [];
+
+export const NEXT = `NEXT SCREEN`;
+export const END = `GAME OVER`;
 
 const PHOTO = `photo`;
 const PAINT = `paint`;
@@ -33,14 +36,16 @@ export const Hunt = {
         width: `468`,
         height: `458`,
 
-        [PHOTO]: `true`,
-        [PAINT]: `false`
+        [PHOTO]: 1,
+        [PAINT]: 0
       }
     },
     'screen-1': {
       option1: {
         src: `http://i.imgur.com/PKtMBLt.jpg`,
         name: `Grandma Indian`,
+        width: `468`,
+        height: `458`,
 
         [PHOTO]: 1,
         [PAINT]: 0
@@ -48,6 +53,8 @@ export const Hunt = {
       option2: {
         src: `http://i.imgur.com/aA3KkAW.jpg`,
         name: `Woman thoughtful`,
+        width: `468`,
+        height: `458`,
 
         [PHOTO]: 0,
         [PAINT]: 1
