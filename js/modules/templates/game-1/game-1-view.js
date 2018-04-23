@@ -18,7 +18,7 @@ export default (state, textData, questionData) => {
           <span>Рисунок</span>
         </label>
       </div>`).join(``)}
-    </form>  
+    </form>
 
     <div class="stats">
       <ul class="stats">

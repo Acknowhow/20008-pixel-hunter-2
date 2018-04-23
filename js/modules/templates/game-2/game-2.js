@@ -14,6 +14,7 @@ export default (currentState) => {
   const linkBack = document.querySelector(`.header__back`);
 
   const formOption = form.children[0];
+
   const answer1 = formOption.querySelector(
       `.game__answer--photo`).children[0];
 
@@ -42,5 +43,3 @@ export default (currentState) => {
   formOption.addEventListener(`click`, check);
   linkBack.addEventListener(`click`, resetGame);
 };
-
-

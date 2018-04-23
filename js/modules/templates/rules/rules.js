@@ -1,6 +1,8 @@
-import {initialState} from '../../../data/hunt';
-import {HUNT} from '../../../data/hunt';
+import {currentGame} from '../../../data/hunt';
+import {Hunt} from '../../../data/hunt';
 import introScreen from './../intro/intro';
+
+import getQuestion from '../../../handler/question';
 
 import {game1Screen} from './../game-1/game-1';
 import rulesTemplate from './rules-view';
@@ -8,14 +10,11 @@ import {insertIntoContainer} from './../../module-constructor';
 
 import text from './rules-data';
 
-const screen = HUNT[initialState.type][initialState.screen];
-const keys = Object.keys(screen);
-
-const question = keys.map((option) => (
-  {option, params: screen[option]}));
+const screen = Hunt[currentGame.type][currentGame.screen];
 
 export default () => {
   insertIntoContainer(rulesTemplate(text));
+  const question = getQuestion(screen);
 
   const form = document.querySelector(`.rules__form`);
   const rulesInput = form.querySelector(`.rules__input`);
@@ -42,7 +41,7 @@ export default () => {
     rulesButton.removeEventListener(`click`, next);
 
 
-    game1Screen(initialState, question);
+    game1Screen(currentGame, question);
   };
 
   const check = () => {
