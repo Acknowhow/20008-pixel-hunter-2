@@ -13,9 +13,12 @@ const getNextType = (_gameObject, _huntData,
     nextType, initialScreen, _userAnswers) => {
 
   if (!_huntData[nextType][initialScreen]) {
+
     answer.result = END;
-    _userAnswers.push(answer);
+    return answer.result;
   }
+
+  answer.result = `next type`;
   _userAnswers.push(answer);
 
   _gameObject = Object.assign(

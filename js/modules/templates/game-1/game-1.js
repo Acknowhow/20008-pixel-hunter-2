@@ -19,6 +19,9 @@ let screen = {};
 let nextGame = {};
 
 
+let result;
+let answer;
+
 export const game1Screen = (currentGame, currentQuestion) => {
   insertIntoContainer(game1Template(currentGame, text, currentQuestion));
 
@@ -61,9 +64,24 @@ export const game1Screen = (currentGame, currentQuestion) => {
 
 
       currentGame = switchScreen(nextGame, Hunt, nextGame.type, answers);
-
-
       screen = Hunt[currentGame.type][currentGame.screen];
+
+      if (typeof currentGame === `string`) {
+        console.log(currentGame);
+      } else {
+
+        answer = answers.pop();
+        answers.push(answer);
+
+        switch (answer.result) {
+          case `next type`:
+
+
+            console.log(`next type`);
+            break;
+        }
+      }
+
       game1Screen(currentGame, getQuestion(screen));
 
 
