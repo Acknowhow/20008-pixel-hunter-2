@@ -1,4 +1,4 @@
-import {INITIAL_GAME, END} from './../../data/hunt';
+import {INITIAL_GAME, NEXT_TYPE, END} from './../../data/hunt';
 
 let answer = [];
 const nextScreenParam = (str) => {
@@ -18,7 +18,7 @@ const getNextType = (_gameObject, _huntData,
     return answer.result;
   }
 
-  answer.result = `next type`;
+  answer.result = NEXT_TYPE;
   _userAnswers.push(answer);
 
   _gameObject = Object.assign(

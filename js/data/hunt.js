@@ -9,7 +9,9 @@ export const currentGame = Object.assign({}, INITIAL_GAME);
 
 export const answers = [];
 
-export const NEXT = `NEXT SCREEN`;
+export const NEXT_SCREEN = `NEXT SCREEN`;
+export const NEXT_TYPE = `NEXT TYPE`;
+
 export const END = `GAME OVER`;
 
 const PHOTO = `photo`;

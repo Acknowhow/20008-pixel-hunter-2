@@ -1,6 +1,6 @@
 import introScreen from './../intro/intro';
 // import game2Screen from './../game-2/game-2';
-import {Hunt, answers} from '../../../data/hunt';
+import {Hunt, answers, NEXT_TYPE} from '../../../data/hunt';
 import text from './game-1-data';
 
 import game1Template from './game-1-view';
@@ -18,8 +18,6 @@ let answer2Checked = ``;
 let screen = {};
 let nextGame = {};
 
-
-let result;
 let answer;
 
 export const game1Screen = (currentGame, currentQuestion) => {
@@ -62,11 +60,14 @@ export const game1Screen = (currentGame, currentQuestion) => {
           answer1Checked().value, answer2Checked().value,
           answers, screen).pop());
 
-
-      currentGame = switchScreen(nextGame, Hunt, nextGame.type, answers);
+      currentGame = switchScreen(
+          nextGame, Hunt, nextGame.type, answers);
       screen = Hunt[currentGame.type][currentGame.screen];
 
+      // Later on may create separate function
       if (typeof currentGame === `string`) {
+
+        // Here load stats screen
         console.log(currentGame);
       } else {
 
@@ -74,20 +75,15 @@ export const game1Screen = (currentGame, currentQuestion) => {
         answers.push(answer);
 
         switch (answer.result) {
-          case `next type`:
+          case NEXT_TYPE:
 
-
+            // Here load next screend from game-2
             console.log(`next type`);
             break;
         }
       }
 
       game1Screen(currentGame, getQuestion(screen));
-
-
-      console.log(currentGame);
-      console.log(answers);
-
     }
   };
 };
