@@ -36,7 +36,6 @@ export default (state, textData, questionData) => {
     </div>`;
 
   const article = `${drawHeader(state)}<div class='game'>${content}</div>`;
-
   return makeTemplate(article);
 };
 

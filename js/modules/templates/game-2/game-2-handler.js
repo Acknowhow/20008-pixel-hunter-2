@@ -3,7 +3,6 @@ const correct = (userAnswer, currentScreen) => {
 };
 
 export default (answer, answersArray, screen) => {
-
   if (correct(answer, screen)) {
     answersArray.push({time: 10, correct: `true`});
 
