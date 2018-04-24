@@ -1,4 +1,4 @@
-import {END} from './../../data/hunt';
+import {INITIAL_GAME, END} from './../../data/hunt';
 
 let answer = [];
 const nextScreenParam = (str) => {
@@ -9,17 +9,17 @@ const nextScreenParam = (str) => {
   return string;
 };
 
-export const getNextType = (_gameObject, _huntData,
+const getNextType = (_gameObject, _huntData,
     nextType, initialScreen) => {
 
-  if (_huntData[nextType][initialScreen]) {
-
-    _gameObject = Object.assign(
-        {}, _gameObject, {type: nextType}, {screen: initialScreen});
-
-    return _gameObject;
+  if (!_huntData[nextType][initialScreen]) {
+    return `GAME OVER`;
   }
-  return END;
+
+  _gameObject = Object.assign(
+      {}, _gameObject, {type: nextType}, {screen: initialScreen});
+
+  return _gameObject;
 };
 
 
@@ -27,7 +27,10 @@ const getNextScreen = (gameObject, huntData,
     currentType, nextScreen) => {
 
   if (!huntData[currentType][nextScreen]) {
-    throw new RangeError(`Can't get next screen`);
+
+
+    return getNextType(gameObject, huntData,
+        nextScreenParam(gameObject.type), INITIAL_GAME.screen);
   }
 
   gameObject = Object.assign(

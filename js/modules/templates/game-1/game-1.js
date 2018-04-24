@@ -60,14 +60,8 @@ export const game1Screen = (currentGame, currentQuestion) => {
           answer1Checked().value, answer2Checked().value,
           answers, screen).pop());
 
-      try {
-        currentGame = switchScreen(nextGame, Hunt, nextGame.type, answers);
-      } catch (e) {
 
-        if (e instanceof RangeError) {
-          console.log(`error`);
-        }
-      }
+      currentGame = switchScreen(nextGame, Hunt, nextGame.type, answers);
 
 
       screen = Hunt[currentGame.type][currentGame.screen];
