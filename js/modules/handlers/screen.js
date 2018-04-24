@@ -26,17 +26,14 @@ const getNextType = (_gameObject, _huntData,
 const getNextScreen = (gameObject, huntData,
     currentType, nextScreen) => {
 
-  if (huntData[currentType][nextScreen]) {
-
-    gameObject = Object.assign(
-        {}, gameObject, {screen: nextScreen});
-
-    return gameObject;
+  if (!huntData[currentType][nextScreen]) {
+    throw (new Error(`Can\'t get next screen`));
   }
 
-  // At this point render next type
-  return getNextType(gameObject, huntData,
-      nextScreenParam(currentType), INITIAL_GAME.screen);
+  gameObject = Object.assign(
+      {}, gameObject, {screen: nextScreen});
+
+  return gameObject;
 };
 
 

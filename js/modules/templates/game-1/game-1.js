@@ -21,8 +21,6 @@ let nextGame = {};
 export const game1Screen = (currentGame, currentQuestion) => {
   insertIntoContainer(game1Template(currentGame, text, currentQuestion));
 
-  screen = Hunt[currentGame.type][currentGame.screen];
-
   const form = document.querySelector(`.game__content`);
 
   const answers1 = Array.from(
@@ -32,6 +30,10 @@ export const game1Screen = (currentGame, currentQuestion) => {
       form.querySelectorAll(`input[name='question2']`));
 
   const linkBack = document.querySelector(`.header__back`);
+
+  screen = Hunt[currentGame.type][currentGame.screen];
+
+
   linkBack.onclick = () => {
     answers.forEach(() => answers.pop());
 
@@ -53,15 +55,19 @@ export const game1Screen = (currentGame, currentQuestion) => {
     if (answered()) {
 
       nextGame = getAnswer(currentGame, answers, onAnswer(
-          answer1Checked().value, answer2Checked().value, answers, screen).pop());
+          answer1Checked().value, answer2Checked().value,
+          answers, screen).pop());
 
       currentGame = switchScreen(nextGame, Hunt, nextGame.type, answers);
 
-
       screen = Hunt[currentGame.type][currentGame.screen];
 
+      try {
+        game1Screen(currentGame, getQuestion(screen));
+      } catch (that) {
 
-      game1Screen(currentGame, getQuestion(screen));
+        console.log(`bla`);
+      }
     }
   };
 };

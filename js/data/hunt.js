@@ -42,6 +42,7 @@ export const Hunt = {
     },
     'screen-1': {
       option1: {
+        question: `question1`,
         src: `http://i.imgur.com/PKtMBLt.jpg`,
         name: `Grandma Indian`,
         width: `468`,
@@ -51,6 +52,7 @@ export const Hunt = {
         [PAINT]: 0
       },
       option2: {
+        question: `question2`,
         src: `http://i.imgur.com/aA3KkAW.jpg`,
         name: `Woman thoughtful`,
         width: `468`,
@@ -59,14 +61,17 @@ export const Hunt = {
         [PHOTO]: 0,
         [PAINT]: 1
       }
-    }
+    },
   },
 
   'type-1': {
     'screen-0': {
       option1: {
+        question: `question1`,
         src: `http://i.imgur.com/jX3HIry.jpg`,
         name: `Ethiopian girl`,
+        width: `705`,
+        height: `455`,
 
         [PHOTO]: 1,
         [PAINT]: 0
