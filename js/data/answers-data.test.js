@@ -1,8 +1,20 @@
 import {assert} from 'chai';
 import {expect} from 'chai';
 
-import {answers} from './hunt';
 import {calculate} from '../util/score';
+
+let answers = [
+  {correct: true, time: 10},
+  {correct: false, time: 10},
+  {correct: false, time: 10},
+  {correct: true, time: 10},
+  {correct: false, time: 10},
+  {correct: false, time: 10},
+  {correct: false, time: 10},
+  {correct: false, time: 10},
+  {correct: false, time: 10},
+  {correct: false, time: 10}
+];
 
 describe(`Test data types for a take off`, () => {
 
