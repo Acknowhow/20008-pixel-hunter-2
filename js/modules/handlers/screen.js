@@ -10,12 +10,14 @@ const nextScreenParam = (str) => {
 };
 
 const getNextType = (_gameObject, _huntData,
-    nextType, initialScreen) => {
+    nextType, initialScreen, _userAnswers) => {
 
   if (!_huntData[nextType][initialScreen]) {
-    return `GAME OVER`;
+    answer.result = END;
+    _userAnswers.push(answer);
   }
 
+  _userAnswers.push(answer);
   _gameObject = Object.assign(
       {}, _gameObject, {type: nextType}, {screen: initialScreen});
 
@@ -24,14 +26,15 @@ const getNextType = (_gameObject, _huntData,
 
 
 const getNextScreen = (gameObject, huntData,
-    currentType, nextScreen) => {
+    currentType, nextScreen, _answers) => {
 
   if (!huntData[currentType][nextScreen]) {
 
 
     return getNextType(gameObject, huntData,
-        nextScreenParam(gameObject.type), INITIAL_GAME.screen);
+        nextScreenParam(gameObject.type), INITIAL_GAME.screen, _answers);
   }
+  _answers.push(answer);
 
   gameObject = Object.assign(
       {}, gameObject, {screen: nextScreen});
@@ -43,16 +46,16 @@ const getNextScreen = (gameObject, huntData,
 export const switchScreen = (game, data, type, answers) => {
   answer = answers.pop();
 
-  answers.push(answer);
   switch (answer.result) {
 
     case END:
+      answers.push(answers);
       return END;
 
     default:
       return getNextScreen(
           game, data,
-          type, nextScreenParam(game.screen));
+          type, nextScreenParam(game.screen), answers);
 
   }
 };

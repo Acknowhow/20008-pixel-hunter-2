@@ -67,6 +67,8 @@ export const game1Screen = (currentGame, currentQuestion) => {
       screen = Hunt[currentGame.type][currentGame.screen];
       nextScreen = game1Screen(currentGame, getQuestion(screen));
 
+      console.log(answers);
+
     }
   };
 };
