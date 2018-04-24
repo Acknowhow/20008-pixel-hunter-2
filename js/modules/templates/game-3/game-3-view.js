@@ -1,7 +1,7 @@
 import {makeTemplate} from '../../module-constructor';
 import {drawHeader} from '../header/header';
 
-export default (state, textData) => {
+export default (state, textData, questionData) => {
   const content = `
   <div class="game">
     <p class="game__task">${textData.title}</p>

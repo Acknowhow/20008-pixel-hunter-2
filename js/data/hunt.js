@@ -79,8 +79,11 @@ export const Hunt = {
     },
     'screen-1': {
       option2: {
+        question: `question1`,
         src: `http://i.imgur.com/27nbLSA.jpg`,
         name: `Girls sitting`,
+        width: `705`,
+        height: `455`,
 
         [PHOTO]: 0,
         [PAINT]: 1

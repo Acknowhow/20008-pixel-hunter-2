@@ -1,4 +1,4 @@
-import {initialState} from '../../../data/hunt';
+import {INITIAL_GAME} from '../../../data/hunt';
 import introScreen from './../intro/intro';
 import statsScreen from './../stats/stats';
 import {insertIntoContainer} from './../../module-constructor';
@@ -6,9 +6,9 @@ import {insertIntoContainer} from './../../module-constructor';
 import game3Template from './game-3-view';
 import text from './game-3-data';
 
-export default (currentState) => {
+export const game3Screen = (currentGame, currentQuestion) => {
 
-  insertIntoContainer(game3Template(currentState, text));
+  insertIntoContainer(game3Template(currentGame, text, currentQuestion));
   const form = document.querySelector(`.game__content`);
 
   const options = Array.from(
@@ -25,7 +25,7 @@ export default (currentState) => {
       option.removeEventListener(`click`, check);
     });
 
-    statsScreen(initialState);
+    statsScreen(INITIAL_GAME);
   };
 
   options.forEach((option) => {

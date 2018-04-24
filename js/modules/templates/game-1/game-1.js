@@ -1,5 +1,5 @@
 import introScreen from './../intro/intro';
-import game2Screen from './../game-2/game-2';
+import {game2Screen} from './../game-2/game-2';
 import {Hunt, answers, NEXT_TYPE} from '../../../data/hunt';
 import text from './game-1-data';
 
@@ -33,14 +33,13 @@ export const game1Screen = (currentGame, currentQuestion) => {
 
   const linkBack = document.querySelector(`.header__back`);
 
-  screen = Hunt[currentGame.type][currentGame.screen];
-
-
   linkBack.onclick = () => {
     answers.forEach(() => answers.pop());
 
     introScreen();
   };
+
+  screen = Hunt[currentGame.type][currentGame.screen];
 
   form.onclick = () => {
     answer1Checked = () => {
