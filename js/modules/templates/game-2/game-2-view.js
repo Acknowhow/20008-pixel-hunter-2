@@ -20,7 +20,6 @@ export default (state, textData, questionData) => {
       </div>`).join(``)}
     </form>
     
-    
     <div class="stats">
       <ul class="stats">
         <li class="stats__result stats__result--wrong"></li>
