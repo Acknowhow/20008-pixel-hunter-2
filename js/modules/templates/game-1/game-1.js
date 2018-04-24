@@ -18,6 +18,8 @@ let answer2Checked = ``;
 let screen = {};
 let nextGame = {};
 
+let nextScreen;
+
 export const game1Screen = (currentGame, currentQuestion) => {
   insertIntoContainer(game1Template(currentGame, text, currentQuestion));
 
@@ -60,14 +62,16 @@ export const game1Screen = (currentGame, currentQuestion) => {
 
       currentGame = switchScreen(nextGame, Hunt, nextGame.type, answers);
 
+      if (typeof nextScreen === `string`) {
+        // Try to load nextType
+        // Think of a method to check whether next screen exists
+        // And then check type, but not to assign it
+        // into currentGame directly
+      }
       screen = Hunt[currentGame.type][currentGame.screen];
 
-      try {
-        game1Screen(currentGame, getQuestion(screen));
-      } catch (that) {
+      nextScreen = game1Screen(currentGame, getQuestion(screen));
 
-        console.log(`bla`);
-      }
     }
   };
 };

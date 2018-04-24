@@ -1,4 +1,4 @@
-import {INITIAL_GAME, END} from './../../data/hunt';
+import {END} from './../../data/hunt';
 
 let answer = [];
 const nextScreenParam = (str) => {
@@ -9,7 +9,7 @@ const nextScreenParam = (str) => {
   return string;
 };
 
-const getNextType = (_gameObject, _huntData,
+export const getNextType = (_gameObject, _huntData,
     nextType, initialScreen) => {
 
   if (_huntData[nextType][initialScreen]) {
@@ -27,7 +27,7 @@ const getNextScreen = (gameObject, huntData,
     currentType, nextScreen) => {
 
   if (!huntData[currentType][nextScreen]) {
-    throw (new Error(`Can\'t get next screen`));
+    return `Can't get next screen`;
   }
 
   gameObject = Object.assign(
