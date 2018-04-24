@@ -12,9 +12,9 @@ export default (state, textData, questionData) => {
           pointer-events: none;
         }
       </style>
-      ${questionData.map(({option, params}) => `<div class="game__option">
-        <img src="${params.src}" alt="${option}" width="${params.width}"
-         height="${params.height}">
+      ${questionData.params.map((param) => `<div class="game__option">
+        <img src="${param.src}" alt="${questionData.option}" width="${param.width}"
+         height="${param.height}">
       </div>`).join(``)}
     </form>
     

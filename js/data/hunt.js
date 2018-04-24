@@ -78,7 +78,7 @@ export const Hunt = {
       }
     },
     'screen-1': {
-      option2: {
+      option1: {
         question: `question1`,
         src: `http://i.imgur.com/27nbLSA.jpg`,
         name: `Girls sitting`,
@@ -97,6 +97,8 @@ export const Hunt = {
         {
           src: `http://i.imgur.com/LWFCQSK.jpg`,
           name: `Cheetah`,
+          width: `304`,
+          height: `455`,
 
           [PHOTO]: 1,
           [PAINT]: 0
@@ -104,6 +106,8 @@ export const Hunt = {
         {
           src: `http://i.imgur.com/FA4D3kO.jpg`,
           name: `Lizard`,
+          width: `304`,
+          height: `455`,
 
           [PHOTO]: 0,
           [PAINT]: 1
@@ -111,16 +115,22 @@ export const Hunt = {
         {
           src: `http://i.imgur.com/y9cN0UD.jpg`,
           name: `Figs`,
+          width: `304`,
+          height: `455`,
 
           [PHOTO]: 0,
           [PAINT]: 1
         }
       ],
+    },
 
-      option2: [
+    'screen-1': {
+      option1: [
         {
           src: `http://i.imgur.com/OI49pzH.jpg`,
           name: `Bumble bee`,
+          width: `304`,
+          height: `455`,
 
           [PHOTO]: 1,
           [PAINT]: 0
@@ -128,6 +138,8 @@ export const Hunt = {
         {
           src: `http://i.imgur.com/Sjjnuyi.jpg`,
           name: `Metal spheres`,
+          width: `304`,
+          height: `455`,
 
           [PHOTO]: 0,
           [PAINT]: 1
@@ -135,6 +147,8 @@ export const Hunt = {
         {
           src: `http://i.imgur.com/rvDgwaA.jpg`,
           name: `Watermelon`,
+          width: `304`,
+          height: `455`,
 
           [PHOTO]: 0,
           [PAINT]: 1
@@ -142,11 +156,13 @@ export const Hunt = {
       ]
     },
 
-    'screen-1': {
+    'screen-2': {
       option1: [
         {
           src: `http://i.imgur.com/Eb5bc8u.jpg`,
           name: `Books abstract`,
+          width: `304`,
+          height: `455`,
 
           [PHOTO]: 1,
           [PAINT]: 0
@@ -154,6 +170,8 @@ export const Hunt = {
         {
           src: `http://i.imgur.com/Sjjnuyi.jpg`,
           name: `Metal spheres`,
+          width: `304`,
+          height: `455`,
 
           [PHOTO]: 0,
           [PAINT]: 1
@@ -161,16 +179,22 @@ export const Hunt = {
         {
           src: `http://i.imgur.com/Spk7kTG.jpg`,
           name: `Mug`,
+          width: `304`,
+          height: `455`,
 
           [PHOTO]: 0,
           [PAINT]: 1
         }
-      ],
+      ]
+    },
 
-      option2: [
+    'screen-3': {
+      option1: [
         {
           src: `http://i.imgur.com/OI49pzH.jpg`,
           name: `Bumble bee`,
+          width: `304`,
+          height: `455`,
 
           [PHOTO]: 1,
           [PAINT]: 0
@@ -178,6 +202,8 @@ export const Hunt = {
         {
           src: `http://i.imgur.com/l8J6vbh.jpg`,
           name: `Woman showered`,
+          width: `304`,
+          height: `455`,
 
           [PHOTO]: 0,
           [PAINT]: 1
@@ -185,11 +211,13 @@ export const Hunt = {
         {
           src: `http://i.imgur.com/mgbDqkB.jpg`,
           name: `Pomegranate`,
+          width: `304`,
+          height: `455`,
 
           [PHOTO]: 0,
           [PAINT]: 1
         }
       ]
-    },
+    }
   }
 };
