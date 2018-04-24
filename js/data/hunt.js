@@ -91,14 +91,18 @@ export const Hunt = {
     }
   },
 
+  // Must include text in order to know
+  // Which question to map
   'type-2': {
     'screen-0': {
+      title: `Найдите рисунок среди изображений`,
       option1: [
         {
           src: `http://i.imgur.com/LWFCQSK.jpg`,
           name: `Cheetah`,
           width: `304`,
           height: `455`,
+          value: PAINT,
 
           [PHOTO]: 1,
           [PAINT]: 0
@@ -108,6 +112,7 @@ export const Hunt = {
           name: `Lizard`,
           width: `304`,
           height: `455`,
+          value: PAINT,
 
           [PHOTO]: 0,
           [PAINT]: 1
@@ -117,14 +122,16 @@ export const Hunt = {
           name: `Figs`,
           width: `304`,
           height: `455`,
+          value: PHOTO,
 
-          [PHOTO]: 0,
-          [PAINT]: 1
+          [PHOTO]: 1,
+          [PAINT]: 0
         }
       ],
     },
 
     'screen-1': {
+      title: `Найдите изображение среди рисунков`,
       option1: [
         {
           src: `http://i.imgur.com/OI49pzH.jpg`,
@@ -157,12 +164,14 @@ export const Hunt = {
     },
 
     'screen-2': {
+      title: `Найдите рисунок среди изображений`,
       option1: [
         {
           src: `http://i.imgur.com/Eb5bc8u.jpg`,
           name: `Books abstract`,
           width: `304`,
           height: `455`,
+          value: PAINT,
 
           [PHOTO]: 1,
           [PAINT]: 0
@@ -172,6 +181,7 @@ export const Hunt = {
           name: `Metal spheres`,
           width: `304`,
           height: `455`,
+          value: PAINT,
 
           [PHOTO]: 0,
           [PAINT]: 1
@@ -181,20 +191,23 @@ export const Hunt = {
           name: `Mug`,
           width: `304`,
           height: `455`,
+          value: PAINT,
 
-          [PHOTO]: 0,
-          [PAINT]: 1
+          [PHOTO]: 1,
+          [PAINT]: 0
         }
       ]
     },
 
     'screen-3': {
+      title: `Найдите изображение среди рисунков`,
       option1: [
         {
           src: `http://i.imgur.com/OI49pzH.jpg`,
           name: `Bumble bee`,
           width: `304`,
           height: `455`,
+          value: PHOTO,
 
           [PHOTO]: 1,
           [PAINT]: 0
@@ -204,6 +217,7 @@ export const Hunt = {
           name: `Woman showered`,
           width: `304`,
           height: `455`,
+          value: PHOTO,
 
           [PHOTO]: 0,
           [PAINT]: 1
@@ -213,6 +227,7 @@ export const Hunt = {
           name: `Pomegranate`,
           width: `304`,
           height: `455`,
+          value: PHOTO,
 
           [PHOTO]: 0,
           [PAINT]: 1

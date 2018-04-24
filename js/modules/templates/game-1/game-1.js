@@ -61,6 +61,7 @@ export const game1Screen = (currentGame, currentQuestion) => {
 
       currentGame = switchScreen(
           nextGame, Hunt, nextGame.type, answers);
+
       screen = Hunt[currentGame.type][currentGame.screen];
 
       // Later on may create separate function

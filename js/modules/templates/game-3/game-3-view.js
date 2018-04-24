@@ -8,7 +8,7 @@ export default (state, textData, questionData) => {
     
     <form class="game__content  game__content--triple">
       <style>
-        .game__content--triple .game__option:active::after {
+        img[alt='option1'] {
           pointer-events: none;
         }
       </style>
@@ -16,6 +16,7 @@ export default (state, textData, questionData) => {
         <img src="${param.src}" alt="${questionData.option}" width="${param.width}"
          height="${param.height}">
       </div>`).join(``)}
+      
     </form>
     
     <div class="stats">

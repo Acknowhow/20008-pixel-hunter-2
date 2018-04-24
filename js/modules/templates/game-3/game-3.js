@@ -15,7 +15,9 @@ let answerChecked = ``;
 
 let screen = {};
 let nextGame = {};
+
 let answer;
+let selectedOption;
 
 export const game3Screen = (currentGame, currentQuestion) => {
   insertIntoContainer(game3Template(currentGame, text, currentQuestion));
@@ -35,13 +37,15 @@ export const game3Screen = (currentGame, currentQuestion) => {
   // Check later on whether its needed or not
   screen = Hunt[currentGame.type][currentGame.screen];
 
-  form.onclick = () => {
-    answerChecked = () => {
-      return answers1.find((it) => it.checked);
-    };
+  form.onclick = (evt) => {
+
+    selectedOption = evt.target;
+    selectedOption.classList.add(`game__option--selected`);
+
+    console.log(selectedOption.firstElementChild);
 
     const answered = () => {
-      return answerChecked();
+      return selectedOption.firstElementChild;
     };
 
     if (answered()) {
