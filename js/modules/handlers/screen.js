@@ -16,10 +16,11 @@ const getNextType = (_gameObject, _huntData,
     answer.result = END;
     _userAnswers.push(answer);
   }
-
   _userAnswers.push(answer);
+
   _gameObject = Object.assign(
-      {}, _gameObject, {type: nextType}, {screen: initialScreen});
+      {}, _gameObject, {type: nextType},
+      {screen: initialScreen});
 
   return _gameObject;
 };
@@ -32,7 +33,8 @@ const getNextScreen = (gameObject, huntData,
 
 
     return getNextType(gameObject, huntData,
-        nextScreenParam(gameObject.type), INITIAL_GAME.screen, _answers);
+        nextScreenParam(gameObject.type),
+        INITIAL_GAME.screen, _answers);
   }
   _answers.push(answer);
 

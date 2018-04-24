@@ -18,7 +18,6 @@ let answer2Checked = ``;
 let screen = {};
 let nextGame = {};
 
-let nextScreen;
 
 export const game1Screen = (currentGame, currentQuestion) => {
   insertIntoContainer(game1Template(currentGame, text, currentQuestion));
@@ -65,8 +64,10 @@ export const game1Screen = (currentGame, currentQuestion) => {
 
 
       screen = Hunt[currentGame.type][currentGame.screen];
-      nextScreen = game1Screen(currentGame, getQuestion(screen));
+      game1Screen(currentGame, getQuestion(screen));
 
+
+      console.log(currentGame);
       console.log(answers);
 
     }
