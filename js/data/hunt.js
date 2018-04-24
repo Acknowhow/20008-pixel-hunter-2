@@ -6,7 +6,6 @@ export const INITIAL_GAME = {
 };
 
 export const currentGame = Object.assign({}, INITIAL_GAME);
-
 export const answers = [];
 
 export const NEXT_SCREEN = `NEXT SCREEN`;
@@ -16,7 +15,6 @@ export const END = `GAME OVER`;
 
 const PHOTO = `photo`;
 const PAINT = `paint`;
-
 
 export const Hunt = {
   'type-0': {
@@ -192,5 +190,3 @@ export const Hunt = {
     },
   }
 };
-
-

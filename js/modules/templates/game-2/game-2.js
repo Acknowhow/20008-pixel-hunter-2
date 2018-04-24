@@ -1,18 +1,18 @@
 import introScreen from './../intro/intro';
-import game3Screen from './../game-3/game-3';
-
+// import game3Screen from './../game-3/game-3';
+import {answers} from './../../../data/hunt';
 import game2Template from './game-2-view';
 import {insertIntoContainer} from './../../module-constructor';
 
 import text from './game-2-data';
-import game1Template from "../game-1/game-1-view";
 
 let screen = {};
 let nextGame = {};
 
 export default (currentGame, currentQuestion) => {
-  insertIntoContainer(game1Template(currentGame, text, currentQuestion));
+  insertIntoContainer(game2Template(currentGame, text, currentQuestion));
 
+  console.log(answers);
 
   const form = document.querySelector(`.game__content`);
   const linkBack = document.querySelector(`.header__back`);
@@ -40,7 +40,7 @@ export default (currentGame, currentQuestion) => {
     if (answersArr.some(checkArr)) {
       formOption.removeEventListener(`click`, check);
 
-      game3Screen(currentGame);
+      // game3Screen(currentGame);
     }
   };
 

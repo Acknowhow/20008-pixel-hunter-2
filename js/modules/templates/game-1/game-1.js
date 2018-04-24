@@ -1,5 +1,5 @@
 import introScreen from './../intro/intro';
-// import game2Screen from './../game-2/game-2';
+import game2Screen from './../game-2/game-2';
 import {Hunt, answers, NEXT_TYPE} from '../../../data/hunt';
 import text from './game-1-data';
 
@@ -69,6 +69,7 @@ export const game1Screen = (currentGame, currentQuestion) => {
 
         // Here load stats screen
         console.log(currentGame);
+
       } else {
 
         answer = answers.pop();
@@ -77,8 +78,8 @@ export const game1Screen = (currentGame, currentQuestion) => {
         switch (answer.result) {
           case NEXT_TYPE:
 
-            // Here load next screend from game-2
-            console.log(`next type`);
+            screen = Hunt[currentGame.type][currentGame.screen];
+            game2Screen(currentGame, getQuestion(screen));
             break;
         }
       }
