@@ -80,7 +80,7 @@ export const game1Screen = (currentGame, currentQuestion) => {
 
             screen = Hunt[currentGame.type][currentGame.screen];
             game2Screen(currentGame, getQuestion(screen));
-            break;
+            return;
         }
       }
 
