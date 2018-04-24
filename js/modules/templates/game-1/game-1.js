@@ -60,16 +60,17 @@ export const game1Screen = (currentGame, currentQuestion) => {
           answer1Checked().value, answer2Checked().value,
           answers, screen).pop());
 
-      currentGame = switchScreen(nextGame, Hunt, nextGame.type, answers);
+      try {
+        currentGame = switchScreen(nextGame, Hunt, nextGame.type, answers);
+      } catch (e) {
 
-      if (typeof nextScreen === `string`) {
-        // Try to load nextType
-        // Think of a method to check whether next screen exists
-        // And then check type, but not to assign it
-        // into currentGame directly
+        if (e instanceof RangeError) {
+          console.log(`error`);
+        }
       }
-      screen = Hunt[currentGame.type][currentGame.screen];
 
+
+      screen = Hunt[currentGame.type][currentGame.screen];
       nextScreen = game1Screen(currentGame, getQuestion(screen));
 
     }

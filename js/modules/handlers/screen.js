@@ -27,7 +27,7 @@ const getNextScreen = (gameObject, huntData,
     currentType, nextScreen) => {
 
   if (!huntData[currentType][nextScreen]) {
-    return `Can't get next screen`;
+    throw new RangeError(`Can't get next screen`);
   }
 
   gameObject = Object.assign(
