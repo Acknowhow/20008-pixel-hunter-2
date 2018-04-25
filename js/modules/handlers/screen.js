@@ -1,6 +1,14 @@
 import {INITIAL_GAME, NEXT_TYPE, END} from './../../data/hunt';
 
 let answer = [];
+
+export const getStringNumber = (str) => {
+  let [, numeric] = str.split(`-`);
+
+  numeric = +numeric;
+  return numeric;
+};
+
 const nextScreenParam = (str) => {
   let [string, numeric] = str.split(`-`);
   numeric++;
@@ -28,12 +36,10 @@ const getNextType = (_gameObject, _huntData,
   return _gameObject;
 };
 
-
 const getNextScreen = (gameObject, huntData,
     currentType, nextScreen, _answers) => {
 
   if (!huntData[currentType][nextScreen]) {
-
 
     return getNextType(gameObject, huntData,
         nextScreenParam(gameObject.type),
@@ -47,14 +53,13 @@ const getNextScreen = (gameObject, huntData,
   return gameObject;
 };
 
-
 export const switchScreen = (game, data, type, answers) => {
   answer = answers.pop();
 
   switch (answer.result) {
 
     case END:
-      answers.push(answers);
+      answers.push(answer);
       return END;
 
     default:

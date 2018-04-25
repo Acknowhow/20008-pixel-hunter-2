@@ -48,10 +48,9 @@ export const game3Screen = (currentGame, currentScreen) => {
     currentGame = switchScreen(
         nextGame, Hunt, nextGame.type, answers);
 
-    // Later on may create separate function
     if (typeof currentGame === `string`) {
 
-      statsScreen(currentGame);
+      statsScreen(currentGame, answers);
       return;
     } else {
 

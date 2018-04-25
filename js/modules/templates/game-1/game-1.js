@@ -1,5 +1,6 @@
 import introScreen from './../intro/intro';
 import {game2Screen} from './../game-2/game-2';
+import {statsScreen} from '../stats/stats';
 import {Hunt, answers, NEXT_TYPE} from '../../../data/hunt';
 import text from './game-1-data';
 
@@ -8,7 +9,7 @@ import {insertIntoContainer} from './../../module-constructor';
 
 import getQuestion from '../../handlers/question';
 import getAnswer from '../../handlers/answer';
-import {switchScreen} from '../../handlers/screen';
+import {switchScreen, getStringNumber} from '../../handlers/screen';
 
 import onAnswer from './game-1-handler';
 
@@ -19,6 +20,7 @@ let screen = {};
 let nextGame = {};
 
 let answer;
+let answerTypeArray;
 
 export const game1Screen = (currentGame, currentQuestion) => {
   insertIntoContainer(game1Template(currentGame, text, currentQuestion));
@@ -39,6 +41,9 @@ export const game1Screen = (currentGame, currentQuestion) => {
     introScreen();
   };
 
+  answerTypeArray = answers[getStringNumber(currentGame.type)][currentGame.type];
+  console.log(answerTypeArray);
+
   screen = Hunt[currentGame.type][currentGame.screen];
 
   form.onclick = () => {
@@ -55,24 +60,21 @@ export const game1Screen = (currentGame, currentQuestion) => {
 
     if (answered()) {
 
-      nextGame = getAnswer(currentGame, answers, onAnswer(
+      nextGame = getAnswer(currentGame, answerTypeArray, onAnswer(
           answer1Checked().value, answer2Checked().value,
-          answers, screen).pop());
+          answerTypeArray, screen).pop());
 
       currentGame = switchScreen(
-          nextGame, Hunt, nextGame.type, answers);
+          nextGame, Hunt, nextGame.type, answerTypeArray);
 
-      screen = Hunt[currentGame.type][currentGame.screen];
-
-      // Later on may create separate function
       if (typeof currentGame === `string`) {
+        statsScreen(currentGame, answerTypeArray);
 
-        // Here load stats screen
-
+        return;
       } else {
 
-        answer = answers.pop();
-        answers.push(answer);
+        answer = answerTypeArray.pop();
+        answerTypeArray.push(answer);
 
         switch (answer.result) {
           case NEXT_TYPE:
@@ -82,7 +84,9 @@ export const game1Screen = (currentGame, currentQuestion) => {
             return;
         }
       }
+      console.log(answers);
 
+      screen = Hunt[currentGame.type][currentGame.screen];
       game1Screen(currentGame, getQuestion(screen));
     }
   };

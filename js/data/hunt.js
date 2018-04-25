@@ -1,3 +1,10 @@
+const TYPE_0 = `type-0`;
+const TYPE_1 = `type-1`;
+const TYPE_2 = `type-2`;
+
+const PHOTO = `photo`;
+const PAINT = `paint`;
+
 export const INITIAL_GAME = {
   type: `type-0`,
   screen: `screen-0`,
@@ -6,15 +13,30 @@ export const INITIAL_GAME = {
 };
 
 export const currentGame = Object.assign({}, INITIAL_GAME);
-export const answers = [];
+
+export const answers = [
+  {
+    [TYPE_0]: [
+
+    ]
+  },
+  {
+    [TYPE_1]: [
+
+    ]
+  },
+  {
+    [TYPE_2]: [
+
+    ]
+  }
+];
+
 
 export const NEXT_SCREEN = `NEXT SCREEN`;
 export const NEXT_TYPE = `NEXT TYPE`;
 
 export const END = `GAME OVER`;
-
-const PHOTO = `photo`;
-const PAINT = `paint`;
 
 export const Hunt = {
   'type-0': {

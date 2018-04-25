@@ -11,6 +11,7 @@ import getAnswer from '../../handlers/answer';
 import {switchScreen} from '../../handlers/screen';
 
 import onAnswer from './game-2-handler';
+import {statsScreen} from "../stats/stats";
 
 let answerChecked = ``;
 
@@ -51,13 +52,8 @@ export const game2Screen = (currentGame, currentQuestion) => {
       currentGame = switchScreen(
           nextGame, Hunt, nextGame.type, answers);
 
-      screen = Hunt[currentGame.type][currentGame.screen];
-
-      // Later on may create separate function
       if (typeof currentGame === `string`) {
-
-        // Here load stats screen
-
+        statsScreen(currentGame, answers);
 
       } else {
 
@@ -72,6 +68,7 @@ export const game2Screen = (currentGame, currentQuestion) => {
             return;
         }
       }
+      screen = Hunt[currentGame.type][currentGame.screen];
       game2Screen(currentGame, getQuestion(screen));
     }
   };

@@ -27,7 +27,7 @@ export default (state, textData) => {
         <td></td>
         <td class="result__extra">Бонус за скорость:</td>
         <td class="result__extra">1&nbsp;<span class="stats__result stats__result--fast"></span></td>
-        <td class="result__points">×&nbsp;50</td>
+        <td class="result__points">× 50</td>
         <td class="result__total">50</td>
       </tr>
       <tr>
