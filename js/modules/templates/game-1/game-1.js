@@ -68,7 +68,6 @@ export const game1Screen = (currentGame, currentQuestion) => {
       if (typeof currentGame === `string`) {
 
         // Here load stats screen
-        console.log(currentGame);
 
       } else {
 
