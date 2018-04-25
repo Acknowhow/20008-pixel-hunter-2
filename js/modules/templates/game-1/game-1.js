@@ -41,10 +41,9 @@ export const game1Screen = (currentGame, currentQuestion) => {
     introScreen();
   };
 
-  answerTypeArray = answers[getStringNumber(currentGame.type)][currentGame.type];
-  console.log(answerTypeArray);
-
   screen = Hunt[currentGame.type][currentGame.screen];
+  answerTypeArray = answers[
+      getStringNumber(currentGame.type)][currentGame.type];
 
   form.onclick = () => {
     answer1Checked = () => {
@@ -68,10 +67,10 @@ export const game1Screen = (currentGame, currentQuestion) => {
           nextGame, Hunt, nextGame.type, answerTypeArray);
 
       if (typeof currentGame === `string`) {
-        statsScreen(currentGame, answerTypeArray);
+        statsScreen(currentGame, answers);
 
-        return;
       } else {
+        screen = Hunt[currentGame.type][currentGame.screen];
 
         answer = answerTypeArray.pop();
         answerTypeArray.push(answer);
@@ -79,15 +78,14 @@ export const game1Screen = (currentGame, currentQuestion) => {
         switch (answer.result) {
           case NEXT_TYPE:
 
-            screen = Hunt[currentGame.type][currentGame.screen];
             game2Screen(currentGame, getQuestion(screen));
+            return;
+
+          default:
+            game1Screen(currentGame, getQuestion(screen));
             return;
         }
       }
-      console.log(answers);
-
-      screen = Hunt[currentGame.type][currentGame.screen];
-      game1Screen(currentGame, getQuestion(screen));
     }
   };
 };
