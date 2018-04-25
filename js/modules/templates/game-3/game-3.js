@@ -1,4 +1,5 @@
 import introScreen from './../intro/intro';
+import {statsScreen} from './../stats/stats';
 import {answers, Hunt, NEXT_TYPE} from '../../../data/hunt';
 // import statsScreen from './../stats/stats';
 import {insertIntoContainer} from './../../module-constructor';
@@ -10,21 +11,18 @@ import onAnswer from './../game-2/game-2-handler';
 import getAnswer from '../../handlers/answer';
 import {switchScreen} from '../../handlers/screen';
 
-let answerChecked = ``;
-
 let screen = {};
 let nextGame = {};
 
 let answer;
 let selectedOption;
 
+let selectedImage;
+
 export const game3Screen = (currentGame, currentScreen) => {
   insertIntoContainer(game3Template(currentGame, text, currentScreen));
 
   const form = document.querySelector(`.game__content`);
-  const answers1 = Array.from(
-      form.querySelectorAll(`img[alt='option1']`));
-
   const linkBack = document.querySelector(`.header__back`);
 
   linkBack.onclick = () => {
@@ -41,27 +39,21 @@ export const game3Screen = (currentGame, currentScreen) => {
     selectedOption = evt.target;
     selectedOption.classList.add(`game__option--selected`);
 
-    console.log(selectedOption.firstElementChild);
+    selectedImage = selectedOption.firstElementChild.attributes[
+        `data-value`].nodeValue;
 
-    const answered = () => {
-      return selectedOption.firstElementChild;
-    };
-
-    if (answered()) {
+    if (selectedImage) {
       nextGame = getAnswer(currentGame, answers, onAnswer(
-          answerChecked().value, answers, screen).pop());
+          selectedImage, answers, screen).pop());
 
       currentGame = switchScreen(
           nextGame, Hunt, nextGame.type, answers);
 
-      screen = Hunt[currentGame.type][currentGame.screen];
-
       // Later on may create separate function
       if (typeof currentGame === `string`) {
 
-        // Here load stats screen
-        console.log(currentGame);
-
+        statsScreen(currentGame);
+        return;
       } else {
 
         answer = answers.pop();
@@ -70,9 +62,11 @@ export const game3Screen = (currentGame, currentScreen) => {
         switch (answer.result) {
           case NEXT_TYPE:
 
-            console.log(`game over`);
+            statsScreen(currentGame);
+            return;
         }
       }
+      screen = Hunt[currentGame.type][currentGame.screen];
       game3Screen(currentGame, screen);
     }
   };

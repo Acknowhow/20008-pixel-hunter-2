@@ -4,7 +4,7 @@ import {insertIntoContainer} from './../../module-constructor';
 import statsTemplate from './stats-view';
 import text from './stats-data';
 
-export default (currentState) => {
+export const statsScreen = (currentState) => {
   insertIntoContainer(statsTemplate(currentState, text));
 
   const linkBack = document.querySelector(`.header__back`);
