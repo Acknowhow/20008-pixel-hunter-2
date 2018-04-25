@@ -42,32 +42,30 @@ export const game3Screen = (currentGame, currentScreen) => {
     selectedImage = selectedOption.firstElementChild.attributes[
         `data-value`].nodeValue;
 
-    if (selectedImage) {
-      nextGame = getAnswer(currentGame, answers, onAnswer(
-          selectedImage, answers, screen).pop());
+    nextGame = getAnswer(currentGame, answers, onAnswer(
+        selectedImage, answers, screen).pop());
 
-      currentGame = switchScreen(
-          nextGame, Hunt, nextGame.type, answers);
+    currentGame = switchScreen(
+        nextGame, Hunt, nextGame.type, answers);
 
-      // Later on may create separate function
-      if (typeof currentGame === `string`) {
+    // Later on may create separate function
+    if (typeof currentGame === `string`) {
 
-        statsScreen(currentGame);
-        return;
-      } else {
+      statsScreen(currentGame);
+      return;
+    } else {
 
-        answer = answers.pop();
-        answers.push(answer);
+      answer = answers.pop();
+      answers.push(answer);
 
-        switch (answer.result) {
-          case NEXT_TYPE:
+      switch (answer.result) {
+        case NEXT_TYPE:
 
-            statsScreen(currentGame);
-            return;
-        }
+          statsScreen(currentGame);
+          return;
       }
-      screen = Hunt[currentGame.type][currentGame.screen];
-      game3Screen(currentGame, screen);
     }
+    screen = Hunt[currentGame.type][currentGame.screen];
+    game3Screen(currentGame, screen);
   };
 };
