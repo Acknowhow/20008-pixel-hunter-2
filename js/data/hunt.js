@@ -122,7 +122,7 @@ export const Hunt = {
           name: `Figs`,
           width: `304`,
           height: `455`,
-          value: PHOTO,
+          value: PAINT,
 
           [PHOTO]: 1,
           [PAINT]: 0
@@ -138,6 +138,7 @@ export const Hunt = {
           name: `Bumble bee`,
           width: `304`,
           height: `455`,
+          value: PHOTO,
 
           [PHOTO]: 1,
           [PAINT]: 0
@@ -147,6 +148,7 @@ export const Hunt = {
           name: `Metal spheres`,
           width: `304`,
           height: `455`,
+          value: PHOTO,
 
           [PHOTO]: 0,
           [PAINT]: 1
@@ -156,6 +158,7 @@ export const Hunt = {
           name: `Watermelon`,
           width: `304`,
           height: `455`,
+          value: PHOTO,
 
           [PHOTO]: 0,
           [PAINT]: 1

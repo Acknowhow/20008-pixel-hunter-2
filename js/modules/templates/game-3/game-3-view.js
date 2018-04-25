@@ -1,10 +1,10 @@
 import {makeTemplate} from '../../module-constructor';
 import {drawHeader} from '../header/header';
 
-export default (state, textData, questionData) => {
+export default (state, textData, screenData) => {
   //   game__option--selected may be required
   const content = `
-    <p class="game__task">${textData.title}</p>
+    <p class="game__task">${screenData.title}</p>
     
     <form class="game__content  game__content--triple">
       <style>
@@ -12,8 +12,8 @@ export default (state, textData, questionData) => {
           pointer-events: none;
         }
       </style>
-      ${questionData.params.map((param) => `<div class="game__option">
-        <img src="${param.src}" alt="${questionData.option}" width="${param.width}"
+      ${screenData.option1.map((param) => `<div class="game__option">
+        <img src="${param.src}" data-value="${param.value}" alt="option1" width="${param.width}"
          height="${param.height}">
       </div>`).join(``)}
       

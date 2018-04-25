@@ -2,7 +2,6 @@ import introScreen from './../intro/intro';
 import {answers, Hunt, NEXT_TYPE} from '../../../data/hunt';
 // import statsScreen from './../stats/stats';
 import {insertIntoContainer} from './../../module-constructor';
-import getQuestion from '../../handlers/question';
 
 import game3Template from './game-3-view';
 import text from './game-3-data';
@@ -19,8 +18,8 @@ let nextGame = {};
 let answer;
 let selectedOption;
 
-export const game3Screen = (currentGame, currentQuestion) => {
-  insertIntoContainer(game3Template(currentGame, text, currentQuestion));
+export const game3Screen = (currentGame, currentScreen) => {
+  insertIntoContainer(game3Template(currentGame, text, currentScreen));
 
   const form = document.querySelector(`.game__content`);
   const answers1 = Array.from(
@@ -74,7 +73,7 @@ export const game3Screen = (currentGame, currentQuestion) => {
             console.log(`game over`);
         }
       }
-      game3Screen(currentGame, getQuestion(screen)[0]);
+      game3Screen(currentGame, screen);
     }
   };
 };

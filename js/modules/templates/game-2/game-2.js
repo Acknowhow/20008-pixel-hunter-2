@@ -68,7 +68,7 @@ export const game2Screen = (currentGame, currentQuestion) => {
           case NEXT_TYPE:
 
             screen = Hunt[currentGame.type][currentGame.screen];
-            game3Screen(currentGame, getQuestion(screen)[0]);
+            game3Screen(currentGame, screen);
             return;
         }
       }
