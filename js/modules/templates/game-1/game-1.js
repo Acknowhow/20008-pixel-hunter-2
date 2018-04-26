@@ -9,7 +9,7 @@ import {insertIntoContainer} from './../../module-constructor';
 
 import getQuestion from '../../handlers/question';
 import getAnswer from '../../handlers/answer';
-import {switchScreen, getStringNumber} from '../../handlers/screen';
+import {switchScreen} from '../../handlers/screen';
 
 import onAnswer from './game-1-handler';
 
@@ -20,7 +20,6 @@ let screen = {};
 let nextGame = {};
 
 let answer;
-let answerTypeArray;
 
 export const game1Screen = (currentGame, currentQuestion) => {
   insertIntoContainer(game1Template(currentGame, text, currentQuestion));
@@ -40,10 +39,7 @@ export const game1Screen = (currentGame, currentQuestion) => {
 
     introScreen();
   };
-
   screen = Hunt[currentGame.type][currentGame.screen];
-  answerTypeArray = answers[
-      getStringNumber(currentGame.type)][currentGame.type];
 
   form.onclick = () => {
     answer1Checked = () => {
@@ -59,12 +55,12 @@ export const game1Screen = (currentGame, currentQuestion) => {
 
     if (answered()) {
 
-      nextGame = getAnswer(currentGame, answerTypeArray, onAnswer(
+      nextGame = getAnswer(currentGame, answers, onAnswer(
           answer1Checked().value, answer2Checked().value,
-          answerTypeArray, screen).pop());
+          answers, screen).pop());
 
       currentGame = switchScreen(
-          nextGame, Hunt, nextGame.type, answerTypeArray);
+          nextGame, Hunt, nextGame.type, answers);
 
       if (typeof currentGame === `string`) {
         statsScreen(currentGame, answers);
@@ -72,8 +68,8 @@ export const game1Screen = (currentGame, currentQuestion) => {
       } else {
         screen = Hunt[currentGame.type][currentGame.screen];
 
-        answer = answerTypeArray.pop();
-        answerTypeArray.push(answer);
+        answer = answers.pop();
+        answers.push(answer);
 
         switch (answer.result) {
           case NEXT_TYPE:

@@ -2,13 +2,6 @@ import {INITIAL_GAME, NEXT_TYPE, END} from './../../data/hunt';
 
 let answer = [];
 
-export const getStringNumber = (str) => {
-  let [, numeric] = str.split(`-`);
-
-  numeric = +numeric;
-  return numeric;
-};
-
 const nextScreenParam = (str) => {
   let [string, numeric] = str.split(`-`);
   numeric++;
