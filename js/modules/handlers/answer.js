@@ -14,7 +14,7 @@ export default (game, answersArray, answerResult) => {
     case `false`:
       game = takeLife(game, game.lives);
 
-      if (game.lives) {
+      if (game.lives >= 0) {
         answersArray.push(Object.assign(
             {}, answerResult, {result: NEXT_SCREEN}));
       } else {

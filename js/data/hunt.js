@@ -84,6 +84,50 @@ export const Hunt = {
         [PAINT]: 1
       }
     },
+    'screen-2': {
+      option1: {
+        question: `question1`,
+        src: `http://i.imgur.com/LWFCQSK.jpg`,
+        name: `Cheetah`,
+        width: `468`,
+        height: `458`,
+
+        [PHOTO]: 1,
+        [PAINT]: 0
+      },
+      option2: {
+        question: `question2`,
+        src: `http://i.imgur.com/FA4D3kO.jpg`,
+        name: `Lizard`,
+        width: `468`,
+        height: `458`,
+
+        [PHOTO]: 0,
+        [PAINT]: 1
+      }
+    },
+    'screen-3': {
+      option1: {
+        question: `question1`,
+        src: `http://i.imgur.com/OI49pzH.jpg`,
+        name: `Bumble bee`,
+        width: `468`,
+        height: `458`,
+
+        [PHOTO]: 1,
+        [PAINT]: 0
+      },
+      option2: {
+        question: `question2`,
+        src: `http://i.imgur.com/mgbDqkB.jpg`,
+        name: `Pomegranate`,
+        width: `468`,
+        height: `458`,
+
+        [PHOTO]: 0,
+        [PAINT]: 1
+      }
+    }
   },
 
   'type-1': {
