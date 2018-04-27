@@ -14,8 +14,6 @@ export const statsScreen = (currentState, answersArray) => {
 
     answersArray.forEach(() => answersArray.pop());
     introScreen();
-
-    console.log(answersArray);
   };
 
   linkBack.addEventListener(`click`, resetGame);

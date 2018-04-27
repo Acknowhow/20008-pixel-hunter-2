@@ -6,7 +6,7 @@ import {insertIntoContainer} from './../../module-constructor';
 import game3Template from './game-3-view';
 import text from './game-3-data';
 
-import onAnswer from './../game-2/game-2-handler';
+import onAnswer from './../game-3/game-3-handler';
 import getAnswer from '../../handlers/answer';
 import {switchScreen} from '../../handlers/screen';
 
@@ -17,6 +17,7 @@ let answer;
 
 let selectedOption;
 let selectedImage;
+let selectedImageKey;
 
 export const game3Screen = (currentGame, currentScreen) => {
   insertIntoContainer(game3Template(currentGame, text, currentScreen));
@@ -40,8 +41,11 @@ export const game3Screen = (currentGame, currentScreen) => {
     selectedImage = selectedOption.firstElementChild.attributes[
         `data-value`].nodeValue;
 
+    selectedImageKey = selectedOption.firstElementChild.attributes[
+        `data-key`].nodeValue;
+
     nextGame = getAnswer(currentGame, answers, onAnswer(
-        selectedImage, answers, screen).pop());
+        selectedImage, selectedImageKey, answers, screen).pop());
 
     currentGame = switchScreen(
         nextGame, Hunt, nextGame.type, answers);
@@ -49,7 +53,7 @@ export const game3Screen = (currentGame, currentScreen) => {
     if (typeof currentGame === `string`) {
 
       statsScreen(currentGame, answers);
-      return;
+
     } else {
 
       screen = Hunt[currentGame.type][currentGame.screen];
@@ -66,9 +70,8 @@ export const game3Screen = (currentGame, currentScreen) => {
 
         default:
           answers.push(answer);
+          game3Screen(currentGame, screen);
       }
     }
-
-    game3Screen(currentGame, screen);
   };
 };

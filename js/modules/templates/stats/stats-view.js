@@ -10,7 +10,7 @@ import {
 
 export default (state, textData, answersData) => {
   const content = `<div class="result">
-    <h1>${textData.title}${state.lives}</h1>
+    <h1>${textData.title}</h1>
     <table class="result__table">
       <tr>
         <td class="result__number">1.</td>
