@@ -1,6 +1,13 @@
 const PHOTO = `photo`;
 const PAINT = `paint`;
 
+export const SCORE_CORRECT = 100;
+export const BONUS_SCORE = 50;
+export const SCORE_PENALTY = -50;
+
+export const TIME_FAST = 10;
+export const TIME_SLOW = 20;
+
 export const INITIAL_GAME = {
   type: `type-0`,
   screen: `screen-0`,
