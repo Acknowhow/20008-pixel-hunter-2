@@ -13,7 +13,7 @@ const nextScreenParam = (str) => {
 const getNextType = (_gameObject, _huntData,
     nextType, initialScreen, _userAnswers) => {
 
-  if (!_huntData[nextType][initialScreen]) {
+  if (!_huntData[nextType]) {
 
     answer.result = END;
     return answer.result;
