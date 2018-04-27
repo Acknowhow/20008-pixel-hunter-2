@@ -17,6 +17,7 @@ export const INITIAL_GAME = {
 
 export const currentGame = Object.assign({}, INITIAL_GAME);
 
+export const answersKey = [0];
 export const answers = [
   {time: 15, correct: `unknown`, result: ``},
   {time: 15, correct: `unknown`, result: ``},

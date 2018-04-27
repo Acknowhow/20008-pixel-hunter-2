@@ -1,7 +1,7 @@
 import introScreen from './../intro/intro';
 import {game2Screen} from './../game-2/game-2';
 import {statsScreen} from '../stats/stats';
-import {Hunt, answers, NEXT_TYPE} from '../../../data/hunt';
+import {Hunt, answers, answersKey, NEXT_TYPE} from '../../../data/hunt';
 import text from './game-1-data';
 
 import game1Template from './game-1-view';
@@ -20,9 +20,12 @@ let screen = {};
 let nextGame = {};
 
 let answer;
+let answerKey;
 
 export const game1Screen = (currentGame, currentQuestion, currentAnswers) => {
   insertIntoContainer(game1Template(currentGame, text, currentQuestion, currentAnswers));
+
+  answerKey = answersKey.pop();
 
   const form = document.querySelector(`.game__content`);
 
@@ -55,12 +58,13 @@ export const game1Screen = (currentGame, currentQuestion, currentAnswers) => {
 
     if (answered()) {
 
-      nextGame = getAnswer(currentGame, answers, onAnswer(
+      nextGame = getAnswer(currentGame, answerKey, onAnswer(
+
           answer1Checked().value, answer2Checked().value,
-          answers, screen).pop());
+          answers, answerKey, screen));
 
       currentGame = switchScreen(
-          nextGame, Hunt, nextGame.type, answers);
+          nextGame, Hunt, nextGame.type, answerKey, answers);
 
       if (typeof currentGame === `string`) {
         statsScreen(currentGame, answers);
@@ -68,16 +72,21 @@ export const game1Screen = (currentGame, currentQuestion, currentAnswers) => {
       } else {
         screen = Hunt[currentGame.type][currentGame.screen];
 
-        answer = answers.pop();
-        answers.push(answer);
+        answer = answers[answerKey];
 
         switch (answer.result) {
           case NEXT_TYPE:
+
+            answerKey++;
+            answersKey.push(answerKey);
 
             game2Screen(currentGame, getQuestion(screen), answers);
             return;
 
           default:
+
+            answerKey++;
+            answersKey.push(answerKey);
             game1Screen(currentGame, getQuestion(screen), answers);
             return;
         }

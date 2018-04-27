@@ -1,6 +1,6 @@
 import {INITIAL_GAME, NEXT_TYPE, END} from './../../data/hunt';
 
-let answer = [];
+let answer;
 
 const nextScreenParam = (str) => {
   let [string, numeric] = str.split(`-`);
@@ -11,7 +11,7 @@ const nextScreenParam = (str) => {
 };
 
 const getNextType = (_gameObject, _huntData,
-    nextType, initialScreen, _userAnswers) => {
+    nextType, initialScreen) => {
 
   if (!_huntData[nextType]) {
 
@@ -20,7 +20,6 @@ const getNextType = (_gameObject, _huntData,
   }
 
   answer.result = NEXT_TYPE;
-  _userAnswers.push(answer);
 
   _gameObject = Object.assign(
       {}, _gameObject, {type: nextType},
@@ -30,15 +29,14 @@ const getNextType = (_gameObject, _huntData,
 };
 
 const getNextScreen = (gameObject, huntData,
-    currentType, nextScreen, _answers) => {
+    currentType, nextScreen, answersArray) => {
 
   if (!huntData[currentType][nextScreen]) {
 
     return getNextType(gameObject, huntData,
         nextScreenParam(gameObject.type),
-        INITIAL_GAME.screen, _answers);
+        INITIAL_GAME.screen, answersArray);
   }
-  _answers.push(answer);
 
   gameObject = Object.assign(
       {}, gameObject, {screen: nextScreen});
@@ -46,13 +44,12 @@ const getNextScreen = (gameObject, huntData,
   return gameObject;
 };
 
-export const switchScreen = (game, data, type, answers) => {
-  answer = answers.pop();
+export const switchScreen = (game, data, type, answerKey, answers) => {
+  answer = answers[answerKey];
 
   switch (answer.result) {
 
     case END:
-      answers.push(answer);
       return END;
 
     default:
