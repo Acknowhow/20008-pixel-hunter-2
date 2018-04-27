@@ -42,11 +42,7 @@ export const game2Screen = (currentGame, currentQuestion) => {
       return answers1.find((it) => it.checked);
     };
 
-    const answered = () => {
-      return answerChecked();
-    };
-
-    if (answered()) {
+    if (answerChecked()) {
 
       nextGame = getAnswer(currentGame, answers, onAnswer(
           answerChecked().value, answers, screen).pop());
@@ -55,6 +51,7 @@ export const game2Screen = (currentGame, currentQuestion) => {
           nextGame, Hunt, nextGame.type, answers);
 
       if (typeof currentGame === `string`) {
+
         statsScreen(currentGame, answers);
 
       } else {

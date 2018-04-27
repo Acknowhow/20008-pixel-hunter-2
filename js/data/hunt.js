@@ -17,7 +17,9 @@ export const INITIAL_GAME = {
 
 export const currentGame = Object.assign({}, INITIAL_GAME);
 
-export const answers = [];
+export const answers = [
+  {}
+];
 
 
 export const NEXT_SCREEN = `NEXT SCREEN`;
@@ -74,8 +76,8 @@ export const Hunt = {
     'screen-2': {
       option1: {
         question: `question1`,
-        src: `http://i.imgur.com/LWFCQSK.jpg`,
-        name: `Cheetah`,
+        src: `https://i.imgur.com/7xx5YHZ.jpg`,
+        name: `Mercedes`,
         width: `468`,
         height: `458`,
 
@@ -84,8 +86,8 @@ export const Hunt = {
       },
       option2: {
         question: `question2`,
-        src: `http://i.imgur.com/FA4D3kO.jpg`,
-        name: `Lizard`,
+        src: `https://i.imgur.com/KbQm9NJ.jpg`,
+        name: `Retro car`,
         width: `468`,
         height: `458`,
 
@@ -96,8 +98,8 @@ export const Hunt = {
     'screen-3': {
       option1: {
         question: `question1`,
-        src: `http://i.imgur.com/OI49pzH.jpg`,
-        name: `Bumble bee`,
+        src: `https://i.imgur.com/Br8HagL.jpg`,
+        name: `Motel`,
         width: `468`,
         height: `458`,
 
@@ -106,8 +108,8 @@ export const Hunt = {
       },
       option2: {
         question: `question2`,
-        src: `http://i.imgur.com/mgbDqkB.jpg`,
-        name: `Pomegranate`,
+        src: `https://i.imgur.com/oF5st69.jpg`,
+        name: `Town`,
         width: `468`,
         height: `458`,
 
@@ -144,8 +146,6 @@ export const Hunt = {
     }
   },
 
-  // Must include text in order to know
-  // Which question to map
   'type-2': {
     'screen-0': {
       title: `Найдите рисунок среди изображений`,
@@ -233,8 +233,8 @@ export const Hunt = {
           [PAINT]: 0
         },
         {
-          src: `http://i.imgur.com/Sjjnuyi.jpg`,
-          name: `Metal spheres`,
+          src: `https://i.imgur.com/9YXCXQ7.jpg`,
+          name: `Woman underwater`,
           width: `304`,
           height: `455`,
           value: PAINT,
@@ -259,8 +259,8 @@ export const Hunt = {
       title: `Найдите изображение среди рисунков`,
       option1: [
         {
-          src: `http://i.imgur.com/OI49pzH.jpg`,
-          name: `Bumble bee`,
+          src: `https://i.imgur.com/tTqHG9m.jpg`,
+          name: `Woman afrika`,
           width: `304`,
           height: `455`,
           value: PHOTO,
