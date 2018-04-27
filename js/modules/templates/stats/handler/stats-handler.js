@@ -6,6 +6,9 @@ import {
   TIME_SLOW} from '../../../../data/hunt';
 
 const scoreCalc = (item) => {
+  if (item.correct === `unknown`) {
+    return `unknown`;
+  }
   if (item.correct === `false`) {
     return `wrong`;
   }

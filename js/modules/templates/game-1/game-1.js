@@ -21,8 +21,8 @@ let nextGame = {};
 
 let answer;
 
-export const game1Screen = (currentGame, currentQuestion) => {
-  insertIntoContainer(game1Template(currentGame, text, currentQuestion));
+export const game1Screen = (currentGame, currentQuestion, currentAnswers) => {
+  insertIntoContainer(game1Template(currentGame, text, currentQuestion, currentAnswers));
 
   const form = document.querySelector(`.game__content`);
 
@@ -74,11 +74,11 @@ export const game1Screen = (currentGame, currentQuestion) => {
         switch (answer.result) {
           case NEXT_TYPE:
 
-            game2Screen(currentGame, getQuestion(screen));
+            game2Screen(currentGame, getQuestion(screen), answers);
             return;
 
           default:
-            game1Screen(currentGame, getQuestion(screen));
+            game1Screen(currentGame, getQuestion(screen), answers);
             return;
         }
       }

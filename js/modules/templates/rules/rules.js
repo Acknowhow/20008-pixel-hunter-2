@@ -1,5 +1,5 @@
 import {currentGame} from '../../../data/hunt';
-import {Hunt} from '../../../data/hunt';
+import {Hunt, answers} from '../../../data/hunt';
 import introScreen from './../intro/intro';
 
 import getQuestion from '../../handlers/question';
@@ -41,7 +41,7 @@ export default () => {
     rulesButton.removeEventListener(`click`, next);
 
 
-    game1Screen(currentGame, question);
+    game1Screen(currentGame, question, answers);
   };
 
   const check = () => {
