@@ -1,5 +1,5 @@
 export const scoreCalc = (answersArray) => answersArray.map((item) => {
-  if (item.correct === `false`) {
+  if (item.correct === `false` || item.correct === `unknown`) {
     return 0;
   }
 
