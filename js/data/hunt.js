@@ -1,6 +1,19 @@
 const PHOTO = `photo`;
 const PAINT = `paint`;
 
+export const INITIAL_ANSWERS = [
+  {time: 15, correct: `unknown`, result: ``},
+  {time: 15, correct: `unknown`, result: ``},
+  {time: 15, correct: `unknown`, result: ``},
+  {time: 15, correct: `unknown`, result: ``},
+  {time: 15, correct: `unknown`, result: ``},
+  {time: 15, correct: `unknown`, result: ``},
+  {time: 15, correct: `unknown`, result: ``},
+  {time: 15, correct: `unknown`, result: ``},
+  {time: 15, correct: `unknown`, result: ``},
+  {time: 15, correct: `unknown`, result: ``}
+];
+
 export const SCORE_CORRECT = 100;
 export const BONUS_SCORE = 50;
 export const SCORE_PENALTY = -50;
@@ -16,21 +29,7 @@ export const INITIAL_GAME = {
 };
 
 export const currentGame = Object.assign({}, INITIAL_GAME);
-
 export const answersKey = [0];
-export const answers = [
-  {time: 15, correct: `unknown`, result: ``},
-  {time: 15, correct: `unknown`, result: ``},
-  {time: 15, correct: `unknown`, result: ``},
-  {time: 15, correct: `unknown`, result: ``},
-  {time: 15, correct: `unknown`, result: ``},
-  {time: 15, correct: `unknown`, result: ``},
-  {time: 15, correct: `unknown`, result: ``},
-  {time: 15, correct: `unknown`, result: ``},
-  {time: 15, correct: `unknown`, result: ``},
-  {time: 15, correct: `unknown`, result: ``}
-];
-
 
 export const NEXT_SCREEN = `NEXT SCREEN`;
 export const NEXT_TYPE = `NEXT TYPE`;

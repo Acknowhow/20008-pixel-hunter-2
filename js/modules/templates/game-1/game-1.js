@@ -1,7 +1,7 @@
-import introScreen from './../intro/intro';
+import answers, {introScreen} from './../intro/intro';
 import {game2Screen} from './../game-2/game-2';
 import {statsScreen} from '../stats/stats';
-import {Hunt, answers, answersKey, NEXT_TYPE} from '../../../data/hunt';
+import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
 import text from './game-1-data';
 
 import game1Template from './game-1-view';
@@ -37,9 +37,18 @@ export const game1Screen = (currentGame, currentQuestion, currentAnswers) => {
 
   const linkBack = document.querySelector(`.header__back`);
 
-  linkBack.onclick = () => {
-    answers.forEach(() => answers.pop());
 
+  linkBack.onclick = () => {
+    while (answers.length) {
+      answers.pop();
+    }
+
+    for (const answerItem of INITIAL_ANSWERS) {
+      answers.push(Object.assign({}, answerItem));
+    }
+
+    answerKey = 0;
+    answersKey.push(answerKey);
     introScreen();
   };
   screen = Hunt[currentGame.type][currentGame.screen];

@@ -1,6 +1,6 @@
 import {currentGame} from '../../../data/hunt';
-import {Hunt, answers} from '../../../data/hunt';
-import introScreen from './../intro/intro';
+import {Hunt} from '../../../data/hunt';
+import answers, {introScreen} from './../intro/intro';
 
 import getQuestion from '../../handlers/question';
 

@@ -1,6 +1,6 @@
-import introScreen from './../intro/intro';
+import answers, {introScreen} from './../intro/intro';
 import {game3Screen} from './../game-3/game-3';
-import {Hunt, answers, NEXT_TYPE} from '../../../data/hunt';
+import {Hunt, NEXT_TYPE} from '../../../data/hunt';
 import text from './game-2-data';
 
 import game2Template from './game-2-view';

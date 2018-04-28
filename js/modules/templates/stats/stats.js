@@ -4,7 +4,6 @@ import {insertIntoContainer} from './../../module-constructor';
 import statsTemplate from './stats-view';
 import text from './stats-data';
 
-
 export const statsScreen = (currentState, answersArray) => {
   insertIntoContainer(statsTemplate(currentState, text, answersArray));
 

@@ -1,6 +1,6 @@
-import introScreen from './../intro/intro';
+import answers, {introScreen} from './../intro/intro';
 import {statsScreen} from './../stats/stats';
-import {answers, Hunt, NEXT_TYPE, END} from '../../../data/hunt';
+import {Hunt, NEXT_TYPE, END} from '../../../data/hunt';
 import {insertIntoContainer} from './../../module-constructor';
 
 import game3Template from './game-3-view';
