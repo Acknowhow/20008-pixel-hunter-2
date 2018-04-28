@@ -4,7 +4,6 @@ import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
 import {insertIntoContainer} from './../../module-constructor';
 
 import game3Template from './game-3-view';
-import text from './game-3-data';
 
 import onAnswer from './../game-3/game-3-handler';
 import getAnswer from '../../handlers/answer';
