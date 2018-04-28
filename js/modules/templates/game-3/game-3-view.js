@@ -1,7 +1,7 @@
 import {makeTemplate} from '../../module-constructor';
 import {drawHeader} from '../header/header';
 
-export default (state, textData, screenData) => {
+export default (state, screenData) => {
   //   game__option--selected may be required
   const content = `
     <p class="game__task">${screenData.title}</p>

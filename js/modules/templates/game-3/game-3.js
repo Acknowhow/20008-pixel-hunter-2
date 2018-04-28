@@ -1,6 +1,6 @@
 import answers, {introScreen} from './../intro/intro';
 import {statsScreen} from './../stats/stats';
-import {Hunt, NEXT_TYPE, END} from '../../../data/hunt';
+import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
 import {insertIntoContainer} from './../../module-constructor';
 
 import game3Template from './game-3-view';
@@ -14,20 +14,33 @@ let screen = {};
 let nextGame = {};
 
 let answer;
+let answerKey;
 
 let selectedOption;
 let selectedImage;
 let selectedImageKey;
 
-export const game3Screen = (currentGame, currentScreen) => {
-  insertIntoContainer(game3Template(currentGame, text, currentScreen));
+export const game3Screen = (
+    currentGame, currentScreen) => {
+  insertIntoContainer(
+      game3Template(currentGame, text, currentScreen));
+
+  answerKey = answersKey.pop();
 
   const form = document.querySelector(`.game__content`);
   const linkBack = document.querySelector(`.header__back`);
 
   linkBack.onclick = () => {
-    answers.forEach(() => answers.pop());
+    while (answers.length) {
+      answers.pop();
+    }
 
+    for (const answerItem of INITIAL_ANSWERS) {
+      answers.push(Object.assign({}, answerItem));
+    }
+
+    answerKey = 0;
+    answersKey.push(answerKey);
     introScreen();
   };
 
@@ -44,33 +57,36 @@ export const game3Screen = (currentGame, currentScreen) => {
     selectedImageKey = selectedOption.firstElementChild.attributes[
         `data-key`].nodeValue;
 
-    nextGame = getAnswer(currentGame, answers, onAnswer(
-        selectedImage, selectedImageKey, answers, screen).pop());
+    nextGame = getAnswer(currentGame, answerKey, onAnswer(
+        selectedImage, selectedImageKey, answerKey, answers,
+        screen));
 
     currentGame = switchScreen(
-        nextGame, Hunt, nextGame.type, answers);
+        nextGame, Hunt, nextGame.type, answerKey, answers);
 
     if (typeof currentGame === `string`) {
-
       statsScreen(currentGame, answers);
 
     } else {
 
       screen = Hunt[currentGame.type][currentGame.screen];
-      answer = answers.pop();
+      answer = answers[answerKey];
 
       switch (answer.result) {
         case NEXT_TYPE:
 
-          answer.result = END;
-          answers.push(answer);
+          answerKey++;
+          answersKey.push(answerKey);
 
           statsScreen(currentGame, answers);
           return;
 
         default:
-          answers.push(answer);
-          game3Screen(currentGame, screen);
+
+          answerKey++;
+          answersKey.push(answerKey);
+          game3Screen(currentGame, screen, answers);
+          return;
       }
     }
   };
