@@ -81,7 +81,6 @@ export const game2Screen = (
             answerKey++;
             answersKey.push(answerKey);
 
-            console.log(screen.option1);
             game3Screen(currentGame, screen, answers);
 
             return;

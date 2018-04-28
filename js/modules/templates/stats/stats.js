@@ -1,4 +1,4 @@
-import answers, {introScreen} from './../intro/intro';
+import {introScreen} from './../intro/intro';
 import {insertIntoContainer} from './../../module-constructor';
 
 import {answersKey, INITIAL_ANSWERS} from '../../../data/hunt';
