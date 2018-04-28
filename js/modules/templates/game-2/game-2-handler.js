@@ -2,12 +2,12 @@ const correct = (userAnswer, currentScreen) => {
   return currentScreen[`option1`][userAnswer];
 };
 
-export default (answer, answersArray, screen) => {
+export default (answer, answersArray, answersArrayKey, screen) => {
   if (correct(answer, screen)) {
-    answersArray.push({time: 10, correct: `true`});
+    answersArray[answersArrayKey].correct = `true`;
 
   } else {
-    answersArray.push({time: 10, correct: `false`});
+    answersArray[answersArrayKey].correct = `false`;
   }
 
   return answersArray;

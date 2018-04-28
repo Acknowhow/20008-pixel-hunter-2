@@ -22,8 +22,10 @@ let nextGame = {};
 let answer;
 let answerKey;
 
-export const game1Screen = (currentGame, currentQuestion, currentAnswers) => {
-  insertIntoContainer(game1Template(currentGame, text, currentQuestion, currentAnswers));
+export const game1Screen = (
+    currentGame, currentQuestion, currentAnswers) => {
+  insertIntoContainer(
+      game1Template(currentGame, text, currentQuestion, currentAnswers));
 
   answerKey = answersKey.pop();
 
@@ -39,6 +41,7 @@ export const game1Screen = (currentGame, currentQuestion, currentAnswers) => {
 
 
   linkBack.onclick = () => {
+
     while (answers.length) {
       answers.pop();
     }
@@ -80,7 +83,6 @@ export const game1Screen = (currentGame, currentQuestion, currentAnswers) => {
 
       } else {
         screen = Hunt[currentGame.type][currentGame.screen];
-
         answer = answers[answerKey];
 
         switch (answer.result) {

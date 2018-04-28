@@ -6,7 +6,6 @@ const correct = (userAnswer1, userAnswer2, currentScreen) => {
 
 export default (answer1, answer2, answersArray, answersArrayKey, screen) => {
 
-
   if (correct(answer1, answer2, screen)) {
     answersArray[answersArrayKey].correct = `true`;
 
