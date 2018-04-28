@@ -56,7 +56,11 @@ export const game2Screen = (
       return answers1.find((it) => it.checked);
     };
 
-    if (answerChecked()) {
+    const answered = () => {
+      return answerChecked();
+    };
+
+    if (answered()) {
 
       nextGame = getAnswer(currentGame, answerKey, onAnswer(
           answerChecked().value, answers, answerKey, screen));
@@ -77,13 +81,16 @@ export const game2Screen = (
             answerKey++;
             answersKey.push(answerKey);
 
+            console.log(screen.option1);
             game3Screen(currentGame, screen, answers);
+
             return;
 
           default:
 
             answerKey++;
             answersKey.push(answerKey);
+
             game2Screen(currentGame, getQuestion(screen), answers);
             return;
         }

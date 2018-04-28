@@ -21,9 +21,9 @@ let selectedImage;
 let selectedImageKey;
 
 export const game3Screen = (
-    currentGame, currentScreen) => {
+    currentGame, currentQuestion, currentAnswers) => {
   insertIntoContainer(
-      game3Template(currentGame, text, currentScreen));
+      game3Template(currentGame, currentQuestion, currentAnswers));
 
   answerKey = answersKey.pop();
 
