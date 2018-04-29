@@ -9,7 +9,7 @@ export const createElement = (
     const [templateClass] = className;
     outer.classList.add(templateClass);
   }
-  outer.innerHTML = template;
+  outer.innerHTML = template.trim();
   return outer;
 };
 
