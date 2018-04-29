@@ -39,7 +39,6 @@ export const game1Screen = (
 
   const linkBack = document.querySelector(`.header__back`);
 
-
   linkBack.onclick = () => {
 
     while (answers.length) {

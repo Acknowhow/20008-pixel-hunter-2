@@ -1,12 +1,15 @@
 const central = document.querySelector(`.central`);
 
 export const createElement = (
-    template = ``, tagName = `div`, className = ``) => {
+    template = ``, tagName = `template`, className = []) => {
 
   const outer = document.createElement(tagName);
-  outer.classList.add(className);
+  if (className.length) {
 
-  outer.innerHTML = template.trim();
+    const [templateClass] = className;
+    outer.classList.add(templateClass);
+  }
+  outer.innerHTML = template;
   return outer;
 };
 

@@ -1,3 +1,5 @@
+import {createElement} from './contractor';
+
 export default class AbstractView {
   constructor() {
     if (new.target === AbstractView) {
@@ -6,11 +8,17 @@ export default class AbstractView {
   }
 
   get template() {
-    if (this._element) {
-      return this._element;
+    if (!this.template) {
+      throw new Error(`Must provide element's template`);
     }
-    this._element = this.render();
-    this.bind(this._element);
+  }
+
+  get element() {
+    if (!this._element) {
+      this._element = this.render();
+    }
+
+    this.bind();
     return this._element;
   }
 
@@ -18,8 +26,7 @@ export default class AbstractView {
     return createElement(this.template);
   }
 
-  bind(element) {
-    // bind handlers if required
+  bind() {
+
   }
 }
-
