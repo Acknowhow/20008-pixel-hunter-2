@@ -1,4 +1,4 @@
-import {makeTemplate} from "../../module-constructor";
+import {makeTemplate} from '../../module-constructor';
 
 export default (textData) => {
   const content = `

@@ -1,5 +1,5 @@
-import AbstractView from '../../../../util/view';
-import {createElement} from "../../../../util/contractor";
+import AbstractView from '../../../util/view';
+import {createElement} from '../../../util/contractor';
 
 const drawHeart = (full) => {
   return `<img src="img/heart__${full ? `full` : `empty`}.svg" class="game__heart" alt="Life" width="32" height="32">`;
@@ -31,4 +31,3 @@ export default class HeaderView extends AbstractView {
     return createElement(this.template, `header`, [`header`]);
   }
 }
-

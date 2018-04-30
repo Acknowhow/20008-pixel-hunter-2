@@ -16,5 +16,12 @@ export const createElement = (
 export const changeView = (element) => {
   central.innerHTML = ``;
   central.appendChild(element);
+
+  return central;
+};
+
+export const updateView = (parent, view) => {
+  parent.innerHTML = ``;
+  parent.appendChild(view.element);
 };
 

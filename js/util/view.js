@@ -8,17 +8,15 @@ export default class AbstractView {
   }
 
   get template() {
-    if (!this.template) {
-      throw new Error(`Must provide element's template`);
-    }
+    throw new Error(`Must provide element's template`);
   }
 
   get element() {
     if (!this._element) {
       this._element = this.render();
+      this.bind(this._element);
     }
 
-    this.bind();
     return this._element;
   }
 
@@ -26,7 +24,7 @@ export default class AbstractView {
     return createElement(this.template);
   }
 
-  bind() {
+  bind(element) {
 
   }
 }

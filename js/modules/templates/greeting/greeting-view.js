@@ -1,4 +1,4 @@
-import {makeTemplate} from './../../module-constructor';
+// import {makeTemplate} from './../../module-constructor';
 
 export default (textData) => {
   const content = `<div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
@@ -12,6 +12,6 @@ export default (textData) => {
     </div>`;
   const article = `<div class="greeting central--blur">${content}</div>`;
 
-  return makeTemplate(article);
+  // return makeTemplate(article);
 };
 

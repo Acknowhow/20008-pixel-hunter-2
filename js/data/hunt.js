@@ -1,7 +1,7 @@
 const PHOTO = `photo`;
 const PAINT = `paint`;
 
-export const INITIAL_ANSWERS = [
+const INITIAL_ANSWERS = [
   {time: 15, correct: `unknown`, result: ``},
   {time: 15, correct: `unknown`, result: ``},
   {time: 15, correct: `unknown`, result: ``},
@@ -13,6 +13,12 @@ export const INITIAL_ANSWERS = [
   {time: 15, correct: `unknown`, result: ``},
   {time: 15, correct: `unknown`, result: ``}
 ];
+
+export const answers = [];
+
+for (const answer of INITIAL_ANSWERS) {
+  answers.push(Object.assign({}, answer));
+}
 
 export const SCORE_CORRECT = 100;
 export const BONUS_SCORE = 50;

@@ -1,5 +1,4 @@
 import {makeTemplate} from '../../module-constructor';
-import {drawHeader} from '../header/header';
 import {drawnAnswers} from '../../handlers/answers';
 
 export default (state, textData, questionData, answersData) => {
@@ -27,7 +26,7 @@ export default (state, textData, questionData, answersData) => {
       </ul>
     </div>`;
 
-  const article = `${drawHeader(state)}<div class='game'>${content}</div>`;
+  const article = `<div class='game'>${content}</div>`;
   return makeTemplate(article);
 };
 
