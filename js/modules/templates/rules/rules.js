@@ -24,5 +24,4 @@ export default () => {
 
   const gameContainer = changeView(rules.element);
   gameContainer.appendChild(new FooterView().element);
-
 };

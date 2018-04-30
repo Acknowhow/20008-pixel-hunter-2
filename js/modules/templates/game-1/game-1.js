@@ -7,7 +7,7 @@ import {centralContainer} from '../../handlers/screen';
 
 import HeaderView from '../header/header-view';
 import Game1View from './game-1-view';
-import {changeView} from '../../../util/contractor';
+import {changeView, updateView} from '../../../util/contractor';
 
 import FooterView from '../footer/footer-view';
 
@@ -31,17 +31,15 @@ import {createElement} from "../../../util/contractor";
 export const game1Screen = (
     currentGame, currentQuestion, currentAnswers) => {
 
-  const headerContainer = createElement(``, `header`, [`header`]);
-  const gameContainer = createElement(``, `div`, [`game`]);
 
+  const updateGame = (state, question, answer) => {
 
-  // const header = changeView(new HeaderView(currentGame));
-  // const game = new Game1View(currentGame, currentQuestion, currentAnswers);
+    updateView(centralContainer, new HeaderView(state));
+    updateView(centralContainer, new Game1View(state, question, answer));
 
-  centralContainer.appendChild(headerContainer);
-  centralContainer.appendChild(gameContainer);
+  };
 
-
+  updateGame(currentGame, currentQuestion, currentAnswers);
 
   // answerKey = answersKey.pop();
 
@@ -111,5 +109,3 @@ export const game1Screen = (
   // }
   // };
 };
-
-
