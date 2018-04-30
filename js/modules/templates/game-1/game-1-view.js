@@ -1,22 +1,21 @@
 import textData from './game-1-data';
 import {drawnAnswers} from '../../handlers/answers';
 import AbstractView from '../../../util/view';
-
-import HeaderView from '../header/header-view';
 import {createElement} from "../../../util/contractor";
 
+let answer1Checked = ``;
+let answer2Checked = ``;
+
 export default class Game1View extends AbstractView {
-  constructor(state, questionData, answersData) {
+  constructor(questionData, answersData) {
     super();
 
-    this.state = state;
     this.questionData = questionData;
     this.answersData = answersData;
   }
 
   get template() {
     return `
-    ${new HeaderView(this.state).element}
     <p class="game__task">${textData.title}</p>
     <form class="game__content">
       ${this.questionData.map(({option, params}) => `<div class="game__option">
@@ -39,6 +38,10 @@ export default class Game1View extends AbstractView {
     </div>`;
   }
 
+  onAnswer() {
+
+  }
+
   onReset() {
 
   }
@@ -48,6 +51,36 @@ export default class Game1View extends AbstractView {
   }
 
   bind() {
+    const form = this.element.querySelector(`.game__content`);
+    const linkBack = this.element.querySelector(`.header__back`);
+    const answers1 = Array.from(
+        form.querySelectorAll(`input[name='question1']`));
+    const answers2 = Array.from(
+        form.querySelectorAll(`input[name='question2']`));
 
+    linkBack.addEventListener(`click`, (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+
+      this.onReset();
+    });
+
+    form.onclick = () => {
+      answer1Checked = () => {
+        return answers1.find((it) => it.checked);
+      };
+      answer2Checked = () => {
+        return answers2.find((it) => it.checked);
+      };
+
+      const answered = () => {
+        return answer1Checked() && answer2Checked();
+      };
+
+      if (answered()) {
+        this.onAnswer([answer1Checked().value, answer2Checked().value]);
+
+      }
+    };
   }
 }

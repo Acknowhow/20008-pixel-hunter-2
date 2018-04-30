@@ -23,6 +23,10 @@ export default class GreetingView extends AbstractView {
 
   }
 
+  onNext() {
+
+  }
+
   render() {
     return createElement(this.template, `div`, [`rules`]);
   }
