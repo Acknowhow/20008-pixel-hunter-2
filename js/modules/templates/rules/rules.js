@@ -1,57 +1,35 @@
-import {currentGame} from '../../../data/hunt';
-import {Hunt} from '../../../data/hunt';
-import answers, {introScreen} from './../intro/intro';
+// import {currentGame} from '../../../data/hunt';
+import IntroView from './../intro/intro-view';
+import {changeView} from '../../../util/contractor';
 
-import getQuestion from '../../handlers/question';
+// import getQuestion from '../../handlers/question';
 
-import {game1Screen} from './../game-1/game-1';
-import rulesTemplate from './rules-view';
-import {insertIntoContainer} from './../../module-constructor';
+// import {game1Screen} from './../game-1/game-1';
+import RulesView from './rules-view';
+import FooterView from '../footer/footer-view';
+import greetingScreen from "../greeting/greeting";
 
-import text from './rules-data';
-
-const screen = Hunt[currentGame.type][currentGame.screen];
 
 export default () => {
-  insertIntoContainer(rulesTemplate(text));
-  const question = getQuestion(screen);
+  const rules = new RulesView();
 
-  const form = document.querySelector(`.rules__form`);
-  const rulesInput = form.querySelector(`.rules__input`);
-  const rulesButton = form.querySelector(`.rules__button`);
+  rules.onReset = () => {
+    const intro = new IntroView();
+    intro.onNext = greetingScreen;
 
-  const linkBack = document.querySelector(`.header__back`);
-
-  const resetGame = () => {
-    linkBack.removeEventListener(`click`, resetGame);
-    introScreen();
+    const gameContainer = changeView(intro.element);
+    gameContainer.appendChild(new FooterView().element);
   };
 
-  const enable = () => {
-    rulesButton.removeAttribute(`disabled`);
-  };
-
-  const empty = () => {
-    rulesInput.addEventListener(`input`, enable);
-  };
-
-  const next = () => {
-    rulesInput.removeEventListener(`input`, enable);
-    rulesInput.removeEventListener(`keydown`, empty);
-    rulesButton.removeEventListener(`click`, next);
+  const gameContainer = changeView(rules.element);
+  gameContainer.appendChild(new FooterView().element);
 
 
-    game1Screen(currentGame, question, answers);
-  };
+  // const question = getQuestion(screen);
 
-  const check = () => {
-    return rulesInput.value === `` ? rulesButton.setAttribute(
-        `disabled`, ``) : ``;
-  };
 
-  rulesInput.addEventListener(`focusout`, check);
-  rulesInput.addEventListener(`keydown`, empty);
-  rulesButton.addEventListener(`click`, next);
-
-  linkBack.addEventListener(`click`, resetGame);
+  // const next = () => {
+  //
+  //   game1Screen(currentGame, question, answers);
+  // };
 };
