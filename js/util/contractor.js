@@ -5,9 +5,10 @@ export const createElement = (
 
   const outer = document.createElement(tagName);
   if (className.length) {
+    for (const templateClass of className) {
 
-    const [templateClass] = className;
-    outer.classList.add(templateClass);
+      outer.classList.add(templateClass);
+    }
   }
   outer.innerHTML = template.trim();
   return outer;

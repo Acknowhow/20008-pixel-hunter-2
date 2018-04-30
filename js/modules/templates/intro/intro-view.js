@@ -25,16 +25,16 @@ export default class IntroView extends AbstractView {
 
   bind() {
     const asterisk = this.element.querySelector(`.intro__asterisk`);
-    asterisk.addEventListener(`click`, (event) => {
 
+    asterisk.addEventListener(`click`, (event) => {
       event.stopPropagation();
       event.preventDefault();
 
-      this.next();
+      this.onNext();
     });
   }
 
-  next() {
+  onNext() {
 
   }
 }

@@ -1,23 +1,15 @@
-import {insertIntoContainer} from '../../module-constructor';
-import greetingTemplate from './greeting-view';
+import {changeView} from '../../../util/contractor';
+import GreetingView from './greeting-view';
+import FooterView from '../footer/footer-view';
 
-import text from './greeting-data';
-import rulesScreen from "../rules/rules";
 
 export default () => {
-  insertIntoContainer(greetingTemplate(text));
+  const greeting = new GreetingView();
 
-  const linkNext = document.querySelector(`img[alt='Next']`);
+  const gameContainer = changeView(greeting.element);
+  gameContainer.appendChild(new FooterView().element);
 
-  const next = () => {
-    linkNext.removeEventListener(`click`, next);
-
-    setTimeout(() => {
-      rulesScreen();
-    }, 0);
-  };
-
-  linkNext.addEventListener(`click`, next);
+  return gameContainer;
 };
 
 
