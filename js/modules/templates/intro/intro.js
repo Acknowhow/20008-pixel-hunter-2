@@ -4,7 +4,7 @@ import greetingScreen from './../greeting/greeting';
 import FooterView from './../footer/footer-view';
 
 
-export const introScreen = () => {
+export default () => {
   const intro = new IntroView();
   intro.onNext = greetingScreen;
 

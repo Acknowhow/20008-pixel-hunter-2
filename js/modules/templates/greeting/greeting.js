@@ -6,6 +6,7 @@ import rulesScreen from './../rules/rules';
 
 export default () => {
   const greeting = new GreetingView();
+
   greeting.onNext = () => {
     rulesScreen();
   };

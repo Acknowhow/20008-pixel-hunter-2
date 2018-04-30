@@ -1,2 +1,2 @@
-import {introScreen} from './modules/templates/intro/intro';
+import introScreen from './modules/templates/intro/intro';
 introScreen();
