@@ -1,4 +1,4 @@
-import {currentGame} from '../../../data/hunt';
+import {currentGame, Hunt} from '../../../data/hunt';
 // import IntroView from './../intro/intro-view';
 import {changeView} from '../../../util/contractor';
 
@@ -8,10 +8,13 @@ import RulesView from './rules-view';
 import FooterView from '../footer/footer-view';
 import answers, {introScreen} from '../intro/intro';
 
+const screen = Hunt[currentGame.type][currentGame.screen];
 
 export default () => {
   const rules = new RulesView();
   const question = getQuestion(screen);
+
+  console.log(question);
 
   rules.onReset = () => {
     introScreen();

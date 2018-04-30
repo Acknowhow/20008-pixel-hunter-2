@@ -27,7 +27,7 @@ import FooterView from '../footer/footer-view';
 export const game1Screen = (
     currentGame, currentQuestion, currentAnswers) => {
 
-  const game1 = new Game1View(currentGame, currentQuestion, currentAnswers);
+  const game1 = new Game1View(currentQuestion, currentAnswers);
 
   const game1Container = changeView(game1.element);
   game1Container.appendChild(new FooterView().element);

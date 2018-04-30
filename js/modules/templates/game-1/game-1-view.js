@@ -7,18 +7,18 @@ let answer1Checked = ``;
 let answer2Checked = ``;
 
 export default class Game1View extends AbstractView {
-  constructor(questionData, answersData) {
+  constructor(question, answers) {
     super();
 
-    this.questionData = questionData;
-    this.answersData = answersData;
+    this.question = question;
+    this.answers = answers;
   }
 
   get template() {
     return `
     <p class="game__task">${textData.title}</p>
     <form class="game__content">
-      ${this.questionData.map(({option, params}) => `<div class="game__option">
+      ${this.question.map(({option, params}) => `<div class="game__option">
         <img src="${params.src}" alt="${option}" width="${params.width}"
          height="${params.height}">
         <label class="game__answer game__answer--photo">
@@ -33,7 +33,7 @@ export default class Game1View extends AbstractView {
     </form>
     <div class="stats">
       <ul class="stats">
-        ${drawnAnswers(this.answersData)};
+        ${drawnAnswers(this.answers)};
       </ul>
     </div>`;
   }
@@ -52,18 +52,18 @@ export default class Game1View extends AbstractView {
 
   bind() {
     const form = this.element.querySelector(`.game__content`);
-    const linkBack = this.element.querySelector(`.header__back`);
+    // const linkBack = this.element.querySelector(`.header__back`);
     const answers1 = Array.from(
         form.querySelectorAll(`input[name='question1']`));
     const answers2 = Array.from(
         form.querySelectorAll(`input[name='question2']`));
 
-    linkBack.addEventListener(`click`, (event) => {
-      event.stopPropagation();
-      event.preventDefault();
-
-      this.onReset();
-    });
+    // linkBack.addEventListener(`click`, (event) => {
+    //   event.stopPropagation();
+    //   event.preventDefault();
+    //
+    //   this.onReset();
+    // });
 
     form.onclick = () => {
       answer1Checked = () => {
