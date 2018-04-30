@@ -44,6 +44,8 @@ const getNextScreen = (gameObject, huntData,
   return gameObject;
 };
 
+export const centralContainer = document.querySelector(`.central`);
+
 export const switchScreen = (game, data, type, answerKey, answers) => {
   answer = answers[answerKey];
 

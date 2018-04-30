@@ -3,11 +3,15 @@
 // import {statsScreen} from '../stats/stats';
 // import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
 
+import {centralContainer} from '../../handlers/screen';
 
+import HeaderView from '../header/header-view';
 import Game1View from './game-1-view';
 import {changeView} from '../../../util/contractor';
 
 import FooterView from '../footer/footer-view';
+
+import {createElement} from "../../../util/contractor";
 
 // import getQuestion from '../../handlers/question';
 // import getAnswer from '../../handlers/answer';
@@ -27,10 +31,16 @@ import FooterView from '../footer/footer-view';
 export const game1Screen = (
     currentGame, currentQuestion, currentAnswers) => {
 
-  const game1 = new Game1View(currentQuestion, currentAnswers);
+  const headerContainer = createElement(``, `header`, [`header`]);
+  const gameContainer = createElement(``, `div`, [`game`]);
 
-  const game1Container = changeView(game1.element);
-  game1Container.appendChild(new FooterView().element);
+
+  // const header = changeView(new HeaderView(currentGame));
+  // const game = new Game1View(currentGame, currentQuestion, currentAnswers);
+
+  centralContainer.appendChild(headerContainer);
+  centralContainer.appendChild(gameContainer);
+
 
 
   // answerKey = answersKey.pop();

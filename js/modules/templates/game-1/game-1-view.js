@@ -7,9 +7,10 @@ let answer1Checked = ``;
 let answer2Checked = ``;
 
 export default class Game1View extends AbstractView {
-  constructor(question, answers) {
+  constructor(state, question, answers) {
     super();
 
+    this.state = state;
     this.question = question;
     this.answers = answers;
   }
@@ -42,10 +43,6 @@ export default class Game1View extends AbstractView {
 
   }
 
-  onReset() {
-
-  }
-
   render() {
     return createElement(this.template, `div`, [`game`]);
   }
@@ -57,13 +54,6 @@ export default class Game1View extends AbstractView {
         form.querySelectorAll(`input[name='question1']`));
     const answers2 = Array.from(
         form.querySelectorAll(`input[name='question2']`));
-
-    // linkBack.addEventListener(`click`, (event) => {
-    //   event.stopPropagation();
-    //   event.preventDefault();
-    //
-    //   this.onReset();
-    // });
 
     form.onclick = () => {
       answer1Checked = () => {

@@ -14,8 +14,6 @@ export default () => {
   const rules = new RulesView();
   const question = getQuestion(screen);
 
-  console.log(question);
-
   rules.onReset = () => {
     introScreen();
   };

@@ -26,8 +26,21 @@ export default class HeaderView extends AbstractView {
       ${drawHeart(this.state.lives > 0)}
     </div>`;
   }
+  onReset() {
+
+  }
 
   render() {
     return createElement(this.template, `header`, [`header`]);
+  }
+
+  bind() {
+    const linkBack = this.element.querySelector(`.header__back`);
+    linkBack.addEventListener(`click`, (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+
+      this.onReset();
+    });
   }
 }

@@ -1,4 +1,4 @@
-const central = document.querySelector(`.central`);
+import {centralContainer} from '../modules/handlers/screen';
 
 export const createElement = (
     template = ``, tagName = `template`, className = []) => {
@@ -15,10 +15,10 @@ export const createElement = (
 };
 
 export const changeView = (element) => {
-  central.innerHTML = ``;
-  central.appendChild(element);
+  centralContainer.innerHTML = ``;
+  centralContainer.appendChild(element);
 
-  return central;
+  return centralContainer;
 };
 
 export const updateView = (parent, view) => {
