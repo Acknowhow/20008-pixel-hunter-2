@@ -17,7 +17,6 @@ export default class GreetingView extends AbstractView {
     <input class="rules__input" type="text" placeholder="Ваше Имя">
     <button class="rules__button  continue" type="submit" disabled>${rulesData.button}</button>
   </form>`;
-
   }
 
   onReset() {
@@ -35,9 +34,11 @@ export default class GreetingView extends AbstractView {
     const rulesButton = form.querySelector(`.rules__button`);
     const rulesInput = form.querySelector(`.rules__input`);
 
-    linkBack.addEventListener(`click`, () => {
-      this.onReset();
+    linkBack.addEventListener(`click`, (event) => {
+      event.stopPropagation();
+      event.preventDefault();
 
+      this.onReset();
     });
 
     rulesInput.addEventListener(`focusout`, () => {
@@ -50,7 +51,10 @@ export default class GreetingView extends AbstractView {
       rulesButton.removeAttribute(`disabled`);
     });
 
-    rulesButton.addEventListener(`click`, () => {
+    rulesButton.addEventListener(`click`, (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+
       this.onNext();
     });
   }

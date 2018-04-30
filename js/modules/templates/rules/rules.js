@@ -3,7 +3,6 @@ import IntroView from './../intro/intro-view';
 import {changeView} from '../../../util/contractor';
 
 // import getQuestion from '../../handlers/question';
-
 // import {game1Screen} from './../game-1/game-1';
 import RulesView from './rules-view';
 import FooterView from '../footer/footer-view';
@@ -26,8 +25,6 @@ export default () => {
 
 
   // const question = getQuestion(screen);
-
-
   // const next = () => {
   //
   //   game1Screen(currentGame, question, answers);

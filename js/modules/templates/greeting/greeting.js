@@ -15,5 +15,3 @@ export default () => {
 
   return gameContainer;
 };
-
-
