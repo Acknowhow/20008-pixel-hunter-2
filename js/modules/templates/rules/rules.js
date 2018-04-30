@@ -6,14 +6,14 @@ import {changeView} from '../../../util/contractor';
 // import {game1Screen} from './../game-1/game-1';
 import RulesView from './rules-view';
 import FooterView from '../footer/footer-view';
-import resetGame from '../intro/intro';
+import {introScreen} from '../intro/intro';
 
 
 export default () => {
   const rules = new RulesView();
 
   rules.onReset = () => {
-    resetGame();
+    introScreen();
   };
 
   const gameContainer = changeView(rules.element);

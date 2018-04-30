@@ -1,12 +1,22 @@
-import {makeTemplate} from '../../module-constructor';
+import textData from './game-1-data';
 import {drawnAnswers} from '../../handlers/answers';
+import AbstractView from "../../../util/view";
 
-export default (state, textData, questionData, answersData) => {
-  const content = `
-    <p class="game__task">${textData.title}</p>
+export default class Game1View extends AbstractView {
+  constructor(state, textData, questionData, answersData) {
+    super();
 
+    this.state = state;
+    this.textData = textData;
+    this.questionData = questionData;
+    this.answersData = answersData;
+  }
+
+  get template() {
+    return `
+    <p class="game__task">${this.textData.title}</p>
     <form class="game__content">
-      ${questionData.map(({option, params}) => `<div class="game__option">
+      ${this.questionData.map(({option, params}) => `<div class="game__option">
         <img src="${params.src}" alt="${option}" width="${params.width}"
          height="${params.height}">
         <label class="game__answer game__answer--photo">
@@ -19,14 +29,21 @@ export default (state, textData, questionData, answersData) => {
         </label>
       </div>`).join(``)}
     </form>
-
     <div class="stats">
       <ul class="stats">
-        ${drawnAnswers(answersData)};
+        ${drawnAnswers(this.answersData)};
       </ul>
     </div>`;
 
+  }
+
+
+
+
+
+
   const article = `<div class='game'>${content}</div>`;
   return makeTemplate(article);
-};
+}
 
+}}
