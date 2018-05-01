@@ -10,7 +10,6 @@ export default class Game1View extends AbstractView {
   constructor(state, question, answers) {
     super();
 
-    this.state = state;
     this.question = question;
     this.answers = answers;
   }
@@ -49,7 +48,6 @@ export default class Game1View extends AbstractView {
 
   bind() {
     const form = this.element.querySelector(`.game__content`);
-    // const linkBack = this.element.querySelector(`.header__back`);
     const answers1 = Array.from(
         form.querySelectorAll(`input[name='question1']`));
     const answers2 = Array.from(

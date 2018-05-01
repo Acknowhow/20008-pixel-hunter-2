@@ -1,7 +1,9 @@
 import textData from './game-2-data';
 import {drawnAnswers} from '../../handlers/answers';
 import AbstractView from '../../../util/view';
-import {createElement} from "../../../util/contractor";
+import {createElement} from '../../../util/contractor';
+
+let answerChecked = ``;
 
 export default class Game2View extends AbstractView {
   constructor(question, answers) {
@@ -46,9 +48,24 @@ export default class Game2View extends AbstractView {
   }
 
   bind() {
+    const form = this.element.querySelector(`.game__content`);
+    const answers1 = Array.from(
+        form.querySelectorAll(`input[name='question1']`));
 
+    form.onclick = () => {
+      answerChecked = () => {
+        return answers1.find((it) => it.checked);
+      };
+
+      const answered = () => {
+        return answerChecked();
+      };
+
+      if (answered()) {
+        this.onAnswer(answerChecked().value);
+      }
+    };
   }
-
 }
 
 

@@ -2,15 +2,18 @@ import answers, {introScreen} from './../intro/intro';
 // import {game2Screen} from './../game-2/game-2';
 // import {statsScreen} from '../stats/stats';
 import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
-
-
 import HeaderView from '../header/header-view';
 import Game1View from './game-1-view';
 import {updateView} from '../../../util/contractor';
 
 import FooterView from '../footer/footer-view';
+import {createElement} from '../../../util/contractor';
 
-import {createElement} from "../../../util/contractor";
+import getQuestion from '../../handlers/question';
+import getAnswer from '../../handlers/answer';
+import {switchScreen} from '../../handlers/screen';
+
+import getAnswerResult from './game-1-handler';
 
 const gameContainerElement = createElement();
 const headerContainer = createElement();
@@ -19,12 +22,6 @@ const screenContainer = createElement();
 gameContainerElement.appendChild(headerContainer);
 gameContainerElement.appendChild(screenContainer);
 gameContainerElement.appendChild(new FooterView().element);
-
-import getQuestion from '../../handlers/question';
-import getAnswer from '../../handlers/answer';
-import {switchScreen} from '../../handlers/screen';
-
-import getAnswerResult from './game-1-handler';
 
 let screen = {};
 let nextGame = {};
@@ -88,9 +85,7 @@ export const game1Screen = (
             game1Screen(currentGame, getQuestion(screen), answers);
             return;
         }
-
       }
-
     };
 
     updateView(headerContainer, header);
@@ -99,7 +94,6 @@ export const game1Screen = (
   };
 
   updateGame(currentGame, currentQuestion, currentAnswers);
-
   return gameContainerElement;
 };
 
