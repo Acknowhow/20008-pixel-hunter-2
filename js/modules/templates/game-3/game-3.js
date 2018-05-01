@@ -1,5 +1,5 @@
 import answers, {introScreen} from './../intro/intro';
-// import {statsScreen} from './../stats/stats';
+import {statsScreen} from './../stats/stats';
 import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
 
 import getAnswer from '../../handlers/answer';
@@ -7,7 +7,7 @@ import {switchScreen} from '../../handlers/screen';
 
 import getAnswerResult from './../game-3/game-3-handler';
 
-import {createElement, updateView} from '../../../util/contractor';
+import {createElement, updateView, changeView} from '../../../util/contractor';
 import HeaderView from '../header/header-view';
 import Game3View from '../game-3/game-3-view';
 import FooterView from '../footer/footer-view';
@@ -62,7 +62,8 @@ export const game3Screen = (
           nextGame, Hunt, nextGame.type, answerKey, answers);
 
       if (typeof currentGame === `string`) {
-        // statsScreen(currentGame, answers);
+        console.log(currentGame);
+        changeView(statsScreen(currentGame, answers));
 
       } else {
 
@@ -75,7 +76,8 @@ export const game3Screen = (
             answerKey++;
             answersKey.push(answerKey);
 
-            // statsScreen(currentGame, answers);
+            console.log(currentGame);
+            changeView(statsScreen(currentGame, answers));
             return;
 
           default:

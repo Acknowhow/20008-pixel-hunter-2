@@ -1,6 +1,6 @@
 import answers, {introScreen} from './../intro/intro';
 import {game3Screen} from './../game-3/game-3';
-// import {statsScreen} from '../stats/stats';
+import {statsScreen} from '../stats/stats';
 import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
 
 import getQuestion from '../../handlers/question';
@@ -63,7 +63,7 @@ export const game2Screen = (
           nextGame, Hunt, nextGame.type, answerKey, answers);
 
       if (typeof currentGame === `string`) {
-        // statsScreen(currentGame, answers);
+        changeView(statsScreen(currentGame, answers));
 
       } else {
         screen = Hunt[currentGame.type][currentGame.screen];
