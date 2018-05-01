@@ -7,7 +7,7 @@ import {switchScreen} from '../../handlers/screen';
 
 import getAnswerResult from './../game-3/game-3-handler';
 
-import {createElement, updateView, changeView} from '../../../util/contractor';
+import {createElement, updateView} from '../../../util/contractor';
 import HeaderView from '../header/header-view';
 import Game3View from '../game-3/game-3-view';
 import FooterView from '../footer/footer-view';

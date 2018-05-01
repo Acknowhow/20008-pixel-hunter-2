@@ -32,19 +32,19 @@ const drawAnswers = (answerResult) => {
 export const drawnAnswers = (answers) => answers.map(
     (answer) => drawAnswers(scoreCalc(answer)));
 
-export const drawAnswersScore = (_answers) => {
+export const drawAnswersScore = (answers) => {
   return `<td class="result__points"> x ${SCORE_CORRECT}</td>
-<td class="result__total">${_answers.filter(
+<td class="result__total">${answers.filter(
       (answer) => answer.correct === `true`).length * SCORE_CORRECT}</td>`;
 };
 
-export const drawSpeedBonus = (_answers) => {
+export const drawSpeedBonus = (answers) => {
   return `<tr>
   <td></td>
   <td class="result__extra"> Бонус за скорость:<td>
-  <td class="result__extra">${_answers.filter(
+  <td class="result__extra">${answers.filter(
       (fastAnswer) => fastAnswer.time < TIME_FAST).length} <span class="stats__result stats__result--fast"></span></td>
-  <td class="result__points">× ${_answers.filter(
+  <td class="result__points">× ${answers.filter(
       (fastAnswer) => fastAnswer.time < TIME_FAST).length * BONUS_SCORE}</td>
   <td class="result__total">50</td>
 </tr>`;
@@ -60,13 +60,13 @@ export const drawLifeBonus = (lives) => {
 </tr>`;
 };
 
-export const drawSlowPenalty = (___answers) => {
+export const drawSlowPenalty = (answers) => {
   return `<tr>
   <td></td>
   <td class="result__extra"> Бонус за скорость:<td>
-  <td class="result__extra">${___answers.filter(
+  <td class="result__extra">${answers.filter(
       (slowAnswer) => slowAnswer.time < TIME_SLOW).length} <span class="stats__result stats__result--slow"></span></td>
-  <td class="result__points">× ${___answers.filter(
+  <td class="result__points">× ${answers.filter(
       (slowAnswer) => slowAnswer.time < TIME_SLOW).length * SCORE_PENALTY}</td>
   <td class="result__total">50</td>
 </tr>`;
