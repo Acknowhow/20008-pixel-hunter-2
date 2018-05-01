@@ -1,10 +1,10 @@
 import answers, {introScreen} from './../intro/intro';
-// import {game2Screen} from './../game-2/game-2';
+import {game2Screen} from './../game-2/game-2';
 // import {statsScreen} from '../stats/stats';
 import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
 import HeaderView from '../header/header-view';
 import Game1View from './game-1-view';
-import {updateView} from '../../../util/contractor';
+import {changeView, updateView} from '../../../util/contractor';
 
 import FooterView from '../footer/footer-view';
 import {createElement} from '../../../util/contractor';
@@ -34,7 +34,7 @@ export const game1Screen = (
 
   const updateGame = (state, question, answersSet) => {
     const header = new HeaderView(state);
-    const game = new Game1View(state, question, answersSet);
+    const game = new Game1View(question, answersSet);
 
     answerKey = answersKey.pop();
     header.onReset = () => {
@@ -75,7 +75,7 @@ export const game1Screen = (
             answerKey++;
             answersKey.push(answerKey);
 
-            // game2Screen(currentGame, getQuestion(screen), answers);
+            changeView(game2Screen(currentGame, getQuestion(screen), answers));
             return;
 
           default:

@@ -1,10 +1,7 @@
 import answers, {introScreen} from './../intro/intro';
-import {game3Screen} from './../game-3/game-3';
-import {statsScreen} from '../stats/stats';
+// import {game3Screen} from './../game-3/game-3';
+// import {statsScreen} from '../stats/stats';
 import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
-import text from './game-2-data';
-
-import Game2View from './game-2-view';
 
 import getQuestion from '../../handlers/question';
 import getAnswer from '../../handlers/answer';
@@ -12,10 +9,10 @@ import {switchScreen} from '../../handlers/screen';
 
 import getAnswerResult from './game-2-handler';
 
-import {createElement} from "../../../util/contractor";
-import FooterView from "../footer/footer-view";
-import Game1View from "../game-1/game-1-view";
-import HeaderView from "../header/header-view";
+import {createElement, updateView} from "../../../util/contractor";
+import FooterView from '../footer/footer-view';
+import Game2View from '../game-2/game-2-view';
+import HeaderView from '../header/header-view';
 
 const gameContainerElement = createElement();
 const headerContainer = createElement();
@@ -37,7 +34,7 @@ export const game2Screen = (
 
   const updateGame = (state, question, answersSet) => {
     const header = new HeaderView(state);
-    const game = new Game2View(state, question, answersSet);
+    const game = new Game2View(question, answersSet);
 
     answerKey = answersKey.pop();
 
@@ -57,8 +54,8 @@ export const game2Screen = (
     };
 
     screen = Hunt[currentGame.type][currentGame.screen];
-
     game.onAnswer = (answer1) => {
+
       nextGame = getAnswer(currentGame, answerKey, getAnswerResult(
           answer1, answers, answerKey, screen));
 
@@ -66,7 +63,7 @@ export const game2Screen = (
           nextGame, Hunt, nextGame.type, answerKey, answers);
 
       if (typeof currentGame === `string`) {
-        statsScreen(currentGame, answers);
+        // statsScreen(currentGame, answers);
 
       } else {
         screen = Hunt[currentGame.type][currentGame.screen];
@@ -78,7 +75,7 @@ export const game2Screen = (
             answerKey++;
             answersKey.push(answerKey);
 
-            game3Screen(currentGame, screen, answers);
+            // game3Screen(currentGame, screen, answers);
 
             return;
 
@@ -90,8 +87,12 @@ export const game2Screen = (
             game2Screen(currentGame, getQuestion(screen), answers);
             return;
         }
-
-
+      }
     };
+    updateView(headerContainer, header);
+    updateView(screenContainer, game);
   };
+
+  updateGame(currentGame, currentQuestion, currentAnswers);
+  return gameContainerElement;
 };

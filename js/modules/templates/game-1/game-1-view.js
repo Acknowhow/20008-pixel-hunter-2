@@ -7,7 +7,7 @@ let answer1Checked = ``;
 let answer2Checked = ``;
 
 export default class Game1View extends AbstractView {
-  constructor(state, question, answers) {
+  constructor(question, answers) {
     super();
 
     this.question = question;
