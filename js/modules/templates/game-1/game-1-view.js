@@ -68,7 +68,7 @@ export default class Game1View extends AbstractView {
       };
 
       if (answered()) {
-        this.onAnswer([answer1Checked().value, answer2Checked().value]);
+        this.onAnswer(answer1Checked().value, answer2Checked().value);
 
       }
     };

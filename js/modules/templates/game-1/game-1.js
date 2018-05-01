@@ -22,16 +22,13 @@ gameContainerElement.appendChild(screenContainer);
 gameContainerElement.appendChild(new FooterView().element);
 
 // import getQuestion from '../../handlers/question';
-// import getAnswer from '../../handlers/answer';
-// import {switchScreen} from '../../handlers/screen';
+import getAnswer from '../../handlers/answer';
+import {switchScreen} from '../../handlers/screen';
 
-// import onAnswer from './game-1-handler';
-//
-// let answer1Checked = ``;
-// let answer2Checked = ``;
-//
-// let screen = {};
-// let nextGame = {};
+import getAnswerResult from './game-1-handler';
+
+let screen = {};
+let nextGame = {};
 //
 // let answer;
 let answerKey;
@@ -40,10 +37,11 @@ let answerKey;
 export const game1Screen = (
     currentGame, currentQuestion, currentAnswers) => {
 
-  const updateGame = (state, question, answer) => {
-    answerKey = answersKey.pop();
-
+  const updateGame = (state, question, answersSet) => {
     const header = new HeaderView(state);
+    const game = new Game1View(state, question, answersSet);
+
+    answerKey = answersKey.pop();
     header.onReset = () => {
 
       while (answers.length) {
@@ -59,10 +57,21 @@ export const game1Screen = (
       introScreen();
     };
 
+    screen = Hunt[currentGame.type][currentGame.screen];
+    game.onAnswer = (answer1, answer2) => {
+
+      nextGame = getAnswer(currentGame, answerKey, getAnswerResult(
+          answer1, answer2,
+          answers, answerKey, screen));
+
+      currentGame = switchScreen(
+          nextGame, Hunt, nextGame.type, answerKey, answers);
+
+    };
+
+
     updateView(headerContainer, header);
-
-
-    updateView(screenContainer, new Game1View(state, question, answer));
+    updateView(screenContainer, game);
 
   };
 
@@ -71,29 +80,11 @@ export const game1Screen = (
   return gameContainerElement;
 
 
-  // screen = Hunt[currentGame.type][currentGame.screen];
-
-  // form.onclick = () => {
-  // answer1Checked = () => {
-  //   return answers1.find((it) => it.checked);
-  // };
-  // answer2Checked = () => {
-  //   return answers2.find((it) => it.checked);
-  // };
-  //
-  // const answered = () => {
-  //   return answer1Checked() && answer2Checked();
-  // };
-  //
   // if (answered()) {
   //
-  //   nextGame = getAnswer(currentGame, answerKey, onAnswer(
   //
-  //       answer1Checked().value, answer2Checked().value,
-  //       answers, answerKey, screen));
   //
-  //   currentGame = switchScreen(
-  //       nextGame, Hunt, nextGame.type, answerKey, answers);
+
   //
   //   if (typeof currentGame === `string`) {
   //     statsScreen(currentGame, answers);
