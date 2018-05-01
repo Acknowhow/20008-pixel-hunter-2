@@ -1,7 +1,7 @@
-// import answers, {introScreen} from './../intro/intro';
+import answers, {introScreen} from './../intro/intro';
 // import {game2Screen} from './../game-2/game-2';
 // import {statsScreen} from '../stats/stats';
-// import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
+import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
 
 import {centralContainer} from '../../handlers/screen';
 
@@ -12,6 +12,14 @@ import {changeView, updateView} from '../../../util/contractor';
 import FooterView from '../footer/footer-view';
 
 import {createElement} from "../../../util/contractor";
+
+const gameContainerElement = createElement();
+const headerContainer = createElement();
+const screenContainer = createElement();
+
+gameContainerElement.appendChild(headerContainer);
+gameContainerElement.appendChild(screenContainer);
+gameContainerElement.appendChild(new FooterView().element);
 
 // import getQuestion from '../../handlers/question';
 // import getAnswer from '../../handlers/answer';
@@ -26,38 +34,43 @@ import {createElement} from "../../../util/contractor";
 // let nextGame = {};
 //
 // let answer;
-// let answerKey;
+let answerKey;
+
 
 export const game1Screen = (
     currentGame, currentQuestion, currentAnswers) => {
 
-
   const updateGame = (state, question, answer) => {
+    answerKey = answersKey.pop();
 
-    updateView(centralContainer, new HeaderView(state));
-    updateView(centralContainer, new Game1View(state, question, answer));
+    const header = new HeaderView(state);
+    header.onReset = () => {
+
+      while (answers.length) {
+        answers.pop();
+      }
+
+      for (const answerItem of INITIAL_ANSWERS) {
+        answers.push(Object.assign({}, answerItem));
+      }
+
+      answerKey = 0;
+      answersKey.push(answerKey);
+      introScreen();
+    };
+
+    updateView(headerContainer, header);
+
+
+    updateView(screenContainer, new Game1View(state, question, answer));
 
   };
 
   updateGame(currentGame, currentQuestion, currentAnswers);
 
-  // answerKey = answersKey.pop();
+  return gameContainerElement;
 
 
-  // linkBack.onclick = () => {
-  //
-  //   while (answers.length) {
-  //     answers.pop();
-  //   }
-  //
-  //   for (const answerItem of INITIAL_ANSWERS) {
-  //     answers.push(Object.assign({}, answerItem));
-  //   }
-  //
-  //   answerKey = 0;
-  //   answersKey.push(answerKey);
-  //   introScreen();
-  // };
   // screen = Hunt[currentGame.type][currentGame.screen];
 
   // form.onclick = () => {

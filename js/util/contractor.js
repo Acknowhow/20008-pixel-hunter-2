@@ -1,7 +1,7 @@
 import {centralContainer} from '../modules/handlers/screen';
 
 export const createElement = (
-    template = ``, tagName = `template`, className = []) => {
+    template = ``, tagName = `div`, className = []) => {
 
   const outer = document.createElement(tagName);
   if (className.length) {

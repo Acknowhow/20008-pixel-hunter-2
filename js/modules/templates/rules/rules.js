@@ -19,7 +19,7 @@ export default () => {
   };
 
   rules.onNext = () => {
-    game1Screen(currentGame, question, answers);
+    changeView(game1Screen(currentGame, question, answers));
   };
 
   const gameContainer = changeView(rules.element);
