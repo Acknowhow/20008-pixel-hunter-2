@@ -1,5 +1,4 @@
 import {currentGame, Hunt} from '../../../data/hunt';
-// import IntroView from './../intro/intro-view';
 import {changeView} from '../../../util/contractor';
 
 import getQuestion from '../../handlers/question';
