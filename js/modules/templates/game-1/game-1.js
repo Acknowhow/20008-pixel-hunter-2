@@ -3,11 +3,10 @@ import answers, {introScreen} from './../intro/intro';
 // import {statsScreen} from '../stats/stats';
 import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
 
-import {centralContainer} from '../../handlers/screen';
 
 import HeaderView from '../header/header-view';
 import Game1View from './game-1-view';
-import {changeView, updateView} from '../../../util/contractor';
+import {updateView} from '../../../util/contractor';
 
 import FooterView from '../footer/footer-view';
 
@@ -21,7 +20,7 @@ gameContainerElement.appendChild(headerContainer);
 gameContainerElement.appendChild(screenContainer);
 gameContainerElement.appendChild(new FooterView().element);
 
-// import getQuestion from '../../handlers/question';
+import getQuestion from '../../handlers/question';
 import getAnswer from '../../handlers/answer';
 import {switchScreen} from '../../handlers/screen';
 
@@ -29,10 +28,9 @@ import getAnswerResult from './game-1-handler';
 
 let screen = {};
 let nextGame = {};
-//
-// let answer;
-let answerKey;
 
+let answer;
+let answerKey;
 
 export const game1Screen = (
     currentGame, currentQuestion, currentAnswers) => {
@@ -67,8 +65,33 @@ export const game1Screen = (
       currentGame = switchScreen(
           nextGame, Hunt, nextGame.type, answerKey, answers);
 
-    };
+      if (typeof currentGame === `string`) {
+        // statsScreen(currentGame, answers);
 
+      } else {
+        screen = Hunt[currentGame.type][currentGame.screen];
+        answer = answers[answerKey];
+
+        switch (answer.result) {
+          case NEXT_TYPE:
+
+            answerKey++;
+            answersKey.push(answerKey);
+
+            // game2Screen(currentGame, getQuestion(screen), answers);
+            return;
+
+          default:
+
+            answerKey++;
+            answersKey.push(answerKey);
+            game1Screen(currentGame, getQuestion(screen), answers);
+            return;
+        }
+
+      }
+
+    };
 
     updateView(headerContainer, header);
     updateView(screenContainer, game);
@@ -78,38 +101,5 @@ export const game1Screen = (
   updateGame(currentGame, currentQuestion, currentAnswers);
 
   return gameContainerElement;
-
-
-  // if (answered()) {
-  //
-  //
-  //
-
-  //
-  //   if (typeof currentGame === `string`) {
-  //     statsScreen(currentGame, answers);
-  //
-  //   } else {
-  //     screen = Hunt[currentGame.type][currentGame.screen];
-  //     answer = answers[answerKey];
-  //
-  //     switch (answer.result) {
-  //       case NEXT_TYPE:
-  //
-  //         answerKey++;
-  //         answersKey.push(answerKey);
-  //
-  //         game2Screen(currentGame, getQuestion(screen), answers);
-  //         return;
-  //
-  //       default:
-  //
-  //         answerKey++;
-  //         answersKey.push(answerKey);
-  //         game1Screen(currentGame, getQuestion(screen), answers);
-  //         return;
-  //     }
-  //   }
-  // }
-  // };
 };
+
