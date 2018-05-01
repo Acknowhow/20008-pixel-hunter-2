@@ -10,9 +10,9 @@ import {switchScreen} from '../../handlers/screen';
 import getAnswerResult from './game-2-handler';
 
 import {createElement, updateView} from "../../../util/contractor";
-import FooterView from '../footer/footer-view';
-import Game2View from '../game-2/game-2-view';
 import HeaderView from '../header/header-view';
+import Game2View from '../game-2/game-2-view';
+import FooterView from '../footer/footer-view';
 
 const gameContainerElement = createElement();
 const headerContainer = createElement();
