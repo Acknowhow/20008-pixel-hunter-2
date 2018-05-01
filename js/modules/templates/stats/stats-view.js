@@ -21,8 +21,10 @@ export default class StatsView extends AbstractView {
   }
 
   get template() {
-    return `<div class="result">
-    <h1>${this.state.find((it) => it.correct === `unknown`) ? `Поражение` : textData.title}</h1>
+    return `
+  ${textData.header}
+  <div class="result">
+    <h1>${this.answers.find((it) => it.correct === `unknown`) ? `Поражение` : textData.title}</h1>
     <table class="result__table">
       <tr>
         <td class="result__number">1.</td>

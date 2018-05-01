@@ -63,7 +63,7 @@ export const game1Screen = (
           nextGame, Hunt, nextGame.type, answerKey, answers);
 
       if (typeof currentGame === `string`) {
-        changeView(statsScreen(currentGame, answers));
+        statsScreen(currentGame, answers);
 
       } else {
         screen = Hunt[currentGame.type][currentGame.screen];

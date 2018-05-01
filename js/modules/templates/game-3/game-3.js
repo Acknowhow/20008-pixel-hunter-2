@@ -62,8 +62,7 @@ export const game3Screen = (
           nextGame, Hunt, nextGame.type, answerKey, answers);
 
       if (typeof currentGame === `string`) {
-        console.log(currentGame);
-        changeView(statsScreen(currentGame, answers));
+        statsScreen(currentGame, answers);
 
       } else {
 
@@ -76,8 +75,7 @@ export const game3Screen = (
             answerKey++;
             answersKey.push(answerKey);
 
-            console.log(currentGame);
-            changeView(statsScreen(currentGame, answers));
+            statsScreen(currentGame, answers);
             return;
 
           default:

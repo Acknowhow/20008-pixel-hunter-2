@@ -1,12 +1,10 @@
 import answers, {introScreen} from './../intro/intro';
 
 import {answersKey, INITIAL_ANSWERS} from '../../../data/hunt';
-import {createElement} from '../../../util/contractor';
+import {changeView} from '../../../util/contractor';
 
 import StatsView from './stats-view';
 import FooterView from '../footer/footer-view';
-
-const gameContainerElement = createElement();
 
 let answerKey;
 
@@ -31,6 +29,7 @@ export const statsScreen = (currentState, answersArray) => {
     introScreen();
   };
 
-  gameContainerElement.appendChild(game.element);
-  gameContainerElement.appendChild(new FooterView().element);
+  const gameContainer = changeView(game.element);
+  gameContainer.appendChild(new FooterView().element);
+
 };
