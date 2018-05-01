@@ -1,28 +1,35 @@
-import {introScreen} from './../intro/intro';
-import {insertIntoContainer} from './../../module-constructor';
+import answers, {introScreen} from './../intro/intro';
 
 import {answersKey, INITIAL_ANSWERS} from '../../../data/hunt';
+import {changeView} from '../../../util/contractor';
 
-import statsTemplate from './stats-view';
-import text from './stats-data';
+import StatsView from './stats-view';
+import FooterView from '../footer/footer-view';
 
 let answerKey;
 
 export const statsScreen = (currentState, answersArray) => {
-  insertIntoContainer(statsTemplate(currentState, text, answersArray));
 
-  const linkBack = document.querySelector(`.header__back`);
-  linkBack.onclick = () => {
-    while (answersArray.length) {
-      answersArray.pop();
+  const game = new StatsView(currentState, answersArray);
+
+  answerKey = answersKey.pop();
+
+  game.onReset = () => {
+
+    while (answers.length) {
+      answers.pop();
     }
 
     for (const answerItem of INITIAL_ANSWERS) {
-      answersArray.push(Object.assign({}, answerItem));
+      answers.push(Object.assign({}, answerItem));
     }
 
     answerKey = 0;
     answersKey.push(answerKey);
     introScreen();
   };
+
+  const gameContainer = changeView(game.element);
+  gameContainer.appendChild(new FooterView().element);
+
 };

@@ -6,14 +6,14 @@ const nextScreenParam = (str) => {
   let [string, numeric] = str.split(`-`);
   numeric++;
 
-  string = string + `-` + `${numeric}`;
+  string = `${string}-${numeric}`;
   return string;
 };
 
-const getNextType = (_gameObject, _huntData,
+const getNextType = (gameObject, huntData,
     nextType, initialScreen) => {
 
-  if (!_huntData[nextType]) {
+  if (!huntData[nextType]) {
 
     answer.result = END;
     return answer.result;
@@ -21,11 +21,11 @@ const getNextType = (_gameObject, _huntData,
 
   answer.result = NEXT_TYPE;
 
-  _gameObject = Object.assign(
-      {}, _gameObject, {type: nextType},
+  gameObject = Object.assign(
+      {}, gameObject, {type: nextType},
       {screen: initialScreen});
 
-  return _gameObject;
+  return gameObject;
 };
 
 const getNextScreen = (gameObject, huntData,
@@ -43,6 +43,8 @@ const getNextScreen = (gameObject, huntData,
 
   return gameObject;
 };
+
+export const centralContainer = document.querySelector(`.central`);
 
 export const switchScreen = (game, data, type, answerKey, answers) => {
   answer = answers[answerKey];

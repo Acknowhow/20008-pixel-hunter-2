@@ -1,13 +1,23 @@
-import {makeTemplate} from '../../module-constructor';
-import {drawHeader} from '../header/header';
+import textData from './game-2-data';
 import {drawnAnswers} from '../../handlers/answers';
+import AbstractView from '../../../util/view';
+import {createElement} from '../../../util/contractor';
 
-export default (state, textData, questionData, answersData) => {
-  const content = `
+let answerChecked = ``;
+
+export default class Game2View extends AbstractView {
+  constructor(question, answers) {
+    super();
+
+    this.question = question;
+    this.answers = answers;
+  }
+
+  get template() {
+    return `
     <p class="game__task">${textData.title}</p>
-    
     <form class="game__content  game__content--wide">
-      ${questionData.map(({option, params}) => `<div class="game__option">
+      ${this.question.map(({option, params}) => `<div class="game__option">
         <img src="${params.src}" alt="${option}" width="${params.width}"
          height="${params.height}">
         <label class="game__answer game__answer--wide game__answer--photo">
@@ -23,10 +33,39 @@ export default (state, textData, questionData, answersData) => {
     
     <div class="stats">
       <ul class="stats">
-        ${drawnAnswers(answersData)};
+        ${drawnAnswers(this.answers)};
       </ul>
     </div>`;
+  }
 
-  const article = `${drawHeader(state)}<div class="game">${content}</div>`;
-  return makeTemplate(article);
-};
+  onAnswer() {
+
+  }
+
+  render() {
+    return createElement(this.template, `div`, [`game`]);
+  }
+
+  bind() {
+    const form = this.element.querySelector(`.game__content`);
+    const answers1 = Array.from(
+        form.querySelectorAll(`input[name='question1']`));
+
+    form.onclick = (event) => {
+      answerChecked = () => {
+        return answers1.find((it) => it.checked);
+      };
+
+      const answered = () => {
+        return answerChecked();
+      };
+
+      if (answered()) {
+        event.stopPropagation();
+        this.onAnswer(answerChecked().value);
+      }
+    };
+  }
+}
+
+

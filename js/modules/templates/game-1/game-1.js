@@ -2,19 +2,26 @@ import answers, {introScreen} from './../intro/intro';
 import {game2Screen} from './../game-2/game-2';
 import {statsScreen} from '../stats/stats';
 import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
-import text from './game-1-data';
+import HeaderView from '../header/header-view';
+import Game1View from './game-1-view';
+import {changeView, updateView} from '../../../util/contractor';
 
-import game1Template from './game-1-view';
-import {insertIntoContainer} from './../../module-constructor';
+import FooterView from '../footer/footer-view';
+import {createElement} from '../../../util/contractor';
 
 import getQuestion from '../../handlers/question';
 import getAnswer from '../../handlers/answer';
 import {switchScreen} from '../../handlers/screen';
 
-import onAnswer from './game-1-handler';
+import getAnswerResult from './game-1-handler';
 
-let answer1Checked = ``;
-let answer2Checked = ``;
+const gameContainerElement = createElement();
+const headerContainer = createElement();
+const screenContainer = createElement();
+
+gameContainerElement.appendChild(headerContainer);
+gameContainerElement.appendChild(screenContainer);
+gameContainerElement.appendChild(new FooterView().element);
 
 let screen = {};
 let nextGame = {};
@@ -24,55 +31,32 @@ let answerKey;
 
 export const game1Screen = (
     currentGame, currentQuestion, currentAnswers) => {
-  insertIntoContainer(
-      game1Template(currentGame, text, currentQuestion, currentAnswers));
 
-  answerKey = answersKey.pop();
+  const updateGame = (state, question, answersSet) => {
+    const header = new HeaderView(state);
+    const game = new Game1View(question, answersSet);
 
-  const form = document.querySelector(`.game__content`);
+    answerKey = answersKey.pop();
+    header.onReset = () => {
 
-  const answers1 = Array.from(
-      form.querySelectorAll(`input[name='question1']`));
+      while (answers.length) {
+        answers.pop();
+      }
 
-  const answers2 = Array.from(
-      form.querySelectorAll(`input[name='question2']`));
+      for (const answerItem of INITIAL_ANSWERS) {
+        answers.push(Object.assign({}, answerItem));
+      }
 
-  const linkBack = document.querySelector(`.header__back`);
-
-
-  linkBack.onclick = () => {
-
-    while (answers.length) {
-      answers.pop();
-    }
-
-    for (const answerItem of INITIAL_ANSWERS) {
-      answers.push(Object.assign({}, answerItem));
-    }
-
-    answerKey = 0;
-    answersKey.push(answerKey);
-    introScreen();
-  };
-  screen = Hunt[currentGame.type][currentGame.screen];
-
-  form.onclick = () => {
-    answer1Checked = () => {
-      return answers1.find((it) => it.checked);
-    };
-    answer2Checked = () => {
-      return answers2.find((it) => it.checked);
+      answerKey = 0;
+      answersKey.push(answerKey);
+      introScreen();
     };
 
-    const answered = () => {
-      return answer1Checked() && answer2Checked();
-    };
+    screen = Hunt[currentGame.type][currentGame.screen];
+    game.onAnswer = (answer1, answer2) => {
 
-    if (answered()) {
-
-      nextGame = getAnswer(currentGame, answerKey, onAnswer(
-
-          answer1Checked().value, answer2Checked().value,
+      nextGame = getAnswer(currentGame, answerKey, getAnswerResult(
+          answer1, answer2,
           answers, answerKey, screen));
 
       currentGame = switchScreen(
@@ -91,7 +75,7 @@ export const game1Screen = (
             answerKey++;
             answersKey.push(answerKey);
 
-            game2Screen(currentGame, getQuestion(screen), answers);
+            changeView(game2Screen(currentGame, getQuestion(screen), answers));
             return;
 
           default:
@@ -102,8 +86,14 @@ export const game1Screen = (
             return;
         }
       }
-    }
-  };
-};
+    };
 
+    updateView(headerContainer, header);
+    updateView(screenContainer, game);
+
+  };
+
+  updateGame(currentGame, currentQuestion, currentAnswers);
+  return gameContainerElement;
+};
 

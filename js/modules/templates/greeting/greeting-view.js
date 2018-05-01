@@ -1,17 +1,41 @@
-import {makeTemplate} from './../../module-constructor';
+import greetingData from './greeting-data';
+import AbstractView from '../../../util/view';
 
-export default (textData) => {
-  const content = `<div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
+import {createElement} from '../../../util/contractor';
+
+export default class GreetingView extends AbstractView {
+  constructor() {
+    super();
+  }
+
+  get template() {
+    return `<div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
     <h1 class="greeting__asterisk">*</h1>
     <div class="greeting__challenge">
-      <h3>${textData.title}</h3>
-      <p>${textData.paragraph}</p>
+      <h3>${greetingData.title}</h3>
+      <p>${greetingData.paragraph}</p>
     </div>
     <div class="greeting__continue">
       <span><img src="img/arrow_right.svg" width="64" height="64" alt="Next"></span>
     </div>`;
-  const article = `<div class="greeting central--blur">${content}</div>`;
+  }
 
-  return makeTemplate(article);
-};
+  render() {
+    return createElement(this.template, `div`, [`greeting`, `central--blur`]);
+  }
 
+  bind() {
+    const next = this.element.querySelector(`img[alt='Next']`);
+
+    next.addEventListener(`click`, (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+
+      this.onNext();
+    });
+  }
+
+  onNext() {
+
+  }
+}

@@ -1,4 +1,8 @@
-import {makeTemplate} from '../../module-constructor';
+import AbstractView from '../../../util/view';
+import {createElement} from '../../../util/contractor';
+
+import textData from './stats-data';
+
 import {TIME_FAST, TIME_SLOW} from '../../../data/hunt';
 import {scoreCalc} from '../../../util/score';
 import {
@@ -6,30 +10,57 @@ import {
   drawAnswersScore,
   drawSpeedBonus,
   drawLifeBonus,
-  drawSlowPenalty} from "./handler/stats-handler";
+  drawSlowPenalty} from './handler/stats-handler';
 
-export default (state, textData, answersData) => {
-  const content = `<div class="result">
-    <h1>${answersData.find((it) => it.correct === `unknown`) ? `Поражение` : textData.title}</h1>
+export default class StatsView extends AbstractView {
+  constructor(state, answers) {
+    super();
+
+    this.state = state;
+    this.answers = answers;
+  }
+
+  get template() {
+    return `
+  ${textData.header}
+  <div class="result">
+    <h1>${this.answers.find((it) => it.correct === `unknown`) ? `Поражение` : textData.title}</h1>
     <table class="result__table">
       <tr>
         <td class="result__number">1.</td>
         <td colspan="2">
           <ul class="stats">
-            ${drawnAnswers(answersData)}
+            ${drawnAnswers(this.answers)}
           </ul>
         </td>
-        ${drawAnswersScore(answersData)}
+        ${drawAnswersScore(this.answers)}
       </tr>
-      ${(answersData.find((it) => it.time < TIME_FAST)) ? drawSpeedBonus(answersData) : ``}
-      ${state.lives ? drawLifeBonus(state.lives) : ``}
-      ${(answersData.find((it) => it.time > TIME_SLOW)) ? drawSlowPenalty(answersData) : ``}
+      ${(this.answers.find((it) => it.time < TIME_FAST)) ? drawSpeedBonus(this.answers) : ``}
+      ${this.state.lives ? drawLifeBonus(this.state.lives) : ``}
+      ${(this.answers.find((it) => it.time > TIME_SLOW)) ? drawSlowPenalty(this.answers) : ``}
       <tr>
-        <td colspan="5" class="result__total  result__total--final">${answersData.find((it) => it.correct === `unknown`) ? `FAIL` : scoreCalc(answersData)}</td>
+        <td colspan="5" class="result__total  result__total--final">${this.answers.find((it) => it.correct === `unknown`) ? `FAIL` : scoreCalc(this.answers)}</td>
       </tr>
     </table>
   </div>`;
-  const article = `${textData.header}<div class="result">${content}</div>`;
+  }
+  onReset() {
 
-  return makeTemplate(article);
-};
+  }
+
+  render() {
+    return createElement(this.template, `div`, [`rules`]);
+  }
+
+  bind() {
+    const linkBack = this.element.querySelector(`.header__back`);
+    linkBack.addEventListener(`click`, (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      this.onReset();
+    });
+  }
+}
+
+

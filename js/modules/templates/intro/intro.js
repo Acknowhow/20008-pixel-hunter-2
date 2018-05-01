@@ -1,9 +1,9 @@
-import {insertIntoContainer} from '../../module-constructor';
-import introTemplate from './intro-view';
-import greetingScreen from './../greeting/greeting';
+import {INITIAL_ANSWERS} from "../../../data/hunt";
 
-import {INITIAL_ANSWERS} from '../../../data/hunt';
-import text from './intro-data';
+import {changeView} from '../../../util/contractor';
+import IntroView from './intro-view';
+import greetingScreen from './../greeting/greeting';
+import FooterView from './../footer/footer-view';
 
 const answers = [];
 
@@ -12,18 +12,11 @@ for (const answer of INITIAL_ANSWERS) {
 }
 
 export const introScreen = () => {
-  insertIntoContainer(introTemplate(text));
-  const asterisk = document.querySelector(`.intro__asterisk`);
+  const intro = new IntroView();
+  intro.onNext = greetingScreen;
 
-  const next = () => {
-    asterisk.removeEventListener(`click`, next);
-
-    setTimeout(() => {
-      greetingScreen();
-    }, 0);
-  };
-
-  asterisk.addEventListener(`click`, next);
+  const gameContainer = changeView(intro.element);
+  gameContainer.appendChild(new FooterView().element);
 };
 
 export default answers;
