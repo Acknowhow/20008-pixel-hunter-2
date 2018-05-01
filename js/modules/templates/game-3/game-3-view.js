@@ -6,7 +6,7 @@ let selectedOption;
 let selectedImage;
 let selectedImageKey;
 
-export default class Game2View extends AbstractView {
+export default class Game3View extends AbstractView {
   constructor(screenData, answers) {
     super();
 
@@ -19,15 +19,15 @@ export default class Game2View extends AbstractView {
     <p class="game__task">${this.screenData.title}</p>
     
     <form class="game__content  game__content--triple">
+      ${this.screenData.option1.map((param, key) => `<div class="game__option">
+        <img src="${param.src}" data-value="${param.value}" alt="option1" width="${param.width}"
+         height="${param.height}" data-key="${key}">
+      </div>`).join(``)}
       <style>
         img[alt='option1'] {
           pointer-events: none;
         }
-      </style>
-      ${this.screenData.option1.map((param, key) => `<div class="game__option">
-        <img src="${param.src}" data-value="${param.value}" alt="option1" width="${param.width}"
-         height="${param.height}" data-key="${key}">
-      </div>`).join(``)}      
+      </style>      
     </form>
     
     <div class="stats">

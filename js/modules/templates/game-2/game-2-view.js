@@ -16,7 +16,6 @@ export default class Game2View extends AbstractView {
   get template() {
     return `
     <p class="game__task">${textData.title}</p>
-   
     <form class="game__content  game__content--wide">
       ${this.question.map(({option, params}) => `<div class="game__option">
         <img src="${params.src}" alt="${option}" width="${params.width}"
@@ -52,7 +51,7 @@ export default class Game2View extends AbstractView {
     const answers1 = Array.from(
         form.querySelectorAll(`input[name='question1']`));
 
-    form.onclick = () => {
+    form.onclick = (event) => {
       answerChecked = () => {
         return answers1.find((it) => it.checked);
       };
@@ -62,6 +61,7 @@ export default class Game2View extends AbstractView {
       };
 
       if (answered()) {
+        event.stopPropagation();
         this.onAnswer(answerChecked().value);
       }
     };

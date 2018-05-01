@@ -1,5 +1,5 @@
 import answers, {introScreen} from './../intro/intro';
-// import {game3Screen} from './../game-3/game-3';
+import {game3Screen} from './../game-3/game-3';
 // import {statsScreen} from '../stats/stats';
 import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
 
@@ -9,7 +9,7 @@ import {switchScreen} from '../../handlers/screen';
 
 import getAnswerResult from './game-2-handler';
 
-import {createElement, updateView} from "../../../util/contractor";
+import {createElement, updateView, changeView} from "../../../util/contractor";
 import HeaderView from '../header/header-view';
 import Game2View from '../game-2/game-2-view';
 import FooterView from '../footer/footer-view';
@@ -71,11 +71,10 @@ export const game2Screen = (
 
         switch (answer.result) {
           case NEXT_TYPE:
-
             answerKey++;
             answersKey.push(answerKey);
 
-            // game3Screen(currentGame, screen, answers);
+            changeView(game3Screen(currentGame, screen, answers));
 
             return;
 

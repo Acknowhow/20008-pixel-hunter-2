@@ -1,16 +1,16 @@
 import answers, {introScreen} from './../intro/intro';
-import {statsScreen} from './../stats/stats';
+// import {statsScreen} from './../stats/stats';
 import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
 
-import game3Template from './game-3-view';
-
-import onAnswer from './../game-3/game-3-handler';
 import getAnswer from '../../handlers/answer';
 import {switchScreen} from '../../handlers/screen';
-import {createElement} from "../../../util/contractor";
-import FooterView from "../footer/footer-view";
-import HeaderView from "../header/header-view";
-import Game2View from "../game-2/game-2-view";
+
+import getAnswerResult from './../game-3/game-3-handler';
+
+import {createElement, updateView} from '../../../util/contractor';
+import HeaderView from '../header/header-view';
+import Game3View from '../game-3/game-3-view';
+import FooterView from '../footer/footer-view';
 
 const gameContainerElement = createElement();
 const headerContainer = createElement();
@@ -28,12 +28,13 @@ let answerKey;
 
 export const game3Screen = (
     currentGame, currentQuestion, currentAnswers) => {
+
   const updateGame = (state, question, answersSet) => {
+
     const header = new HeaderView(state);
-    const game = new Game2View(question, answersSet);
+    const game = new Game3View(question, answersSet);
 
     answerKey = answersKey.pop();
-
 
     header.onReset = () => {
 
@@ -51,18 +52,17 @@ export const game3Screen = (
     };
 
     screen = Hunt[currentGame.type][currentGame.screen];
+    game.onAnswer = (image, imageKey) => {
 
-    game.onAnswer(answer1, answer2) => {
-
-      nextGame = getAnswer(currentGame, answerKey, onAnswer(
-        answer1, answer2, answerKey, answers,
-        screen));
+      nextGame = getAnswer(currentGame, answerKey, getAnswerResult(
+          image, imageKey, answerKey, answers,
+          screen));
 
       currentGame = switchScreen(
-        nextGame, Hunt, nextGame.type, answerKey, answers);
+          nextGame, Hunt, nextGame.type, answerKey, answers);
 
       if (typeof currentGame === `string`) {
-        statsScreen(currentGame, answers);
+        // statsScreen(currentGame, answers);
 
       } else {
 
@@ -75,7 +75,7 @@ export const game3Screen = (
             answerKey++;
             answersKey.push(answerKey);
 
-            statsScreen(currentGame, answers);
+            // statsScreen(currentGame, answers);
             return;
 
           default:
@@ -86,9 +86,11 @@ export const game3Screen = (
             return;
         }
       }
-
-    }
-
-
+    };
+    updateView(headerContainer, header);
+    updateView(screenContainer, game);
   };
+
+  updateGame(currentGame, currentQuestion, currentAnswers);
+  return gameContainerElement;
 };
