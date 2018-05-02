@@ -9,7 +9,7 @@ import {changeView, updateView} from '../../../util/contractor';
 import FooterView from '../footer/footer-view';
 import {createElement} from '../../../util/contractor';
 
-import getQuestion from '../../handlers/question';
+// import getQuestion from '../../handlers/question';
 import getAnswer from '../../handlers/answer';
 import {switchScreen} from '../../handlers/screen';
 
@@ -53,6 +53,7 @@ export const game1Screen = (
     };
 
     screen = Hunt[currentGame.type][currentGame.screen];
+
     game.onAnswer = (answer1, answer2) => {
 
       nextGame = getAnswer(currentGame, answerKey, getAnswerResult(
@@ -75,14 +76,14 @@ export const game1Screen = (
             answerKey++;
             answersKey.push(answerKey);
 
-            changeView(game2Screen(currentGame, getQuestion(screen), answers));
+            changeView(game2Screen(currentGame, screen, answers));
             return;
 
           default:
 
             answerKey++;
             answersKey.push(answerKey);
-            game1Screen(currentGame, getQuestion(screen), answers);
+            game1Screen(currentGame, screen, answers);
             return;
         }
       }

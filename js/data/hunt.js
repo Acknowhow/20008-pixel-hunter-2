@@ -39,91 +39,111 @@ export const END = `GAME OVER`;
 export const Hunt = {
   'type-0': {
     'screen-0': {
-      option1: {
-        question: `question1`,
-        src: `http://i.imgur.com/5kcp9i0.jpg`,
-        name: `Man bearded`,
-        width: `468`,
-        height: `458`,
-
-        [PHOTO]: 0,
-        [PAINT]: 1
+      text: {
+        title: `Угадайте для каждого изображения фото или рисунок?`
       },
-      option2: {
-        question: `question2`,
-        src: `http://i.imgur.com/8aNXpLk.jpg`,
-        name: `Morgan Freeman`,
-        width: `468`,
-        height: `458`,
+      options: {
+        option1: {
+          question: `question1`,
+          src: `http://i.imgur.com/5kcp9i0.jpg`,
+          name: `Man bearded`,
+          width: `468`,
+          height: `458`,
 
-        [PHOTO]: 1,
-        [PAINT]: 0
-      }
+          [PHOTO]: 0,
+          [PAINT]: 1
+        },
+        option2: {
+          question: `question2`,
+          src: `http://i.imgur.com/8aNXpLk.jpg`,
+          name: `Morgan Freeman`,
+          width: `468`,
+          height: `458`,
+
+          [PHOTO]: 1,
+          [PAINT]: 0
+        }
+      },
     },
     'screen-1': {
-      option1: {
-        question: `question1`,
-        src: `http://i.imgur.com/PKtMBLt.jpg`,
-        name: `Grandma Indian`,
-        width: `468`,
-        height: `458`,
-
-        [PHOTO]: 1,
-        [PAINT]: 0
+      text: {
+        title: `Угадайте для каждого изображения фото или рисунок?`
       },
-      option2: {
-        question: `question2`,
-        src: `http://i.imgur.com/aA3KkAW.jpg`,
-        name: `Woman thoughtful`,
-        width: `468`,
-        height: `458`,
+      options: {
+        option1: {
+          question: `question1`,
+          src: `http://i.imgur.com/PKtMBLt.jpg`,
+          name: `Grandma Indian`,
+          width: `468`,
+          height: `458`,
 
-        [PHOTO]: 0,
-        [PAINT]: 1
-      }
+          [PHOTO]: 1,
+          [PAINT]: 0
+        },
+        option2: {
+          question: `question2`,
+          src: `http://i.imgur.com/aA3KkAW.jpg`,
+          name: `Woman thoughtful`,
+          width: `468`,
+          height: `458`,
+
+          [PHOTO]: 0,
+          [PAINT]: 1
+        }
+      },
     },
     'screen-2': {
-      option1: {
-        question: `question1`,
-        src: `https://i.imgur.com/7xx5YHZ.jpg`,
-        name: `Mercedes`,
-        width: `468`,
-        height: `458`,
-
-        [PHOTO]: 1,
-        [PAINT]: 0
+      text: {
+        title: `Угадайте для каждого изображения фото или рисунок?`
       },
-      option2: {
-        question: `question2`,
-        src: `https://i.imgur.com/KbQm9NJ.jpg`,
-        name: `Retro car`,
-        width: `468`,
-        height: `458`,
+      options: {
+        option1: {
+          question: `question1`,
+          src: `https://i.imgur.com/7xx5YHZ.jpg`,
+          name: `Mercedes`,
+          width: `468`,
+          height: `458`,
 
-        [PHOTO]: 0,
-        [PAINT]: 1
-      }
+          [PHOTO]: 1,
+          [PAINT]: 0
+        },
+        option2: {
+          question: `question2`,
+          src: `https://i.imgur.com/KbQm9NJ.jpg`,
+          name: `Retro car`,
+          width: `468`,
+          height: `458`,
+
+          [PHOTO]: 0,
+          [PAINT]: 1
+        }
+      },
     },
     'screen-3': {
-      option1: {
-        question: `question1`,
-        src: `https://i.imgur.com/Br8HagL.jpg`,
-        name: `Motel`,
-        width: `468`,
-        height: `458`,
-
-        [PHOTO]: 1,
-        [PAINT]: 0
+      text: {
+        title: `Угадайте для каждого изображения фото или рисунок?`
       },
-      option2: {
-        question: `question2`,
-        src: `https://i.imgur.com/oF5st69.jpg`,
-        name: `Town`,
-        width: `468`,
-        height: `458`,
+      options: {
+        option1: {
+          question: `question1`,
+          src: `https://i.imgur.com/Br8HagL.jpg`,
+          name: `Motel`,
+          width: `468`,
+          height: `458`,
 
-        [PHOTO]: 0,
-        [PAINT]: 1
+          [PHOTO]: 1,
+          [PAINT]: 0
+        },
+        option2: {
+          question: `question2`,
+          src: `https://i.imgur.com/oF5st69.jpg`,
+          name: `Town`,
+          width: `468`,
+          height: `458`,
+
+          [PHOTO]: 0,
+          [PAINT]: 1
+        }
       }
     }
   },

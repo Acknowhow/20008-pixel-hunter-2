@@ -16,9 +16,10 @@ export default class Game1View extends AbstractView {
 
   get template() {
     return `
-    <p class="game__task">${textData.title}</p>
+    <p class="game__task">${this.question.text.title}</p>
     <form class="game__content">
-      ${this.question.map(({option, params}) => `<div class="game__option">
+      ${Object.keys(this.question.options).map((option) => (
+    {option, params: this.question.options[option]})).map(({option, params}) =>`<div class="game__option">
         <img src="${params.src}" alt="${option}" width="${params.width}"
          height="${params.height}">
         <label class="game__answer game__answer--photo">
