@@ -1,7 +1,6 @@
 import AbstractView from '../../../util/view';
 import {createElement} from '../../../util/contractor';
 
-import textData from './stats-data';
 
 import {TIME_FAST, TIME_SLOW} from '../../../data/hunt';
 import {scoreCalc} from '../../../util/score';
@@ -22,9 +21,16 @@ export default class StatsView extends AbstractView {
 
   get template() {
     return `
-  ${textData.header}
+  <header class="header">
+    <div class="header__back">
+      <span class="back">
+        <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
+        <img src="img/logo_small.svg" width="101" height="44">
+      </span>
+    </div>
+  </header>
   <div class="result">
-    <h1>${this.answers.find((it) => it.correct === `unknown`) ? `Поражение` : textData.title}</h1>
+    <h1>${this.answers.find((it) => it.correct === `unknown`) ? `Поражение` : `Победа`}</h1>
     <table class="result__table">
       <tr>
         <td class="result__number">1.</td>
