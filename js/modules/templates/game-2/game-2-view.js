@@ -62,7 +62,7 @@ export default class Game2View extends AbstractView {
 
       if (answered()) {
         event.stopPropagation();
-        this.onAnswer(answerChecked().value);
+        this.onAnswer([answerChecked().value]);
       }
     };
   }

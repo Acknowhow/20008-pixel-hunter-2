@@ -8,9 +8,9 @@ const correct = (userAnswer, userAnswerKey, currentScreen) => {
   return currentScreen.options[`option1`][userAnswerKey][userAnswer];
 };
 
-export default (array) => {
-  if (array.length === 5) {
-    [answer, answerKey, answersArrayKey, answersArray, screen] = array;
+export default (argumentsArray) => {
+  if (argumentsArray.length === 5) {
+    [answer, answerKey, answersArrayKey, answersArray, screen] = argumentsArray;
   }
   if (correct(answer, answerKey, screen)) {
 
