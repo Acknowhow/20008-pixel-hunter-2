@@ -5,7 +5,7 @@ let answersArray;
 let screen;
 
 const correct = (userAnswer, userAnswerKey, currentScreen) => {
-  return currentScreen[`option1`][userAnswerKey][userAnswer];
+  return currentScreen.options[`option1`][userAnswerKey][userAnswer];
 };
 
 export default (array) => {

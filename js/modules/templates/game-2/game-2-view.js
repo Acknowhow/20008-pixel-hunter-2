@@ -1,4 +1,3 @@
-import textData from './game-2-data';
 import {drawnAnswers} from '../../handlers/answers';
 import AbstractView from '../../../util/view';
 import {createElement} from '../../../util/contractor';
@@ -15,9 +14,7 @@ export default class Game2View extends AbstractView {
 
   get template() {
     return `
-    ${console.log(this.question)}
-    ${console.log(this.answers)}
-    <p class="game__task">${textData.title}</p>
+    <p class="game__task">${this.question.text.title}</p>
     <form class="game__content  game__content--wide">
       ${Object.keys(this.question.options).map((option) => (
     {option, params: this.question.options[option]})).map(({option, params}) => `<div class="game__option">

@@ -1,5 +1,5 @@
 const correct = (userAnswer, currentScreen) => {
-  return currentScreen[`option1`][userAnswer];
+  return currentScreen.options[`option1`][userAnswer];
 };
 
 export default (answer, answersArray, answerArrayKey, screen) => {

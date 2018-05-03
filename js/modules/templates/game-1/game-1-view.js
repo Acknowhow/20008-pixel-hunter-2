@@ -1,6 +1,6 @@
 import {drawnAnswers} from '../../handlers/answers';
 import AbstractView from '../../../util/view';
-import {createElement} from "../../../util/contractor";
+import {createElement} from '../../../util/contractor';
 
 let answer1Checked = ``;
 let answer2Checked = ``;

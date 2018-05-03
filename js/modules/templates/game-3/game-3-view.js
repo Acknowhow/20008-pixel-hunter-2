@@ -7,19 +7,19 @@ let selectedImage;
 let selectedImageKey;
 
 export default class Game3View extends AbstractView {
-  constructor(screenData, answers) {
+  constructor(question, answers) {
     super();
 
-    this.screenData = screenData;
+    this.question = question;
     this.answers = answers;
   }
 
   get template() {
     return `
-    <p class="game__task">${this.screenData.title}</p>
+    <p class="game__task">${this.question.text.title}</p>
     
     <form class="game__content  game__content--triple">
-      ${this.screenData.option1.map((param, key) => `<div class="game__option">
+      ${this.question.options.option1.map((param, key) => `<div class="game__option">
         <img src="${param.src}" data-value="${param.value}" alt="option1" width="${param.width}"
          height="${param.height}" data-key="${key}">
       </div>`).join(``)}
