@@ -54,10 +54,10 @@ export const game1Screen = (
 
     screen = Hunt[currentGame.type][currentGame.screen];
 
-    game.onAnswer = (answer1, answer2) => {
+    game.onAnswer = (userAnswer) => {
 
       nextGame = getAnswer(currentGame, answerKey, getAnswerResult(
-          answer1, answer2,
+          userAnswer,
           answers, answerKey, screen));
 
       currentGame = switchScreen(

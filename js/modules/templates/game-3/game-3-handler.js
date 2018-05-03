@@ -1,13 +1,22 @@
+let answer;
+let answerKey;
+let answersArrayKey;
+let answersArray;
+let screen;
+
 const correct = (userAnswer, userAnswerKey, currentScreen) => {
   return currentScreen[`option1`][userAnswerKey][userAnswer];
 };
 
-export default (answer, answerKey, answerArrayKey, answersArray, screen) => {
+export default (array) => {
+  if (array.length === 5) {
+    [answer, answerKey, answersArrayKey, answersArray, screen] = array;
+  }
   if (correct(answer, answerKey, screen)) {
-    answersArray[answerArrayKey].correct = `true`;
 
+    answersArray[answersArrayKey].correct = `true`;
   } else {
-    answersArray[answerArrayKey].correct = `false`;
+    answersArray[answersArrayKey].correct = `false`;
   }
 
   return answersArray;

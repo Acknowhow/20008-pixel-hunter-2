@@ -55,8 +55,9 @@ export const game3Screen = (
     game.onAnswer = (image, imageKey) => {
 
       nextGame = getAnswer(currentGame, answerKey, getAnswerResult(
-          image, imageKey, answerKey, answers,
-          screen));
+          [
+            image, imageKey, answerKey, answers, screen
+          ]));
 
       currentGame = switchScreen(
           nextGame, Hunt, nextGame.type, answerKey, answers);

@@ -150,174 +150,200 @@ export const Hunt = {
 
   'type-1': {
     'screen-0': {
-      option1: {
-        question: `question1`,
-        src: `http://i.imgur.com/jX3HIry.jpg`,
-        name: `Ethiopian girl`,
-        width: `705`,
-        height: `455`,
+      text: {
+        title: `Угадай, фото или рисунок?`
+      },
+      options: {
+        option1: {
+          question: `question1`,
+          src: `http://i.imgur.com/jX3HIry.jpg`,
+          name: `Ethiopian girl`,
+          width: `705`,
+          height: `455`,
 
-        [PHOTO]: 1,
-        [PAINT]: 0
+          [PHOTO]: 1,
+          [PAINT]: 0
+        }
       }
     },
     'screen-1': {
-      option1: {
-        question: `question1`,
-        src: `http://i.imgur.com/27nbLSA.jpg`,
-        name: `Girls sitting`,
-        width: `705`,
-        height: `455`,
+      text: {
+        title: `Угадай, фото или рисунок?`
+      },
+      options: {
+        option1: {
+          question: `question1`,
+          src: `http://i.imgur.com/27nbLSA.jpg`,
+          name: `Girls sitting`,
+          width: `705`,
+          height: `455`,
 
-        [PHOTO]: 0,
-        [PAINT]: 1
+          [PHOTO]: 0,
+          [PAINT]: 1
+        }
       }
     }
   },
 
   'type-2': {
     'screen-0': {
-      title: `Найдите рисунок среди изображений`,
-      option1: [
-        {
-          src: `http://i.imgur.com/LWFCQSK.jpg`,
-          name: `Cheetah`,
-          width: `304`,
-          height: `455`,
-          value: PAINT,
+      text: {
+        title: `Найдите рисунок среди изображений`
+      },
+      options: {
+        option1: [
+          {
+            src: `http://i.imgur.com/LWFCQSK.jpg`,
+            name: `Cheetah`,
+            width: `304`,
+            height: `455`,
+            value: PAINT,
 
-          [PHOTO]: 1,
-          [PAINT]: 0
-        },
-        {
-          src: `http://i.imgur.com/FA4D3kO.jpg`,
-          name: `Lizard`,
-          width: `304`,
-          height: `455`,
-          value: PAINT,
+            [PHOTO]: 1,
+            [PAINT]: 0
+          },
+          {
+            src: `http://i.imgur.com/FA4D3kO.jpg`,
+            name: `Lizard`,
+            width: `304`,
+            height: `455`,
+            value: PAINT,
 
-          [PHOTO]: 0,
-          [PAINT]: 1
-        },
-        {
-          src: `http://i.imgur.com/y9cN0UD.jpg`,
-          name: `Figs`,
-          width: `304`,
-          height: `455`,
-          value: PAINT,
+            [PHOTO]: 0,
+            [PAINT]: 1
+          },
+          {
+            src: `http://i.imgur.com/y9cN0UD.jpg`,
+            name: `Figs`,
+            width: `304`,
+            height: `455`,
+            value: PAINT,
 
-          [PHOTO]: 1,
-          [PAINT]: 0
-        }
-      ],
+            [PHOTO]: 1,
+            [PAINT]: 0
+          }
+        ]
+      }
     },
 
     'screen-1': {
-      title: `Найдите изображение среди рисунков`,
-      option1: [
-        {
-          src: `http://i.imgur.com/OI49pzH.jpg`,
-          name: `Bumble bee`,
-          width: `304`,
-          height: `455`,
-          value: PHOTO,
+      text: {
+        title: `Найдите изображение среди рисунков`
+      },
+      options: {
+        option1: [
+          {
+            src: `http://i.imgur.com/OI49pzH.jpg`,
+            name: `Bumble bee`,
+            width: `304`,
+            height: `455`,
+            value: PHOTO,
 
-          [PHOTO]: 1,
-          [PAINT]: 0
-        },
-        {
-          src: `http://i.imgur.com/Sjjnuyi.jpg`,
-          name: `Metal spheres`,
-          width: `304`,
-          height: `455`,
-          value: PHOTO,
+            [PHOTO]: 1,
+            [PAINT]: 0
+          },
+          {
+            src: `http://i.imgur.com/Sjjnuyi.jpg`,
+            name: `Metal spheres`,
+            width: `304`,
+            height: `455`,
+            value: PHOTO,
 
-          [PHOTO]: 0,
-          [PAINT]: 1
-        },
-        {
-          src: `http://i.imgur.com/rvDgwaA.jpg`,
-          name: `Watermelon`,
-          width: `304`,
-          height: `455`,
-          value: PHOTO,
+            [PHOTO]: 0,
+            [PAINT]: 1
+          },
+          {
+            src: `http://i.imgur.com/rvDgwaA.jpg`,
+            name: `Watermelon`,
+            width: `304`,
+            height: `455`,
+            value: PHOTO,
 
-          [PHOTO]: 0,
-          [PAINT]: 1
-        }
-      ]
+            [PHOTO]: 0,
+            [PAINT]: 1
+          }
+        ]
+      }
     },
 
     'screen-2': {
-      title: `Найдите рисунок среди изображений`,
-      option1: [
-        {
-          src: `http://i.imgur.com/Eb5bc8u.jpg`,
-          name: `Books abstract`,
-          width: `304`,
-          height: `455`,
-          value: PAINT,
+      text: {
+        title: `Найдите рисунок среди изображений`
+      },
+      options: {
+        option1: [
+          {
+            src: `http://i.imgur.com/Eb5bc8u.jpg`,
+            name: `Books abstract`,
+            width: `304`,
+            height: `455`,
+            value: PAINT,
 
-          [PHOTO]: 1,
-          [PAINT]: 0
-        },
-        {
-          src: `https://i.imgur.com/9YXCXQ7.jpg`,
-          name: `Woman underwater`,
-          width: `304`,
-          height: `455`,
-          value: PAINT,
+            [PHOTO]: 1,
+            [PAINT]: 0
+          },
+          {
+            src: `https://i.imgur.com/9YXCXQ7.jpg`,
+            name: `Woman underwater`,
+            width: `304`,
+            height: `455`,
+            value: PAINT,
 
-          [PHOTO]: 0,
-          [PAINT]: 1
-        },
-        {
-          src: `http://i.imgur.com/Spk7kTG.jpg`,
-          name: `Mug`,
-          width: `304`,
-          height: `455`,
-          value: PAINT,
+            [PHOTO]: 0,
+            [PAINT]: 1
+          },
+          {
+            src: `http://i.imgur.com/Spk7kTG.jpg`,
+            name: `Mug`,
+            width: `304`,
+            height: `455`,
+            value: PAINT,
 
-          [PHOTO]: 1,
-          [PAINT]: 0
-        }
-      ]
+            [PHOTO]: 1,
+            [PAINT]: 0
+          }
+        ]
+      }
     },
 
     'screen-3': {
-      title: `Найдите изображение среди рисунков`,
-      option1: [
-        {
-          src: `https://i.imgur.com/tTqHG9m.jpg`,
-          name: `Woman afrika`,
-          width: `304`,
-          height: `455`,
-          value: PHOTO,
+      text: {
+        title: `Найдите изображение среди рисунков`,
+      },
+      options: {
+        option1: [
+          {
+            src: `https://i.imgur.com/tTqHG9m.jpg`,
+            name: `Woman afrika`,
+            width: `304`,
+            height: `455`,
+            value: PHOTO,
 
-          [PHOTO]: 1,
-          [PAINT]: 0
-        },
-        {
-          src: `http://i.imgur.com/l8J6vbh.jpg`,
-          name: `Woman showered`,
-          width: `304`,
-          height: `455`,
-          value: PHOTO,
+            [PHOTO]: 1,
+            [PAINT]: 0
+          },
+          {
+            src: `http://i.imgur.com/l8J6vbh.jpg`,
+            name: `Woman showered`,
+            width: `304`,
+            height: `455`,
+            value: PHOTO,
 
-          [PHOTO]: 0,
-          [PAINT]: 1
-        },
-        {
-          src: `http://i.imgur.com/mgbDqkB.jpg`,
-          name: `Pomegranate`,
-          width: `304`,
-          height: `455`,
-          value: PHOTO,
+            [PHOTO]: 0,
+            [PAINT]: 1
+          },
+          {
+            src: `http://i.imgur.com/mgbDqkB.jpg`,
+            name: `Pomegranate`,
+            width: `304`,
+            height: `455`,
+            value: PHOTO,
 
-          [PHOTO]: 0,
-          [PAINT]: 1
-        }
-      ]
+            [PHOTO]: 0,
+            [PAINT]: 1
+          }
+        ]
+      }
     }
   }
 };

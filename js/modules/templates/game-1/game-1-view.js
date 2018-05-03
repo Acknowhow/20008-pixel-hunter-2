@@ -1,4 +1,3 @@
-import textData from './game-1-data';
 import {drawnAnswers} from '../../handlers/answers';
 import AbstractView from '../../../util/view';
 import {createElement} from "../../../util/contractor";
@@ -67,7 +66,7 @@ export default class Game1View extends AbstractView {
       };
 
       if (answered()) {
-        this.onAnswer(answer1Checked().value, answer2Checked().value);
+        this.onAnswer([answer1Checked().value, answer2Checked().value]);
 
       }
     };
