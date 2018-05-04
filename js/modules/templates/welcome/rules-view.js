@@ -1,4 +1,5 @@
 import AbstractView from '../../../util/view';
+import Application from '../../../application';
 
 import {createElement} from '../../../util/contractor';
 
@@ -69,7 +70,7 @@ export default class GreetingView extends AbstractView {
       event.stopPropagation();
       event.preventDefault();
 
-      this.onNext();
+      Application.showGame();
     });
   }
 }
