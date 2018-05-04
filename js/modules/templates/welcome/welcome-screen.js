@@ -23,10 +23,13 @@ class WelcomeScreen {
   }
 
   get element() {
-    this._element = this.welcomers.get(welcomeState);
+    if (welcomeState !== 3) {
+      this._element = this.welcomers.get(welcomeState);
+      welcomeState++;
 
-    welcomeState++;
-    return this._element.element;
+      return this._element.element;
+    }
+    return this.proceed();
   }
 
   onNext() {
@@ -39,8 +42,12 @@ class WelcomeScreen {
 
   onReset() {
     welcomeState = 0;
-    return this.element;
+    return changeView(this.element);
 
+  }
+
+  proceed() {
+  // Game starts here
   }
 }
 
