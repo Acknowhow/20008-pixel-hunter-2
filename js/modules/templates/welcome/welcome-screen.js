@@ -2,6 +2,8 @@ import IntroView from './intro-view';
 import GreetingView from './intro-view';
 import RulesView from './intro-view';
 
+import {changeView} from '../../../util/contractor';
+
 let welcomeState = 0;
 class WelcomeScreen {
   constructor() {
@@ -11,26 +13,31 @@ class WelcomeScreen {
     this.greeting = new GreetingView();
     this.rules = new RulesView();
 
-    this.welcomers.set(0, this.intro.element);
-    this.welcomers.set(1, this.greeting.element);
-    this.welcomers.set(2, this.rules.element);
+    this.welcomers.set(0, this.intro);
+    this.welcomers.set(1, this.greeting);
+    this.welcomers.set(2, this.rules);
+
+    for (const [, welcomer] of this.welcomers) {
+      welcomer.onNext = this.onNext.bind(this);
+    }
   }
 
   get element() {
     this._element = this.welcomers.get(welcomeState);
-    return this._element;
+
+    welcomeState++;
+    return this._element.element;
   }
 
   onNext() {
     for (const [, welcomer] of this.welcomers) {
-      welcomer.onReturn = this.onReturn.bind(this);
+      welcomer.onReset = this.onReset.bind(this);
     }
 
-    welcomeState++;
-    return this.element;
+    console.log(this.element);
   }
 
-  onReturn() {
+  onReset() {
     welcomeState = 0;
     return this.element;
 
