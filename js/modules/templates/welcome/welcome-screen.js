@@ -1,6 +1,6 @@
 import IntroView from './intro-view';
-import GreetingView from './intro-view';
-import RulesView from './intro-view';
+import GreetingView from './greeting-view';
+import RulesView from './rules-view';
 
 import {changeView} from '../../../util/contractor';
 
@@ -34,7 +34,7 @@ class WelcomeScreen {
       welcomer.onReset = this.onReset.bind(this);
     }
 
-    console.log(this.element);
+    return changeView(this.element);
   }
 
   onReset() {
