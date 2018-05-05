@@ -3,8 +3,6 @@ import GreetingView from './greeting-view';
 import RulesView from './rules-view';
 import FooterView from './../footer/footer-view';
 
-import Application from '../../../application';
-
 import {changeView} from '../../../util/contractor';
 
 let welcomeState = 0;
@@ -29,6 +27,9 @@ class WelcomeScreen {
     if (welcomeState !== 3) {
       this._element = this.welcomers.get(welcomeState);
       welcomeState++;
+    }
+    if (welcomeState === 3) {
+      welcomeState = 0;
     }
     return this._element.element;
   }

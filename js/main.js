@@ -1,3 +1,2 @@
 import Application from './application';
 Application.showWelcome();
-

@@ -25,9 +25,12 @@ const correct3 = (userAnswer, userAnswerKey, currentScreen) => {
 };
 
 export const getAnswerResult = (argumentsArray) => {
+
   if (argumentsArray.length === 4) {
 
     [answer, answersArray, answersArrayKey, screen] = argumentsArray;
+
+
 
     if (answer.length === 2) {
       [answer1, answer2] = answer;
