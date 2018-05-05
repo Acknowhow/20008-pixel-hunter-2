@@ -4,12 +4,15 @@ import Game3View from './../game-3/game-3-view';
 
 import HeaderView from './../header/header-view';
 
-import extractNumeric from '../../handlers/extractNumeric';
-import FooterView from "../footer/footer-view";
+import {extractNumeric} from '../../handlers/extractNumeric';
+import FooterView from '../footer/footer-view';
 
 class GameScreen {
   constructor(model) {
     this.model = model;
+
+    console.log(this.model);
+
     this.game = new Map();
 
     this.header = new HeaderView(this.model.state);
@@ -23,7 +26,8 @@ class GameScreen {
     this.game.set(2, this.game3);
 
     // gets corresponding element
-    this.content = this.game.get(extractNumeric(this.model.state.type));
+    this.content = this.game.get(extractNumeric(
+        this.model.state.type)); // and must get current screen
 
     this.root = document.createElement(`div`);
     this.root.appendChild(this.header.element);
@@ -33,6 +37,28 @@ class GameScreen {
   }
 
   get element() {
+    return this.root;
+  }
+
+  updateHeader() {
+    const header = new HeaderView(this.model.state);
+    this.root.replaceChild(header.element, this.header.element);
+
+    this.header = header;
+  }
+
+  changeScreen() {
+    this.updateHeader();
+
+    // const content = this.game.get(extractNumeric(
+    //     this.model.state.type)).element;
+    //
+    // content.onAnswer = this.content.bind(this);
+
+  }
+
+  startGame() {
+    this.changeScreen();
 
   }
 }

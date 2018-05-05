@@ -1,4 +1,4 @@
-import {INITIAL_GAME, NEXT_TYPE, END} from './../../data/hunt';
+// import {INITIAL_GAME, NEXT_TYPE, END} from './../../data/hunt';
 
 let answer;
 

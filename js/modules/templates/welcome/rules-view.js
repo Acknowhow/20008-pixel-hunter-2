@@ -70,7 +70,7 @@ export default class GreetingView extends AbstractView {
       event.stopPropagation();
       event.preventDefault();
 
-      Application.showGame();
+      Application.showScreen(rulesInput.value);
     });
   }
 }

@@ -1,5 +1,8 @@
 import WelcomeScreen from './modules/templates/welcome/welcome-screen';
 
+import HuntModel from './data/hunt-model';
+import GameScreen from './modules/templates/game/game-screen';
+
 const main = document.getElementById(`main`);
 const changeView = (element) => {
   main.innerHTML = ``;
@@ -13,8 +16,8 @@ export default class Application {
     changeView(welcome.element);
   }
 
-  static showGame(userName) {
-    const model = new QuestModel(userName);
+  static showScreen(userName) {
+    const model = new HuntModel(userName);
     const gameScreen = new GameScreen(model);
     changeView(gameScreen.element);
     gameScreen.startGame();
