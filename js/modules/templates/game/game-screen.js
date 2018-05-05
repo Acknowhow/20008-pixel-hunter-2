@@ -11,28 +11,26 @@ class GameScreen {
   constructor(model) {
     this.model = model;
 
-    console.log(this.model);
+    this.screen = this.model.getCurrentScreen();
 
     this.game = new Map();
 
     this.header = new HeaderView(this.model.state);
 
-    this.game1 = new Game1View(this.model.state);
-    this.game2 = new Game2View(this.model.state);
-    this.game3 = new Game3View(this.model.state);
 
-    this.game.set(0, this.game1);
-    this.game.set(1, this.game2);
-    this.game.set(2, this.game3);
+    this.game.set(0, new Game1View());
+    this.game.set(1, new Game2View());
+    this.game.set(2, new Game2View());
 
-    // gets corresponding element
+    // Gets corresponding view
     this.content = this.game.get(extractNumeric(
-        this.model.state.type)); // and must get current screen
+        this.model.state.type));
 
-    this.root = document.createElement(`div`);
-    this.root.appendChild(this.header.element);
-    this.root.appendChild(this.content.element);
-    this.root.appendChild(new FooterView().element);
+    console.log(this.content);
+    // this.root = document.createElement(`div`);
+    // this.root.appendChild(this.header.element);
+    // this.root.appendChild(this.content.element);
+    // this.root.appendChild(new FooterView().element);
 
   }
 

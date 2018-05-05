@@ -1,6 +1,7 @@
 import {
   INITIAL_GAME,
-  Hunt
+  Hunt,
+  answers
 } from './hunt-data';
 
 class HuntModel {
@@ -15,7 +16,21 @@ class HuntModel {
 
   getCurrentScreen() {
     return Hunt[this._state.type][this._state.screen];
+  }
 
+  getAnswerKey() {
+    this._answerKey = this._answersKey.pop();
+    return this._answerKey;
+  }
+
+  getAnswer() {
+    this._answer = answers[this.getAnswerKey()];
+    return this._answer;
+  }
+
+  nextAnswerKey() {
+    this._answerKey++;
+    this._answersKey.push(this._answerKey);
   }
 
   init() {
