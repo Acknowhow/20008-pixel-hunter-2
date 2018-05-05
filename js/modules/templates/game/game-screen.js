@@ -60,11 +60,6 @@ class GameScreen {
     console.log(this.screen);
     console.log(this.answers);
 
-    // switch (answer.result) {
-    //
-    //   // case NEXT_TYPE:
-    //
-    // }
   }
 
   getNextScreen(nextState) {
