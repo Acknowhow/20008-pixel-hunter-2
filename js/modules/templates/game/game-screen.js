@@ -12,25 +12,25 @@ class GameScreen {
     this.model = model;
 
     this.screen = this.model.getCurrentScreen();
+    this.answers = this.model.getAnswers();
 
     this.game = new Map();
 
     this.header = new HeaderView(this.model.state);
 
 
-    this.game.set(0, new Game1View());
-    this.game.set(1, new Game2View());
-    this.game.set(2, new Game2View());
+    this.game.set(0, new Game1View(this.screen, this.answers));
+    this.game.set(1, new Game2View(this.screen, this.answers));
+    this.game.set(2, new Game3View(this.screen, this.answers));
 
     // Gets corresponding view
     this.content = this.game.get(extractNumeric(
         this.model.state.type));
 
-    console.log(this.content);
-    // this.root = document.createElement(`div`);
-    // this.root.appendChild(this.header.element);
-    // this.root.appendChild(this.content.element);
-    // this.root.appendChild(new FooterView().element);
+    this.root = document.createElement(`div`);
+    this.root.appendChild(this.header.element);
+    this.root.appendChild(this.content.element);
+    this.root.appendChild(new FooterView().element);
 
   }
 
