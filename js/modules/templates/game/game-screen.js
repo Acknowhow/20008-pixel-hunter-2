@@ -1,13 +1,17 @@
 import Game1View from './../game-1/game-1-view';
 import Game2View from './../game-2/game-2-view';
 import Game3View from './../game-3/game-3-view';
+// import StatsView from './../stats/stats-view';
 
 import HeaderView from './../header/header-view';
 import FooterView from '../footer/footer-view';
 
 import {extractNumeric} from '../../handlers/extract';
 import {getAnswerResult} from '../../handlers/answer-result';
-import getAnswer from '../../handlers/answer';
+import getState from '../../handlers/answer';
+
+import {switchScreen} from '../../handlers/screen';
+import {Hunt, NEXT_SCREEN, NEXT_TYPE} from '../../../data/hunt-data';
 
 import Application from '../../../application';
 
@@ -21,6 +25,7 @@ class GameScreen {
 
     this.answers = this.model.getAnswers();
     this.answerKey = this.model.getAnswerKey();
+    this.answer = ``;
 
     this.game = new Map();
 
@@ -45,18 +50,50 @@ class GameScreen {
     return this.root;
   }
 
-  getAnswer(answerResult) {
+  getScreen(answer) {
+    this.screen = this.model.getCurrentScreen();
+    this.model.nextAnswerKey();
 
-    const nextState = getAnswer(this.state, this.answerKey, answerResult);
+    this.answerKey = this.model.getAnswerKey();
 
-    console.log(nextState);
+    console.log(this.state);
+    console.log(this.screen);
+    console.log(this.answers);
+
+    // switch (answer.result) {
+    //
+    //   // case NEXT_TYPE:
+    //
+    // }
+  }
+
+  getNextScreen(nextState) {
+
+    this.state = switchScreen(
+        nextState, Hunt, nextState.type, this.answerKey, this.answers);
+
+    if (typeof this.state === `string`) {
+      console.log(`bla`);
+    } else {
+
+      this.getScreen(this.answer);
+    }
+  }
+
+  getState(answerResult) {
+    const nextState = getState(this.state, this.answerKey, answerResult);
+
+    this.getNextScreen(nextState);
+
   }
 
   getAnswerResult(answer) {
+    this.answer = answer;
+
     const answerResult = getAnswerResult([
       answer, this.answers, this.answerKey, this.screen]);
 
-    this.getAnswer(answerResult);
+    this.getState(answerResult);
   }
 
   updateHeader() {

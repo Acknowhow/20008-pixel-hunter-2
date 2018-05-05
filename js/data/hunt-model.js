@@ -38,6 +38,14 @@ class HuntModel {
     answersKey.push(this._answerKey);
   }
 
+  nextScreen() {
+
+  }
+
+  nextType() {
+
+  }
+
   init() {
     this._answers = answers;
     this._answersKey = answersKey;
