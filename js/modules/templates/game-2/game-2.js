@@ -3,7 +3,7 @@ import {game3Screen} from './../game-3/game-3';
 import {statsScreen} from '../stats/stats';
 import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
 
-import getQuestion from '../../handlers/question';
+
 import getAnswer from '../../handlers/answer';
 import {switchScreen} from '../../handlers/screen';
 
@@ -83,7 +83,7 @@ export const game2Screen = (
             answerKey++;
             answersKey.push(answerKey);
 
-            game2Screen(currentGame, getQuestion(screen), answers);
+            game2Screen(currentGame, screen, answers);
             return;
         }
       }

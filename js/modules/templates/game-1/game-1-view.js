@@ -1,7 +1,6 @@
-import textData from './game-1-data';
 import {drawnAnswers} from '../../handlers/answers';
 import AbstractView from '../../../util/view';
-import {createElement} from "../../../util/contractor";
+import {createElement} from '../../../util/contractor';
 
 let answer1Checked = ``;
 let answer2Checked = ``;
@@ -16,9 +15,10 @@ export default class Game1View extends AbstractView {
 
   get template() {
     return `
-    <p class="game__task">${textData.title}</p>
+    <p class="game__task">${this.question.text.title}</p>
     <form class="game__content">
-      ${this.question.map(({option, params}) => `<div class="game__option">
+      ${Object.keys(this.question.options).map((option) => (
+    {option, params: this.question.options[option]})).map(({option, params}) =>`<div class="game__option">
         <img src="${params.src}" alt="${option}" width="${params.width}"
          height="${params.height}">
         <label class="game__answer game__answer--photo">
@@ -66,7 +66,7 @@ export default class Game1View extends AbstractView {
       };
 
       if (answered()) {
-        this.onAnswer(answer1Checked().value, answer2Checked().value);
+        this.onAnswer([answer1Checked().value, answer2Checked().value]);
 
       }
     };
