@@ -1,7 +1,7 @@
 import AbstractView from '../../../util/view';
-import Application from '../../../application';
 
 import {createElement} from '../../../util/contractor';
+import Application from "../../../application";
 
 export default class GreetingView extends AbstractView {
   constructor() {

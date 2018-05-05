@@ -18,7 +18,6 @@ class GameScreen {
 
     this.header = new HeaderView(this.model.state);
 
-
     this.game.set(0, new Game1View(this.screen, this.answers));
     this.game.set(1, new Game2View(this.screen, this.answers));
     this.game.set(2, new Game3View(this.screen, this.answers));
@@ -35,6 +34,7 @@ class GameScreen {
   }
 
   get element() {
+    console.log(this.root);
     return this.root;
   }
 
