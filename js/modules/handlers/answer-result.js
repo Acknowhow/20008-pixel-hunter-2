@@ -31,7 +31,6 @@ export const getAnswerResult = (argumentsArray) => {
     [answer, answersArray, answersArrayKey, screen] = argumentsArray;
 
 
-
     if (answer.length === 2) {
       [answer1, answer2] = answer;
 
