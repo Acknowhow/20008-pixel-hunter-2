@@ -1,6 +1,6 @@
 // Expects answer object
 // Deducts life if the answer was wrong
-import {NEXT_SCREEN, END} from './../../data/hunt';
+import {NEXT_SCREEN, END} from './../../data/hunt-data';
 
 let answer;
 const takeLife = (game, lives) => {

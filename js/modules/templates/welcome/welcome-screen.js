@@ -1,6 +1,7 @@
 import IntroView from './intro-view';
 import GreetingView from './greeting-view';
 import RulesView from './rules-view';
+import FooterView from './../footer/footer-view';
 
 import {changeView} from '../../../util/contractor';
 
@@ -26,10 +27,11 @@ class WelcomeScreen {
     if (welcomeState !== 3) {
       this._element = this.welcomers.get(welcomeState);
       welcomeState++;
-
-      return this._element.element;
     }
-    return this.proceed();
+    if (welcomeState === 3) {
+      welcomeState = 0;
+    }
+    return this._element.element;
   }
 
   onNext() {
@@ -37,17 +39,15 @@ class WelcomeScreen {
       welcomer.onReset = this.onReset.bind(this);
     }
 
-    return changeView(this.element);
+    return changeView(this.element).appendChild(
+        new FooterView().element);
   }
 
   onReset() {
     welcomeState = 0;
-    return changeView(this.element);
 
-  }
-
-  proceed() {
-  // Game starts here
+    return changeView(this.element).appendChild(
+        new FooterView().element);
   }
 }
 

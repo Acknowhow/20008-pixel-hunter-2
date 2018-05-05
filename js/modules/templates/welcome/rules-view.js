@@ -1,6 +1,7 @@
 import AbstractView from '../../../util/view';
 
 import {createElement} from '../../../util/contractor';
+import Application from "../../../application";
 
 export default class GreetingView extends AbstractView {
   constructor() {
@@ -69,7 +70,7 @@ export default class GreetingView extends AbstractView {
       event.stopPropagation();
       event.preventDefault();
 
-      this.onNext();
+      Application.showScreen(rulesInput.value);
     });
   }
 }

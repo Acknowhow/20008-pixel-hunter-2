@@ -24,7 +24,7 @@ export default class GreetingView extends AbstractView {
   Ошибиться можно не более 3 раз.<br><br>
   Готовы?</p>
   <form class="rules__form">
-    <input class="rules__input" type="text" placeholder="Ваше Имя">
+    <input class="rules__input" type="text" placeholder="Ваше Имя" value="${this.playerName}">
     <button class="rules__button  continue" type="submit" disabled>Go!</button>
   </form>`;
   }

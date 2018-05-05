@@ -2,7 +2,7 @@ import AbstractView from '../../../util/view';
 import {createElement} from '../../../util/contractor';
 
 
-import {TIME_FAST, TIME_SLOW} from '../../../data/hunt';
+import {TIME_FAST, TIME_SLOW} from '../../../data/hunt-data';
 import {scoreCalc} from '../../../util/score';
 import {
   drawnAnswers,

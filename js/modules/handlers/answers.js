@@ -1,4 +1,4 @@
-import {TIME_FAST, TIME_SLOW} from '../../data/hunt';
+import {TIME_FAST, TIME_SLOW} from '../../data/hunt-data';
 
 const scoreCalc = (item) => {
   if (item.correct === `unknown`) {
