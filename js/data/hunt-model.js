@@ -97,9 +97,10 @@ class HuntModel {
     this._answersKey.push(this._answersKey);
   }
 
-  // Deducts life
+  // Deducts life, returns lives left
   takeLife() {
     this._state = takeLife(this._state, this._state.lives);
+    return this._state.lives;
   }
 
   isDead() {

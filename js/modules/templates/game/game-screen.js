@@ -7,11 +7,11 @@ import HeaderView from './../header/header-view';
 import FooterView from '../footer/footer-view';
 
 import {extractNumeric} from '../../handlers/extract';
-import {isCorrectAnswer} from '../../handlers/answer-result';
+import {isCorrectAnswer} from '../../handlers/answer-correct';
 import getState from '../../handlers/answer';
 
 import {switchScreen} from '../../handlers/screen';
-import {Hunt} from '../../../data/hunt-data';
+import {NEXT_SCREEN, END} from '../../../data/hunt-data';
 
 import Application from '../../../application';
 
@@ -77,13 +77,33 @@ class GameScreen {
   //
   // }
 
+  answerResult(answers, answersKey) {
+    this.answer = answers[answersKey];
+    switch (this.answer.correct) {
+
+      case `false`:
+        if (this.model.takeLife() < 0) {
+
+          this.answer.result = END;
+        } else {
+          this.answer.result = NEXT_SCREEN;
+        }
+        return this.answer.result;
+
+      default:
+        this.answer.result = NEXT_SCREEN;
+
+        return this.answer.result;
+    }
+  }
+
   isCorrectAnswer(answer) {
     this.answer = answer;
 
-    const answerResult = isCorrectAnswer([
-      answer, this.answers, this.answersKey, this.screen]);
+    isCorrectAnswer([answer, this.answers, this.answersKey, this.screen]);
 
-    console.log(answerResult);
+    console.log(this.answerResult(this.answers, this.answersKey));
+    console.log(this.answers);
   }
 
   updateHeader() {
