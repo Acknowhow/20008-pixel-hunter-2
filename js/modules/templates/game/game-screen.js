@@ -20,6 +20,7 @@ let makeView;
 class GameScreen {
   constructor(model) {
     this.model = model;
+    this.makeView = makeView;
 
     this.screen = this.model.getCurrentScreen();
 
@@ -27,17 +28,20 @@ class GameScreen {
     this.answerKey = this.model.getAnswerKey();
     this.answer = ``;
 
-    this.game = new Map();
+    this.game = new WeakMap();
 
     this.header = new HeaderView(this.model.state);
 
-    this.game.set(0, makeView = (screenParam, answersParam) => new Game1View(screenParam, answersParam));
-    this.game.set(1, makeView = (screenParam, answersParam) => new Game2View(screenParam, answersParam));
-    this.game.set(2, makeView = (screenParam, answersParam) => new Game2View(screenParam, answersParam));
+    this.keys = [{key: 0}, {key: 1}, {key: 2}];
+
+    this.game.set(this.keys[0], makeView = (screenParam, answersParam) => new Game1View(screenParam, answersParam));
+    this.game.set(this.keys[1], makeView = (screenParam, answersParam) => new Game2View(screenParam, answersParam));
+    this.game.set(this.keys[2], makeView = (screenParam, answersParam) => new Game2View(screenParam, answersParam));
 
 
-    this.content = this.game.get(extractNumeric(
-        this.model.state.type))(this.screen, this.answers);
+    // gets current type number, then creates new View with function call
+    this.content = this.game.get(this.keys[extractNumeric(
+        this.model.state.type)])(this.screen, this.answers);
 
     this.root = document.createElement(`div`);
     this.root.appendChild(this.header.element);
@@ -147,8 +151,8 @@ class GameScreen {
     console.log(this.answers);
     console.log(this.answerKey);
 
-    const content = this.game.get(extractNumeric(
-        this.model.state.type))(this.screen, this.answers);
+    const content = this.game.get(this.keys[extractNumeric(
+        this.model.state.type)])(this.screen, this.answers);
 
     this.header.onReset = this.onReset.bind(this);
     content.onAnswer = this.isCorrectAnswer.bind(this);
