@@ -15,6 +15,8 @@ import {NEXT_SCREEN, END} from '../../../data/hunt-data';
 
 import Application from '../../../application';
 
+let makeView;
+
 class GameScreen {
   constructor(model) {
     this.model = model;
@@ -29,13 +31,13 @@ class GameScreen {
 
     this.header = new HeaderView(this.model.state);
 
-    this.game.set(0, new Game1View(this.screen, this.answers));
-    this.game.set(1, new Game2View(this.screen, this.answers));
-    this.game.set(2, new Game3View(this.screen, this.answers));
+    this.game.set(0, makeView = (screenParam, answersParam) => new Game1View(screenParam, answersParam));
+    this.game.set(1, makeView = (screenParam, answersParam) => new Game2View(screenParam, answersParam));
+    this.game.set(2, makeView = (screenParam, answersParam) => new Game2View(screenParam, answersParam));
 
 
     this.content = this.game.get(extractNumeric(
-        this.model.state.type));
+        this.model.state.type))(this.screen, this.answers);
 
     this.root = document.createElement(`div`);
     this.root.appendChild(this.header.element);
@@ -146,8 +148,7 @@ class GameScreen {
     console.log(this.answerKey);
 
     const content = this.game.get(extractNumeric(
-        this.model.state.type
-    ));
+        this.model.state.type))(this.screen, this.answers);
 
     this.header.onReset = this.onReset.bind(this);
     content.onAnswer = this.isCorrectAnswer.bind(this);
