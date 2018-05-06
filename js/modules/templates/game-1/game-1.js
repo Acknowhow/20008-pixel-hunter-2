@@ -13,7 +13,7 @@ import {createElement} from '../../../util/contractor';
 import getAnswer from '../../handlers/answer';
 import {switchScreen} from '../../handlers/screen';
 
-import getAnswerResult from './game-1-handler';
+import isCorrectAnswer from './game-1-handler';
 
 const gameContainerElement = createElement();
 const headerContainer = createElement();
@@ -56,7 +56,7 @@ export const game1Screen = (
 
     game.onAnswer = (userAnswer) => {
 
-      nextGame = getAnswer(currentGame, answerKey, getAnswerResult(
+      nextGame = getAnswer(currentGame, answerKey, isCorrectAnswer(
           userAnswer,
           answers, answerKey, screen));
 

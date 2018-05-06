@@ -6,3 +6,10 @@ export const nextParameter = (str) => {
   return string;
 };
 
+export const takeLife = (game, lives) => {
+  lives--;
+
+  game = Object.assign({}, game, {lives});
+  return game;
+};
+

@@ -7,7 +7,7 @@ import {Hunt, answersKey, NEXT_TYPE, INITIAL_ANSWERS} from '../../../data/hunt';
 import getAnswer from '../../handlers/answer';
 import {switchScreen} from '../../handlers/screen';
 
-import getAnswerResult from './game-2-handler';
+import isCorrectAnswer from './game-2-handler';
 
 import {createElement, updateView, changeView} from "../../../util/contractor";
 import HeaderView from '../header/header-view';
@@ -56,7 +56,7 @@ export const game2Screen = (
     screen = Hunt[currentGame.type][currentGame.screen];
     game.onAnswer = (answer1) => {
 
-      nextGame = getAnswer(currentGame, answerKey, getAnswerResult(
+      nextGame = getAnswer(currentGame, answerKey, isCorrectAnswer(
           answer1, answers, answerKey, screen));
 
       currentGame = switchScreen(

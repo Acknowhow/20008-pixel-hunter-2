@@ -7,11 +7,11 @@ import HeaderView from './../header/header-view';
 import FooterView from '../footer/footer-view';
 
 import {extractNumeric} from '../../handlers/extract';
-import {getAnswerResult} from '../../handlers/answer-result';
+import {isCorrectAnswer} from '../../handlers/answer-result';
 import getState from '../../handlers/answer';
 
 import {switchScreen} from '../../handlers/screen';
-import {Hunt, NEXT_SCREEN, NEXT_TYPE} from '../../../data/hunt-data';
+import {Hunt} from '../../../data/hunt-data';
 
 import Application from '../../../application';
 
@@ -22,9 +22,8 @@ class GameScreen {
 
     this.screen = this.model.getCurrentScreen();
 
-
     this.answers = this.model.getAnswers();
-    this.answerKey = this.model.getAnswerKey();
+    this.answersKey = this.model.getAnswersKey();
     this.answer = ``;
 
     this.game = new Map();
@@ -50,45 +49,41 @@ class GameScreen {
     return this.root;
   }
 
-  getScreen(answer) {
-    this.screen = this.model.getCurrentScreen();
-    this.model.nextAnswerKey();
+  // getScreen(answer) {
+  //   this.screen = this.model.getCurrentScreen();
+  //   this.model.nextAnswerKey();
+  //
+  //   this.answerKey = this.model.getAnswerKey();
+  //
+  // }
 
-    this.answerKey = this.model.getAnswerKey();
+  // getNextScreen(nextState) {
+  //
+  //   this.state = switchScreen(
+  //       nextState, Hunt, nextState.type, this.answerKey, this.answers);
+  //
+  //   if (typeof this.state === `string`) {
+  //     console.log(`bla`);
+  //   } else {
+  //
+  //     this.getScreen(this.answer);
+  //   }
+  // }
 
-    console.log(this.state);
-    console.log(this.screen);
-    console.log(this.answers);
+  // getState(answerResult) {
+  //   const nextState = getState(this.state, this.answerKey, answerResult);
+  //
+  //   this.getNextScreen(nextState);
+  //
+  // }
 
-  }
-
-  getNextScreen(nextState) {
-
-    this.state = switchScreen(
-        nextState, Hunt, nextState.type, this.answerKey, this.answers);
-
-    if (typeof this.state === `string`) {
-      console.log(`bla`);
-    } else {
-
-      this.getScreen(this.answer);
-    }
-  }
-
-  getState(answerResult) {
-    const nextState = getState(this.state, this.answerKey, answerResult);
-
-    this.getNextScreen(nextState);
-
-  }
-
-  getAnswerResult(answer) {
+  isCorrectAnswer(answer) {
     this.answer = answer;
 
-    const answerResult = getAnswerResult([
-      answer, this.answers, this.answerKey, this.screen]);
+    const answerResult = isCorrectAnswer([
+      answer, this.answers, this.answersKey, this.screen]);
 
-    this.getState(answerResult);
+    console.log(answerResult);
   }
 
   updateHeader() {
@@ -106,13 +101,10 @@ class GameScreen {
         this.model.state.type
     ));
 
-    content.onAnswer = this.getAnswerResult.bind(this);
+    content.onAnswer = this.isCorrectAnswer.bind(this);
 
     this.header.onReset = this.onReset.bind(this);
-    // const content = this.game.get(extractNumeric(
-    //     this.model.state.type)).element;
-    //
-    // content.onAnswer = this.content.bind(this);
+
 
   }
 

@@ -24,7 +24,7 @@ const correct3 = (userAnswer, userAnswerKey, currentScreen) => {
   return currentScreen.options[`option1`][userAnswerKey][userAnswer];
 };
 
-export const getAnswerResult = (argumentsArray) => {
+export const isCorrectAnswer = (argumentsArray) => {
 
   if (argumentsArray.length === 4) {
 
