@@ -18,17 +18,16 @@ import Application from '../../../application';
 class GameScreen {
   constructor(model) {
     this.model = model;
-    this.state = this.model.state;
 
     this.screen = this.model.getCurrentScreen();
 
     this.answers = this.model.getAnswers();
-    this.answersKey = this.model.getAnswersKey();
+    this.answerKey = this.model.getAnswerKey();
     this.answer = ``;
 
     this.game = new Map();
 
-    this.header = new HeaderView(this.state);
+    this.header = new HeaderView(this.model.state);
 
     this.game.set(0, new Game1View(this.screen, this.answers));
     this.game.set(1, new Game2View(this.screen, this.answers));
@@ -77,20 +76,41 @@ class GameScreen {
   //
   // }
 
+  getNextScreen(answerResult) {
+    switch (answerResult) {
+      case END:
+        console.log(`end`);
+        break;
+
+      default:
+        if (this.model.hasNextScreen()) {
+          this.screen = this.model.getNextScreen();
+          this.model.nextAnswerKey();
+
+          this.changeScreen();
+        }
+
+    }
+  }
+
   answerResult(answers, answersKey) {
     this.answer = answers[answersKey];
     switch (this.answer.correct) {
 
       case `false`:
+        this.model.assignWrong();
+
         if (this.model.takeLife() < 0) {
 
           this.answer.result = END;
         } else {
+
           this.answer.result = NEXT_SCREEN;
         }
         return this.answer.result;
 
       default:
+        this.model.assignCorrect();
         this.answer.result = NEXT_SCREEN;
 
         return this.answer.result;
@@ -100,14 +120,15 @@ class GameScreen {
   isCorrectAnswer(answer) {
     this.answer = answer;
 
-    isCorrectAnswer([answer, this.answers, this.answersKey, this.screen]);
-
-    console.log(this.answerResult(this.answers, this.answersKey));
-    console.log(this.answers);
+    isCorrectAnswer(
+        [answer, this.answers, this.answerKey, this.screen]
+    );
+    this.getNextScreen(
+        this.answerResult(this.answers, this.answerKey));
   }
 
   updateHeader() {
-    const header = new HeaderView(this.state);
+    const header = new HeaderView(this.model.state);
     this.root.replaceChild(header.element, this.header.element);
 
     this.header = header;
@@ -115,22 +136,34 @@ class GameScreen {
 
   changeScreen() {
     this.updateHeader();
+
     this.screen = this.model.getCurrentScreen();
+    this.answers = this.model.getAnswers();
+    this.answerKey = this.model.getAnswerKey();
+
+    console.log(this.screen);
+    console.log(this.answers);
+    console.log(this.answerKey);
 
     const content = this.game.get(extractNumeric(
         this.model.state.type
     ));
 
+    this.header.onReset = this.onReset.bind(this);
     content.onAnswer = this.isCorrectAnswer.bind(this);
 
-    this.header.onReset = this.onReset.bind(this);
-
+    this.changeContentView(content);
 
   }
 
   startGame() {
     this.changeScreen();
 
+  }
+
+  changeContentView(view) {
+    this.root.replaceChild(view.element, this.content.element);
+    this.content = view;
   }
 
   onReset() {

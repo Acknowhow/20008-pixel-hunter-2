@@ -29,15 +29,15 @@ class HuntModel {
   // Assigns correct answer result into answers array
   // Returns answers array
   assignCorrect() {
-    this._answers[this._answersKey].correct = `true`;
-    return this._answers;
+    this._answersArray[this._answerKey].correct = `true`;
+    return this._answersArray;
   }
 
   // Assigns wrong answer result into answers array
   // Returns answers array
   assignWrong() {
-    this._answers[this._answersKey].correct = `false`;
-    return this._answers;
+    this._answersArray[this._answerKey].correct = `false`;
+    return this._answersArray;
   }
 
   // Determines if next screen exists on current type
@@ -63,7 +63,7 @@ class HuntModel {
 
   // Returns current answers array
   getAnswers() {
-    return this._answers;
+    return this._answersArray;
   }
 
   // Returns next type with screen-0
@@ -80,21 +80,24 @@ class HuntModel {
   }
 
   // Returns answers key value
-  getAnswersKey() {
-    this._answersKey = this._answersKey.pop();
-    return this._answersKey;
+  getAnswerKey() {
+    this._answerKey = this._answersKeyArray.pop();
+    this._answersKeyArray.push(this._answerKey);
+    return this._answerKey;
   }
 
   // Returns current answer
   getAnswer() {
-    this._answer = answers[this.getAnswersKey()];
+    this._answer = this._answersArray[this.getAnswerKey()];
     return this._answer;
   }
 
-  // Increments next key before next screen
-  nextAnswersKey() {
-    this._answersKey++;
-    this._answersKey.push(this._answersKey);
+  // Increments next key into answersKeyArray
+  nextAnswerKey() {
+    this._answerKey = this._answersKeyArray.pop();
+
+    this._answerKey++;
+    this._answersKeyArray.push(this._answerKey);
   }
 
   // Deducts life, returns lives left
@@ -113,8 +116,8 @@ class HuntModel {
 
   init() {
     this._state = currentGame;
-    this._answers = answers;
-    this._answersKey = answersKey;
+    this._answersArray = answers;
+    this._answersKeyArray = answersKey;
 
   }
 }
