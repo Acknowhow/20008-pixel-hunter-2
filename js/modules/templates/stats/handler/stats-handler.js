@@ -5,19 +5,19 @@ import {
   TIME_FAST,
   TIME_SLOW} from '../../../../data/hunt-data';
 
-const scoreCalc = (item) => {
-  if (item.correct === `unknown`) {
+const scoreCalc = (answer) => {
+  if (answer.correct === `unknown`) {
     return `unknown`;
   }
-  if (item.correct === `false`) {
+  if (answer.correct === `false`) {
     return `wrong`;
   }
 
-  if (item.time < TIME_FAST) {
+  if (answer.time < TIME_FAST) {
     return `fast`;
   }
 
-  if (item.time > TIME_SLOW) {
+  if (answer.time > TIME_SLOW) {
     return `slow`;
   }
 

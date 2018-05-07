@@ -12,11 +12,12 @@ import {
   drawSlowPenalty} from './handler/stats-handler';
 
 export default class StatsView extends AbstractView {
-  constructor(state, answers) {
+  constructor(state, answers, playerName) {
     super();
 
     this.state = state;
     this.answers = answers;
+    this.playerName = playerName;
   }
 
   get template() {
@@ -30,7 +31,7 @@ export default class StatsView extends AbstractView {
     </div>
   </header>
   <div class="result">
-    <h1>${this.answers.find((it) => it.correct === `unknown`) ? `Поражение` : `Победа`}</h1>
+    <h1>${this.answers.find((it) => it.correct === `unknown`) ? `Поражение, ${this.playerName}` : `Победа, ${this.playerName}`}!</h1>
     <table class="result__table">
       <tr>
         <td class="result__number">1.</td>
@@ -39,10 +40,10 @@ export default class StatsView extends AbstractView {
             ${drawnAnswers(this.answers)}
           </ul>
         </td>
-        ${drawAnswersScore(this.answers)}
+        ${this.answers.find((it) => it.correct === `unknown`) ? `` : drawAnswersScore(this.answers)}
       </tr>
       ${(this.answers.find((it) => it.time < TIME_FAST)) ? drawSpeedBonus(this.answers) : ``}
-      ${this.state.lives ? drawLifeBonus(this.state.lives) : ``}
+      ${this.state.lives >= 0 ? drawLifeBonus(this.state.lives) : ``}
       ${(this.answers.find((it) => it.time > TIME_SLOW)) ? drawSlowPenalty(this.answers) : ``}
       <tr>
         <td colspan="5" class="result__total  result__total--final">${this.answers.find((it) => it.correct === `unknown`) ? `FAIL` : scoreCalc(this.answers)}</td>

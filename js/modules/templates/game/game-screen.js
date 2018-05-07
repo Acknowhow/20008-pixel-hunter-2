@@ -153,7 +153,9 @@ class GameScreen {
 
   gameOver() {
     this.answers = this.model.getAnswers();
-    const statsContent = new StatsView(this.model.state, this.answers);
+    this.playerName = this.model.getPlayerName();
+
+    const statsContent = new StatsView(this.model.state, this.answers, this.playerName);
 
     this.changeContentView(statsContent);
   }

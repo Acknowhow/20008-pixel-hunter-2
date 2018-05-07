@@ -26,6 +26,10 @@ class HuntModel {
     return this._state;
   }
 
+  getPlayerName() {
+    return this.playerName;
+  }
+
   // Assigns correct answer result into answers array
   // Returns answers array
   assignCorrect() {
