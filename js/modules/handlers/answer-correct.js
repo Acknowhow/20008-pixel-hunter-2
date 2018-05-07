@@ -1,6 +1,3 @@
-// Merged handler estimates answer result
-// by comparing user response with current
-// db info
 let answer1;
 let answer2;
 
