@@ -13,3 +13,11 @@ export const takeLife = (game, lives) => {
   return game;
 };
 
+export const tick = (game) => {
+  const time = game.time + 1;
+
+  return Object.assign({}, game, {
+    time
+  });
+};
+

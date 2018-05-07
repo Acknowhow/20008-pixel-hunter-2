@@ -2,10 +2,10 @@ import {
   currentGame,
   Hunt,
   answers,
-  answersKey, INITIAL_GAME,
+  answersKey, INITIAL_GAME
 } from './hunt-data';
 
-import {nextParameter, takeLife} from './hunt';
+import {nextParameter, takeLife, tick} from './hunt';
 
 const getScreen = (state, screenParameter) => {
   return Hunt[state.type][screenParameter];
@@ -124,6 +124,10 @@ class HuntModel {
     this._answerKey = this._answersKeyArray.pop();
     this._answerKey = 0;
     this._answersKeyArray.push(this._answerKey);
+  }
+
+  tick() {
+    this._state = tick(this._state);
   }
 
   init() {

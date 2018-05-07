@@ -86,6 +86,7 @@ class GameScreen {
   }
 
   answerResult(answers, answersKey) {
+    this.stopGame();
     this.answer = answers[answersKey];
     switch (this.answer.correct) {
 
@@ -150,9 +151,17 @@ class GameScreen {
     this.changeContentView(content);
   }
 
+  stopGame() {
+    clearInterval(this._interval);
+  }
+
   startGame() {
     this.changeScreen();
 
+    this._interval = setInterval(() => {
+      this.model.tick();
+      this.updateHeader();
+    }, 1000);
   }
 
   gameOver() {
@@ -172,11 +181,14 @@ class GameScreen {
   }
 
   onReset() {
+    this.stopGame();
+
     this.model.restart();
     Application.showWelcome();
   }
 
   onRestart() {
+    this.stopGame();
     this.model.restart();
     Application.showWelcome();
   }
