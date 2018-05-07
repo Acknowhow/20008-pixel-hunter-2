@@ -8,9 +8,7 @@ import FooterView from '../footer/footer-view';
 
 import {extractNumeric} from '../../handlers/extract';
 import {isCorrectAnswer} from '../../handlers/answer-correct';
-// import getState from '../../handlers/answer';
 
-// import {switchScreen} from '../../handlers/screen';
 import {NEXT_SCREEN, END} from '../../../data/hunt-data';
 
 import Application from '../../../application';
@@ -23,8 +21,8 @@ class GameScreen {
     this.makeView = makeView;
 
     this.screen = this.model.getCurrentScreen();
-
     this.answers = this.model.getAnswers();
+
     this.answerKey = this.model.getAnswerKey();
     this.answer = ``;
 
@@ -128,6 +126,10 @@ class GameScreen {
     this.header = header;
   }
 
+  removeHeader() {
+    this.root.removeChild(this.header.element);
+  }
+
   changeScreen() {
     this.updateHeader();
 
@@ -141,6 +143,8 @@ class GameScreen {
 
 
     this.header.onReset = this.onReset.bind(this);
+    this.content.onReset = this.onRestart.bind(this);
+
     content.onAnswer = this.isCorrectAnswer.bind(this);
 
     this.changeContentView(content);
@@ -152,11 +156,13 @@ class GameScreen {
   }
 
   gameOver() {
+
+    this.removeHeader();
     this.answers = this.model.getAnswers();
     this.playerName = this.model.getPlayerName();
 
-    const statsContent = new StatsView(this.model.state, this.answers, this.playerName);
-
+    const statsContent = new StatsView(
+        this.model.state, this.answers, this.playerName);
     this.changeContentView(statsContent);
   }
 
@@ -166,7 +172,12 @@ class GameScreen {
   }
 
   onReset() {
-    // Must reset questions
+    this.model.restart();
+    Application.showWelcome();
+  }
+
+  onRestart() {
+    this.model.restart();
     Application.showWelcome();
   }
 }

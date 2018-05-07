@@ -2,7 +2,7 @@ import {
   currentGame,
   Hunt,
   answers,
-  answersKey, INITIAL_GAME
+  answersKey, INITIAL_GAME,
 } from './hunt-data';
 
 import {nextParameter, takeLife} from './hunt';
@@ -121,12 +121,14 @@ class HuntModel {
   }
 
   restart() {
-    this._state = INITIAL_GAME;
+    this._answerKey = this._answersKeyArray.pop();
+    this._answerKey = 0;
+    this._answersKeyArray.push(this._answerKey);
   }
 
   init() {
     this._state = currentGame;
-    this._answersArray = answers;
+    this._answersArray = answers();
     this._answersKeyArray = answersKey;
 
   }

@@ -14,11 +14,14 @@ export const INITIAL_ANSWERS = [
   {time: 15, correct: `unknown`, result: ``}
 ];
 
-export const answers = [];
+export const answers = () => {
+  const currentAnswers = [];
 
-for (const answer of INITIAL_ANSWERS) {
-  answers.push(Object.assign({}, answer));
-}
+  for (const answer of INITIAL_ANSWERS) {
+    currentAnswers.push(Object.assign({}, answer));
+  }
+  return currentAnswers;
+};
 
 export const SCORE_CORRECT = 100;
 export const BONUS_SCORE = 50;
@@ -27,12 +30,12 @@ export const SCORE_PENALTY = -50;
 export const TIME_FAST = 10;
 export const TIME_SLOW = 20;
 
-export const INITIAL_GAME = {
+export const INITIAL_GAME = Object.freeze({
   type: `type-0`,
   screen: `screen-0`,
   lives: 3,
   time: 0
-};
+});
 
 export const currentGame = Object.assign({}, INITIAL_GAME);
 export const answersKey = [0];

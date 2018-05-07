@@ -51,6 +51,7 @@ export default class StatsView extends AbstractView {
     </table>
   </div>`;
   }
+
   onReset() {
 
   }
