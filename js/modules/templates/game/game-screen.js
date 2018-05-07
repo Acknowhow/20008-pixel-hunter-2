@@ -26,7 +26,6 @@ class GameScreen {
     this.answerKey = this.model.getAnswerKey();
     this.answer = ``;
 
-    this._interval = ``;
     this.game = new WeakMap();
     this.header = new HeaderView(this.model.state);
 
@@ -71,13 +70,13 @@ class GameScreen {
           this.screen = this.model.getNextScreen();
           this.model.nextAnswerKey();
 
-          this.changeScreen();
+          this.startGame();
         } else if (!this.model.hasNextScreen() && this.model.hasNextType()) {
           this.screen = this.model.getNextType();
 
           this.model.nextAnswerKey();
 
-          this.changeScreen();
+          this.startGame();
         } else if (!this.model.hasNextScreen() && !this.model.hasNextType()) {
           this.gameOver();
         }
@@ -87,7 +86,10 @@ class GameScreen {
 
   answerResult(answers, answersKey) {
     this.stopGame();
+
     this.answer = answers[answersKey];
+    this.answer.time = this.model.state.time;
+
     switch (this.answer.correct) {
 
       case `false`:
@@ -122,7 +124,6 @@ class GameScreen {
 
   updateHeader() {
     const header = new HeaderView(this.model.state, this._interval);
-
     header.onReset = this.onReset.bind(this);
 
     this.root.replaceChild(header.element, this.header.element);
@@ -146,7 +147,6 @@ class GameScreen {
     this.header.onReset = this.onReset.bind(this);
 
     content.onAnswer = this.isCorrectAnswer.bind(this);
-
     this.changeContentView(content);
   }
 
@@ -167,6 +167,7 @@ class GameScreen {
   }
 
   startGame() {
+    this.model.resetTick();
     this.changeScreen();
 
     this._interval = window.setInterval(() => {

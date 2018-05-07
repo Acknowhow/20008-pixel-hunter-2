@@ -120,6 +120,10 @@ class HuntModel {
     return this._state.lives < 0;
   }
 
+  resetTick() {
+    this._state.time = 0;
+  }
+
   restart() {
     this._answerKey = this._answersKeyArray.pop();
     this._answerKey = 0;

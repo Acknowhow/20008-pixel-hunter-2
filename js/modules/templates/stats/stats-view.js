@@ -42,9 +42,9 @@ export default class StatsView extends AbstractView {
         </td>
         ${this.answers.find((it) => it.correct === `unknown`) ? `` : drawAnswersScore(this.answers)}
       </tr>
-      ${(this.answers.find((it) => it.time < TIME_FAST)) ? drawSpeedBonus(this.answers) : ``}
-      ${this.state.lives >= 0 ? drawLifeBonus(this.state.lives) : ``}
-      ${(this.answers.find((it) => it.time > TIME_SLOW)) ? drawSlowPenalty(this.answers) : ``}
+      ${!this.answers.find((it) => it.correct === `unknown`) && this.answers.find((it) => it.time < TIME_FAST) ? drawSpeedBonus(this.answers) : ``}
+      ${!this.answers.find((it) => it.correct === `unknown`) && this.state.lives >= 0 ? drawLifeBonus(this.state.lives) : ``}
+      ${!this.answers.find((it) => it.correct === `unknown`) && this.answers.find((it) => it.time > TIME_SLOW) ? drawSlowPenalty(this.answers) : ``}
       <tr>
         <td colspan="5" class="result__total  result__total--final">${this.answers.find((it) => it.correct === `unknown`) ? `FAIL` : scoreCalc(this.answers)}</td>
       </tr>
