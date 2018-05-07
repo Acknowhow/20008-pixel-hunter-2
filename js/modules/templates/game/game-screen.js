@@ -1,7 +1,7 @@
 import Game1View from './../game-1/game-1-view';
 import Game2View from './../game-2/game-2-view';
 import Game3View from './../game-3/game-3-view';
-// import StatsView from './../stats/stats-view';
+import StatsView from './../stats/stats-view';
 
 import HeaderView from './../header/header-view';
 import FooterView from '../footer/footer-view';
@@ -65,7 +65,7 @@ class GameScreen {
   getNextScreen(answerResult) {
     switch (answerResult) {
       case END:
-        console.log(`end`);
+        this.gameOver();
         break;
 
       default:
@@ -77,16 +77,11 @@ class GameScreen {
         } else if (!this.model.hasNextScreen() && this.model.hasNextType()) {
           this.screen = this.model.getNextType();
 
-          console.log(this.screen);
-
           this.model.nextAnswerKey();
 
           this.changeScreen();
         } else if (!this.model.hasNextScreen() && !this.model.hasNextType()) {
-
-
-          console.log(`end`);
-
+          this.gameOver();
         }
 
     }
@@ -154,6 +149,13 @@ class GameScreen {
   startGame() {
     this.changeScreen();
 
+  }
+
+  gameOver() {
+    this.answers = this.model.getAnswers();
+    const statsContent = new StatsView(this.model.state, this.answers);
+
+    this.changeContentView(statsContent);
   }
 
   changeContentView(view) {
