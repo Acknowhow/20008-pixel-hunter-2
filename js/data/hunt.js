@@ -20,4 +20,3 @@ export const tick = (game) => {
     time
   });
 };
-

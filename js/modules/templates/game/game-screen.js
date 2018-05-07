@@ -26,6 +26,7 @@ class GameScreen {
     this.answerKey = this.model.getAnswerKey();
     this.answer = ``;
 
+    this._interval = ``;
     this.game = new WeakMap();
     this.header = new HeaderView(this.model.state);
 
@@ -53,7 +54,6 @@ class GameScreen {
     this.root.appendChild(this.header.element);
     this.root.appendChild(this.content.element);
     this.root.appendChild(new FooterView().element);
-
   }
 
   get element() {
@@ -121,9 +121,10 @@ class GameScreen {
   }
 
   updateHeader() {
-    const header = new HeaderView(this.model.state);
-    this.root.replaceChild(header.element, this.header.element);
+    const header = new HeaderView(this.model.state, this._interval);
+    this.header.onReset = this.onReset.bind(this);
 
+    this.root.replaceChild(header.element, this.header.element);
     this.header = header;
   }
 
@@ -134,10 +135,10 @@ class GameScreen {
   changeScreen() {
     this.updateHeader();
 
+
     this.screen = this.model.getCurrentScreen();
     this.answers = this.model.getAnswers();
     this.answerKey = this.model.getAnswerKey();
-
 
     const content = this.game.get(this.keys[extractNumeric(
         this.model.state.type)])(this.screen, this.answers);
@@ -146,22 +147,10 @@ class GameScreen {
     this.header.onReset = this.onReset.bind(this);
     this.content.onReset = this.onRestart.bind(this);
 
+
     content.onAnswer = this.isCorrectAnswer.bind(this);
 
     this.changeContentView(content);
-  }
-
-  stopGame() {
-    clearInterval(this._interval);
-  }
-
-  startGame() {
-    this.changeScreen();
-
-    this._interval = setInterval(() => {
-      this.model.tick();
-      this.updateHeader();
-    }, 1000);
   }
 
   gameOver() {
@@ -180,6 +169,20 @@ class GameScreen {
     this.content = view;
   }
 
+  startGame() {
+    this.changeScreen();
+
+    this._interval = setInterval(() => {
+      this.model.tick();
+      this.updateHeader();
+    }, 1000);
+
+  }
+
+  stopGame() {
+    window.clearInterval(this._interval);
+  }
+
   onReset() {
     this.stopGame();
 
@@ -188,10 +191,10 @@ class GameScreen {
   }
 
   onRestart() {
-    this.stopGame();
     this.model.restart();
     Application.showWelcome();
   }
+
 }
 
 export default GameScreen;

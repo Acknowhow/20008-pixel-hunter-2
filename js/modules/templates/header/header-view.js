@@ -6,9 +6,10 @@ const drawHeart = (full) => {
 };
 
 export default class HeaderView extends AbstractView {
-  constructor(state) {
+  constructor(state, interval) {
     super();
     this.state = state;
+    this.interval = interval;
   }
 
   get template() {
@@ -27,7 +28,7 @@ export default class HeaderView extends AbstractView {
     </div>`;
   }
   onReset() {
-
+    clearInterval(this.interval);
   }
 
   render() {
@@ -36,9 +37,8 @@ export default class HeaderView extends AbstractView {
 
   bind() {
     const linkBack = this.element.querySelector(`.header__back`);
-    linkBack.addEventListener(`click`, (event) => {
-      event.stopPropagation();
-      event.preventDefault();
+    linkBack.addEventListener(`click`, () => {
+
 
       this.onReset();
     });

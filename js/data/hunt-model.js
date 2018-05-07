@@ -130,6 +130,7 @@ class HuntModel {
     this._state = tick(this._state);
   }
 
+
   init() {
     this._state = currentGame;
     this._answersArray = answers();
