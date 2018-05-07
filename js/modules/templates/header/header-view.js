@@ -9,7 +9,7 @@ export default class HeaderView extends AbstractView {
   constructor(state, interval) {
     super();
     this.state = state;
-    this.interval = interval;
+    this._interval = interval;
   }
 
   get template() {
@@ -28,7 +28,7 @@ export default class HeaderView extends AbstractView {
     </div>`;
   }
   onReset() {
-    clearInterval(this.interval);
+
   }
 
   render() {
@@ -37,9 +37,9 @@ export default class HeaderView extends AbstractView {
 
   bind() {
     const linkBack = this.element.querySelector(`.header__back`);
-    linkBack.addEventListener(`click`, () => {
+    linkBack.addEventListener(`click`, (evt) => {
 
-
+      evt.stopPropagation();
       this.onReset();
     });
   }

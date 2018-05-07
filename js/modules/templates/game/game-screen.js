@@ -122,7 +122,8 @@ class GameScreen {
 
   updateHeader() {
     const header = new HeaderView(this.model.state, this._interval);
-    this.header.onReset = this.onReset.bind(this);
+
+    header.onReset = this.onReset.bind(this);
 
     this.root.replaceChild(header.element, this.header.element);
     this.header = header;
@@ -135,7 +136,6 @@ class GameScreen {
   changeScreen() {
     this.updateHeader();
 
-
     this.screen = this.model.getCurrentScreen();
     this.answers = this.model.getAnswers();
     this.answerKey = this.model.getAnswerKey();
@@ -143,10 +143,7 @@ class GameScreen {
     const content = this.game.get(this.keys[extractNumeric(
         this.model.state.type)])(this.screen, this.answers);
 
-
     this.header.onReset = this.onReset.bind(this);
-    this.content.onReset = this.onRestart.bind(this);
-
 
     content.onAnswer = this.isCorrectAnswer.bind(this);
 
@@ -172,7 +169,8 @@ class GameScreen {
   startGame() {
     this.changeScreen();
 
-    this._interval = setInterval(() => {
+    this._interval = window.setInterval(() => {
+
       this.model.tick();
       this.updateHeader();
     }, 1000);
@@ -191,6 +189,7 @@ class GameScreen {
   }
 
   onRestart() {
+
     this.model.restart();
     Application.showWelcome();
   }
