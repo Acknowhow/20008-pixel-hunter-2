@@ -8,9 +8,9 @@ import FooterView from '../footer/footer-view';
 
 import {extractNumeric} from '../../handlers/extract';
 import {isCorrectAnswer} from '../../handlers/answer-correct';
-import getState from '../../handlers/answer';
+// import getState from '../../handlers/answer';
 
-import {switchScreen} from '../../handlers/screen';
+// import {switchScreen} from '../../handlers/screen';
 import {NEXT_SCREEN, END} from '../../../data/hunt-data';
 
 import Application from '../../../application';
@@ -29,17 +29,25 @@ class GameScreen {
     this.answer = ``;
 
     this.game = new WeakMap();
-
     this.header = new HeaderView(this.model.state);
 
     this.keys = [{key: 0}, {key: 1}, {key: 2}];
 
-    this.game.set(this.keys[0], makeView = (screenParam, answersParam) => new Game1View(screenParam, answersParam));
-    this.game.set(this.keys[1], makeView = (screenParam, answersParam) => new Game2View(screenParam, answersParam));
-    this.game.set(this.keys[2], makeView = (screenParam, answersParam) => new Game2View(screenParam, answersParam));
+    this.game.set(this.keys[0], makeView = (
+        screenParam, answersParam) => new Game1View(
+        screenParam, answersParam));
+
+    this.game.set(this.keys[1], makeView = (
+        screenParam, answersParam) => new Game2View(
+        screenParam, answersParam));
+
+    this.game.set(this.keys[2], makeView = (
+        screenParam, answersParam) => new Game3View(
+        screenParam, answersParam));
 
 
-    // gets current type number, then creates new View with function call
+    // gets WeakMap element with current type number,
+    // then creates new View with function call
     this.content = this.game.get(this.keys[extractNumeric(
         this.model.state.type)])(this.screen, this.answers);
 
@@ -54,34 +62,6 @@ class GameScreen {
     return this.root;
   }
 
-  // getScreen(answer) {
-  //   this.screen = this.model.getCurrentScreen();
-  //   this.model.nextAnswerKey();
-  //
-  //   this.answerKey = this.model.getAnswerKey();
-  //
-  // }
-
-  // getNextScreen(nextState) {
-  //
-  //   this.state = switchScreen(
-  //       nextState, Hunt, nextState.type, this.answerKey, this.answers);
-  //
-  //   if (typeof this.state === `string`) {
-  //     console.log(`bla`);
-  //   } else {
-  //
-  //     this.getScreen(this.answer);
-  //   }
-  // }
-
-  // getState(answerResult) {
-  //   const nextState = getState(this.state, this.answerKey, answerResult);
-  //
-  //   this.getNextScreen(nextState);
-  //
-  // }
-
   getNextScreen(answerResult) {
     switch (answerResult) {
       case END:
@@ -94,6 +74,19 @@ class GameScreen {
           this.model.nextAnswerKey();
 
           this.changeScreen();
+        } else if (!this.model.hasNextScreen() && this.model.hasNextType()) {
+          this.screen = this.model.getNextType();
+
+          console.log(this.screen);
+
+          this.model.nextAnswerKey();
+
+          this.changeScreen();
+        } else if (!this.model.hasNextScreen() && !this.model.hasNextType()) {
+
+
+          console.log(`end`);
+
         }
 
     }
@@ -147,18 +140,15 @@ class GameScreen {
     this.answers = this.model.getAnswers();
     this.answerKey = this.model.getAnswerKey();
 
-    console.log(this.screen);
-    console.log(this.answers);
-    console.log(this.answerKey);
 
     const content = this.game.get(this.keys[extractNumeric(
         this.model.state.type)])(this.screen, this.answers);
+
 
     this.header.onReset = this.onReset.bind(this);
     content.onAnswer = this.isCorrectAnswer.bind(this);
 
     this.changeContentView(content);
-
   }
 
   startGame() {
@@ -175,7 +165,6 @@ class GameScreen {
     // Must reset questions
     Application.showWelcome();
   }
-
 }
 
 export default GameScreen;

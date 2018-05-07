@@ -12,7 +12,7 @@ const getScreen = (state, screenParameter) => {
 };
 
 const getType = (typeParameter) => {
-  return Hunt[typeParameter][currentGame.screen];
+  return Hunt[typeParameter][INITIAL_GAME.screen];
 };
 
 class HuntModel {
@@ -61,6 +61,10 @@ class HuntModel {
     return getScreen(this._state, screen);
   }
 
+  resetScreen() {
+    this._state.screen = INITIAL_GAME.screen;
+  }
+
   // Returns current answers array
   getAnswers() {
     return this._answersArray;
@@ -70,6 +74,8 @@ class HuntModel {
   getNextType() {
     const type = nextParameter(this._state.type);
     this._state = Object.assign({}, this._state, {type});
+
+    this.resetScreen();
 
     return getType(type);
   }
