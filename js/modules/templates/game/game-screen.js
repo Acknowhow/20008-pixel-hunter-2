@@ -1,14 +1,14 @@
-import Game1View from './../game-1/game-1-view';
-import Game2View from './../game-2/game-2-view';
-import Game3View from './../game-3/game-3-view';
-import StatsView from './../stats/stats-view';
+import Game1View from './game-1-view';
+import Game2View from './game-2-view';
+import Game3View from './game-3-view';
+import StatsView from './stats-view';
 
 import HeaderView from './../header/header-view';
 import FooterView from '../footer/footer-view';
 
-import {extractNumeric} from '../../handlers/extract';
 import {isCorrectAnswer} from '../../handlers/answer-correct';
 
+import {extractNumeric} from '../../../data/hunt';
 import {NEXT_SCREEN, END} from '../../../data/hunt-data';
 
 import Application from '../../../application';

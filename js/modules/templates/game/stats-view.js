@@ -9,7 +9,7 @@ import {
   drawAnswersScore,
   drawSpeedBonus,
   drawLifeBonus,
-  drawSlowPenalty} from './handler/stats-handler';
+  drawSlowPenalty} from '../stats/handler/stats-handler';
 
 export default class StatsView extends AbstractView {
   constructor(state, answers, playerName) {
