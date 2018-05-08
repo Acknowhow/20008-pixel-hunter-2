@@ -1,4 +1,4 @@
-import {centralContainer} from '../modules/handlers/screen';
+const centralContainer = document.querySelector(`.central`);
 
 export const createElement = (
     template = ``, tagName = `div`, className = []) => {
