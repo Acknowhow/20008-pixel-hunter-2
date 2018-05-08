@@ -3,7 +3,7 @@ import {
   BONUS_SCORE,
   SCORE_PENALTY,
   TIME_FAST,
-  TIME_SLOW} from '../../../../data/hunt-data';
+  TIME_SLOW} from '../../data/hunt-data';
 
 const scoreCalc = (answer) => {
   if (answer.correct === `unknown`) {
