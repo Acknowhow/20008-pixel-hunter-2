@@ -191,13 +191,6 @@ class GameScreen {
     this.model.restart();
     Application.showWelcome();
   }
-
-  onRestart() {
-
-    this.model.restart();
-    Application.showWelcome();
-  }
-
 }
 
 export default GameScreen;

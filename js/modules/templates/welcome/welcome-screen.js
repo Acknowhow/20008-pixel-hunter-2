@@ -29,7 +29,7 @@ class WelcomeScreen {
       welcomeState++;
     }
     if (welcomeState === 3) {
-      welcomeState = 0;
+      welcomeState = 2;
     }
     return this._element.element;
   }
