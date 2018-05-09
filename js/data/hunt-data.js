@@ -48,9 +48,7 @@ export const END = `GAME OVER`;
 export const Hunt = {
   'type-0': {
     'screen-0': {
-      text: {
-        title: `Угадайте для каждого изображения фото или рисунок?`
-      },
+      text: `Угадайте для каждого изображения фото или рисунок?`,
       options: {
         option1: {
           question: `question1`,
@@ -75,9 +73,7 @@ export const Hunt = {
       },
     },
     'screen-1': {
-      text: {
-        title: `Угадайте для каждого изображения фото или рисунок?`
-      },
+      text: `Угадайте для каждого изображения фото или рисунок?`,
       options: {
         option1: {
           question: `question1`,
@@ -102,9 +98,7 @@ export const Hunt = {
       },
     },
     'screen-2': {
-      text: {
-        title: `Угадайте для каждого изображения фото или рисунок?`
-      },
+      text: `Угадайте для каждого изображения фото или рисунок?`,
       options: {
         option1: {
           question: `question1`,
