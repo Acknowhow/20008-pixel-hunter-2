@@ -67,5 +67,3 @@ export default class Game2View extends AbstractView {
     };
   }
 }
-
-

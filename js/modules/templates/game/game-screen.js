@@ -158,6 +158,8 @@ class GameScreen {
 
     const statsContent = new StatsView(
         this.model.state, this.answers, this.playerName);
+
+    statsContent.onReset = this.onReset.bind(this);
     this.changeContentView(statsContent);
   }
 

@@ -2,6 +2,7 @@ import WelcomeScreen from './modules/templates/welcome/welcome-screen';
 import HuntModel from './data/hunt-model';
 import GameScreen from './modules/templates/game/game-screen';
 
+
 const central = document.querySelector(`.central`);
 
 const changeView = (element) => {
