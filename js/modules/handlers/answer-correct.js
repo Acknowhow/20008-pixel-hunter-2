@@ -9,16 +9,16 @@ let screen;
 
 const correct1 = (userAnswer1, userAnswer2, currentScreen) => {
 
-  return currentScreen.options[`option1`][userAnswer1]
-    && currentScreen.options[`option2`][userAnswer2];
+  return currentScreen.options[`0`][userAnswer1]
+    && currentScreen.options[`1`][userAnswer2];
 };
 
 const correct2 = (userAnswer, currentScreen) => {
-  return currentScreen.options[`option1`][userAnswer];
+  return currentScreen.options[`0`][userAnswer];
 };
 
 const correct3 = (userAnswer, userAnswerKey, currentScreen) => {
-  return currentScreen.options[`option1`][userAnswerKey][userAnswer];
+  return currentScreen.options[`0`][userAnswerKey][userAnswer];
 };
 
 export const isCorrectAnswer = (argumentsArray) => {

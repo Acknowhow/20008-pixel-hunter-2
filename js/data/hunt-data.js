@@ -49,8 +49,8 @@ export const Hunt = {
   'type-0': {
     'screen-0': {
       text: `Угадайте для каждого изображения фото или рисунок?`,
-      options: {
-        option1: {
+      options: [
+        {
           question: `question1`,
           src: `http://i.imgur.com/5kcp9i0.jpg`,
           name: `Man bearded`,
@@ -60,7 +60,7 @@ export const Hunt = {
           [PHOTO]: 0,
           [PAINT]: 1
         },
-        option2: {
+        {
           question: `question2`,
           src: `http://i.imgur.com/8aNXpLk.jpg`,
           name: `Morgan Freeman`,
@@ -70,7 +70,7 @@ export const Hunt = {
           [PHOTO]: 1,
           [PAINT]: 0
         }
-      },
+      ],
     },
     'screen-1': {
       text: `Угадайте для каждого изображения фото или рисунок?`,
