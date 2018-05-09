@@ -10,7 +10,6 @@ export default class DialogView extends AbstractView {
 
   get template() {
     return `
-    <dialog>
       <form class="dialog-form" autocomplete="off">
 
         <div class="dialog-header">
@@ -26,8 +25,7 @@ export default class DialogView extends AbstractView {
           <button class="button dialog-submit">OK</button>
           <button class="button dialog-cancel">Отмена</button>
         </div>
-      </form>
-    </dialog>`;
+      </form>`;
   }
 
   onCancel() {
@@ -36,6 +34,10 @@ export default class DialogView extends AbstractView {
 
   onConfirm() {
 
+  }
+
+  render() {
+    return createElement(this.template, `dialog`, []);
   }
 
   bind() {
