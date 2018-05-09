@@ -16,10 +16,10 @@ export default class Game3View extends AbstractView {
 
   get template() {
     return `
-    <p class="game__task">${this.question.text.title}</p>
+    <p class="game__task">${this.question.text}</p>
     
     <form class="game__content  game__content--triple">
-      ${this.question.options.option1.map((param, key) => `<div class="game__option">
+      ${this.question.options.map((param, key) => `<div class="game__option">
         <img src="${param.src}" data-value="${param.value}" alt="option1" width="${param.width}"
          height="${param.height}" data-key="${key}">
       </div>`).join(``)}
