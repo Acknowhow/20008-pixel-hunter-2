@@ -1,7 +1,6 @@
 import Game1View from './game-1-view';
 import Game2View from './game-2-view';
 import Game3View from './game-3-view';
-import StatsView from './stats-view';
 
 import HeaderView from './../header/header-view';
 import FooterView from '../footer/footer-view';
@@ -152,15 +151,17 @@ class GameScreen {
 
   gameOver() {
 
-    this.removeHeader();
+    // this.removeHeader();
     this.answers = this.model.getAnswers();
     this.playerName = this.model.getPlayerName();
 
-    const statsContent = new StatsView(
-        this.model.state, this.answers, this.playerName);
+    // const statsContent = new StatsView(
+    //     this.model.state, this.answers, this.playerName);
 
-    statsContent.onReset = this.onReset.bind(this);
-    this.changeContentView(statsContent);
+    // statsContent.onReset = this.onReset.bind(this);
+    // this.changeContentView(statsContent);
+
+    Application.showStats(this.model.state, this.answers, this.playerName);
   }
 
   changeContentView(view) {
