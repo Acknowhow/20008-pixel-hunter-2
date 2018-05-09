@@ -13,6 +13,7 @@ class StatsScreen {
     this.playerName = playerName;
 
     this.content = new StatsView(this.state, this.answers, this.playerName);
+    this.content.onReset = this.onReset.bind(this);
 
     this.dialog = new DialogView(`Повтор игры`, `Это было здорово, повторим?`);
 
