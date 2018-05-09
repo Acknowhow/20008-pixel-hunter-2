@@ -1,7 +1,10 @@
 import StatsView from '../stats/stats-view';
 import FooterView from '../footer/footer-view';
 
+
 import DialogView from '../dialog/dialog-view';
+
+import Application from '../../../application';
 
 class StatsScreen {
   constructor(state, answers, playerName) {
@@ -20,6 +23,10 @@ class StatsScreen {
 
   get element() {
     return this.root;
+  }
+
+  onReset() {
+    Application.showScreen(this.playerName);
   }
 }
 
